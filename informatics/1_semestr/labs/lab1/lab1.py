@@ -1,21 +1,25 @@
 """
-Переводит число из системы счислений `-10` в систему счисления `10`
+Переводит число из системы счислений `10` в систему счисления `-10`
 """
 
 
 def main() -> None:
-    number = int(input("Введите число в системе счисления `-10`: "))
+    number = int(input("Введите число в системе счисления `10`: "))
 
-    pointer = 0
-    result = 0
+    result = ""
 
     while number:
-        current_digit = number % 10
-        result += current_digit * ((-10 ) ** pointer)
-        number //= 10
-        pointer += 1
+        remainder = number % -10
+        number //= -10
 
-    print(f"Результат: {result}")
+        # корректировки, если остаток меньше 0
+        if remainder < 0:
+            remainder += 10
+            number += 1
+
+        result += str(remainder)
+
+    print(f"Результат: {result[::-1]}")
 
 
 if __name__ == "__main__":
