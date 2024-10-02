@@ -1,0 +1,10 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{Задание}{3}{section*.2}%
+\contentsline {section}{Процесс выполнени}{8}{section*.4}%
+\contentsline {subsection}{Задание 1}{8}{section*.5}%
+\contentsline {subsection}{Задание 2}{9}{section*.6}%
+\contentsline {subsection}{Задание 3}{10}{section*.7}%
+\contentsline {subsection}{Древо каталогов после 3-го задания}{13}{section*.15}%
+\contentsline {subsection}{Задание 4}{14}{section*.16}%
+\contentsline {subsection}{Задание 5}{14}{section*.17}%
+\contentsline {section}{Вывод}{16}{section*.18}%

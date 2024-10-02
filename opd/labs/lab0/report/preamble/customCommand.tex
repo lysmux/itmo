@@ -1,0 +1,34 @@
+% НОВЫЕ КОМАНДЫ
+\newcommand{\deriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\n}{\par}
+\newcommand{\percent}{\mathbin{\%}}
+
+% Заменяем Рис. на Рисунок
+\addto\captionsrussian{\renewcommand{\figurename}{Рисунок}}
+
+% Изменение формата подписей
+% Стиль номера таблицы/рисунка #1-Таблица/Рис. #2-номер
+\DeclareCaptionLabelFormat{custom}
+{%
+	#1 #2
+}
+% Стиль разделителя номера таблици/рисунка и названия таблицы/рисунка
+\DeclareCaptionLabelSeparator{custom}{$-$}
+% Стиль формата #1-номер таблицы/рисунка #2-разделитель #3-название
+\DeclareCaptionFormat{custom}
+{%
+	#1 #2 #3
+}
+
+\captionsetup
+{
+	format=custom,%
+	labelsep=custom,
+	labelformat=custom
+}
+
+% ПЕРЕГРУЗКА УЖЕ СУЩЕСТВУЮЩИХ КОМАНД
+\renewcommand{\epsilon}{\varepsilon} % Заменить знак эпсилон
+\renewcommand{\phi}{\varphi}
+\renewcommand{\kappa}{\varkappa}
+\renewcommand{\lambda}{\uplambda}
