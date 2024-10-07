@@ -1,10 +1,61 @@
 \subsubsection*{Рекурсивно подсчитать количество символов содержимого файлов из директории lab0, имя которых начинается на 'c', результат записать в файл в директории /tmp, подавить вывод ошибок доступа}
-Команда: \mint{bash}|ln -s camerupt4 crawdaunt7/slakingcamerupt|
-
-Команда для проверки: \mint{bash}|ls -l crawdaunt7/slakingcamerupt|
-
-Результат
-\begin{minted}{shell}
+\begin{minted}[breaklines]{shell}
+[s467213@helios ~/opd/lab0/lab0]$ wc -m c* */c* */*/c* 2> /dev/null > /tmp/131
+[s467213@helios ~/opd/lab0/lab0]$ cat /tmp/131
+65 camerupt4_76
+15 conkeldurr6
+6 cydata
+98 crawdaunt7/duosion/camerupt4
+184 total
 \end{minted}
 
 
+\subsubsection*{Вывести четыре первых элемента рекурсивного списка имен и атрибутов файлов в директории lab0, содержащих строку `da`, список отсортировать по убыванию даты модификации файла, подавить вывод ошибок доступа}
+\begin{minted}[breaklines]{shell}
+[s467213@helios ~/opd/lab0/lab0]$ ls -Rl 2> /dev/null | grep ^- | grep ":[0-6][0-9] \w*da" | sort -rk6 | head -n4
+-rw-r--r--  1 s467213 studs  10  7 окт.  10:29 datazar
+-rw-r--r--  1 s467213 studs  6  7 окт.  10:23 daddafa
+-rw-r--r--  1 s467213 studs  6  7 окт.  10:22 daddafa
+-rw-r--r--  1 s467213 studs   6  7 окт.  10:21 cydata
+\end{minted}
+
+\subsubsection*{Рекурсивно вывести содержимое файлов из директории lab0, имя которых заканчивается на 'r', строки отсортировать по имени a->z, ошибки доступа перенаправить в файл в директории /tmp}
+\begin{minted}[breaklines]{shell}
+[s467213@helios ~/opd/lab0/lab0]$ cat *r */*r */*/*r 2> /tmp/13_3 | sort
+allow any
+satk=6 sdef=8 spd=8
+satk=6 sdef=8 spd=8
+\end{minted}
+
+\subsubsection*{Вывести содержимое файлов: wormadam, seel, vaporeon, pikachu, accelgor, garbodor, leafeon, исключить строки, заканчивающиеся на 'n', регистр символов игнорировать, добавить вывод ошибок доступа в стандартный поток вывода}
+\begin{minted}[breaklines]{shell}
+[s467213@helios ~/opd/lab0/lab0]$ cat crawdaunt7/wormadam parasect2/seel parasect2/vaporeon parasect2/pikachu parasect2/accelgor zorua3/garbodor zorua3/leafeon te | grep -v [nN]$  2>&1
+cat: crawdaunt7/wormadam: Permission denied
+cat: parasect2/pikachu: Permission denied
+cat: parasect2/accelgor: Permission denied
+satk=6 sdef=8 spd=8
+Тип покемона GRASS NONE
+\end{minted}
+
+\subsubsection*{Подсчитать количество символов содержимого файлов в директории crawdaunt7, результат записать в файл в директории /tmp, добавить вывод ошибок доступа в стандартный поток вывода}
+\begin{minted}[breaklines]{shell}
+[s467213@helios ~/opd/lab0/lab0]$ wc -m crawdaunt7/* 2>&1 > /tmp/135
+wc: crawdaunt7/duosion: read: Is a directory
+wc: crawdaunt7/golem: open: Permission denied
+wc: crawdaunt7/nincada: read: Is a directory
+wc: crawdaunt7/skiploom: open: Permission denied
+wc: crawdaunt7/slaking: open: Permission denied
+wc: crawdaunt7/slakingcamerupt: open: No such file or directory
+wc: crawdaunt7/wormadam: open: Permission denied
+[s467213@helios ~/opd/lab0/lab0]$ cat /tmp/135
+6 crawdaunt7/daddafa
+15 crawdaunt7/slakingconkeldurr
+21 total
+\end{minted}
+
+\subsubsection*{Вывести два первых элемента рекурсивного списка имен и атрибутов файлов в директории lab0, содержащих строку `ldu`, список отсортировать по возрастанию даты изменения записи о файле, ошибки доступа перенаправить в файл в директории /tmp}
+\begin{minted}[breaklines]{shell}
+[s467213@helios ~/opd/lab0/lab0]$ ls -lR 2> /tmp/136_err | grep ^- | grep ":[0-6][0-9] \w*ldu" | sort -k6 | head -n2
+-rw--w--w-  2 s467213 studs  20  7 окт.  10:12 conkeldurr6
+-rw-r-----  1 s467213 studs 37  7 окт.  10:12 golduck
+\end{minted}
