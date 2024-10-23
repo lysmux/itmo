@@ -1,0 +1,74 @@
+\documentclass[a4paper, 14pt]{extarticle}
+
+% Поддержка языков
+\usepackage[english, russian]{babel} 
+
+% Настройка кодировок
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Настройка шрифтов
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{Times New Roman} % Шрифт для основного текста документа
+\setsansfont[Ligatures=TeX]{Arial}
+\setmonofont{Consolas} % Шрифт для кода
+
+\usepackage{tocloft}
+
+% Настройка отступов от краев страницы
+\usepackage[left=3cm, right=1.5cm, top=2cm, bottom=2cm]{geometry}
+
+\usepackage{titleps} % Колонтитулы
+\usepackage{subfig} % Для подписей к рисункам и таблицам
+\usepackage{graphicx} % для вставки картинок
+\graphicspath{{./img/}} % Путь до папки с изображениями
+% Пакет для отрисовки графиков
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,shadows}
+\usepackage{stmaryrd} % Стрелки в формулах
+\usepackage{indentfirst} % Красная строка после заголовка
+\usepackage{hhline} % Улучшенные горизонтальные линии в таблицах
+\usepackage{multirow} % Ячейки в несколько строчек в таблицах
+\usepackage{longtable} % Многостраничные таблицы
+\usepackage{paralist,array} % Список внутри таблицы
+\usepackage[normalem]{ulem}  % Зачеркнутый текст
+\usepackage{upgreek, tipa} % Красивые греческие буквы
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools} % ams пакеты для математики, табуляции
+\usepackage{nicematrix} % Особые матрицы pNiceArray
+
+\linespread{1.5} % Межстрочный интервал
+\setlength{\parindent}{1.25cm} % Табуляция
+\setlength{\parskip}{0cm}
+
+% Пакет для красивого выделения кода
+\usepackage{minted}
+\setminted{fontsize=\footnotesize}
+
+% Настройка оглавления
+\renewcommand{\contentsname}{Содержание}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % точки между главой и номером
+% Добавляем гипертекстовое оглавление в PDF
+\usepackage[
+bookmarks=true, colorlinks=true, unicode=true,
+urlcolor=black,linkcolor=black, anchorcolor=black,
+citecolor=black, menucolor=black, filecolor=black,
+]{hyperref}
+
+% Убрать переносы слов
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\newpagestyle{main}{
+	% Верхний колонтитул
+	\setheadrule{0cm} % Размер линии отделяющей колонтитул от страницы
+	\sethead{}{}{} % Содержание {слева}{по центру}{справа}
+	% Нижний колонтитул
+	\setfootrule{0cm} % Размер линии отделяющей колонтитул от страницы
+	\setfoot{}{\thepage}{} % Содержание {слева}{по центру}{справа}
+}
+\pagestyle{main}
+\pagenumbering{arabic}
+
+\input{preamble/customCommand.tex}
