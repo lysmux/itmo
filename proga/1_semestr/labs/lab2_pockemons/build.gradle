@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'dev.lysmux'
+version = '1.0'
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(fileTree("lib"))
+}
+
+
+tasks.register('fatJar', Jar) {
+    destinationDirectory.set(layout.buildDirectory.dir("out"))
+
+    manifest {
+        attributes 'Main-Class': "dev.lysmux.lab2.Main"
+    }
+    archiveBaseName = "${rootProject.name}"
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+

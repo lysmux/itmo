@@ -1,0 +1,131 @@
+\subsubsection*{Cкопировать рекурсивно директорию parasect2 в директорию lab0/crawdaunt7/nincada}
+Смена прав: 
+\begin{minted}{bash}
+chmod u+r parasect2/
+chmod u+r parasect2/accelgor
+chmod u+r parasect2/pikachu
+chmod u+w crawdaunt7/nincada/
+\end{minted}
+
+Команда: \mint{bash}|cp -r parasect2 crawdaunt7/nincada|
+
+Результат
+\begin{minted}{shell}
+[s467213@helios ~/opd/lab0/lab0]$ ls -lp parasect2/ crawdaunt7/nincada/parasect2/
+crawdaunt7/nincada/parasect2/:
+total 3
+-r--r--r--  1 s467213 studs 51  7 окт.  14:32 accelgor
+drwxr-x---  2 s467213 studs  2  7 окт.  14:32 darumaka/
+drwxr-x---  2 s467213 studs  2  7 окт.  14:32 flaaffy/
+-r--r--r--  1 s467213 studs 52  7 окт.  14:32 pikachu
+-rw-r-----  1 s467213 studs 51  7 окт.  14:32 seel
+-r--r-----  1 s467213 studs 50  7 окт.  14:32 vaporeon
+
+parasect2/:
+total 3
+-r--r--r--  1 s467213 studs 51  7 окт.  14:32 accelgor
+drwxr-x-w-  2 s467213 studs  2  7 окт.  14:32 darumaka/
+drwxr-x-w-  2 s467213 studs  2  7 окт.  14:32 flaaffy/
+-r--r--rw-  1 s467213 studs 52  7 окт.  14:32 pikachu
+-rw-r-----  1 s467213 studs 51  7 окт.  14:32 seel
+-r--r-----  1 s467213 studs 50  7 окт.  14:32 vaporeon
+\end{minted}
+
+Возвращаем права:
+\begin{minted}{bash}
+chmod u-r parasect2/
+chmod u-r parasect2/accelgor
+chmod u-r parasect2/pikachu
+chmod u-w crawdaunt7/nincada/
+\end{minted}
+
+\subsubsection*{Скопировать файл camerupt4 в директорию lab0/crawdaunt7/duosion}
+Смена прав: 
+\begin{minted}{bash}
+chmod u+r camerupt4
+chmod u+w crawdaunt7/duosion
+\end{minted}
+
+Команда: \mint{bash}|cp camerupt4 crawdaunt7/duosion|
+
+Результат
+\begin{minted}{shell}
+[s467213@helios ~/opd/lab0/lab0]$ ls -l crawdaunt7/duosion
+total 5
+-r-----r--  1 s467213 studs 109  6 окт.  15:21 camerupt4
+\end{minted}
+
+Возвращаем права:
+\begin{minted}{bash}
+chmod u-r camerupt4
+chmod u-w crawdaunt7/duosion
+\end{minted}
+
+
+\subsubsection*{Создать жесткую ссылку для файла conkeldurr6 с именем lab0/crawdaunt7/slakingconkeldurr}
+
+Команда: \mint{bash}|ln conkeldurr6 crawdaunt7/slakingconkeldurr|
+
+Результат
+\begin{minted}{shell}
+[s467213@helios ~/opd/lab0/lab0]$ ls -li conkeldurr6 crawdaunt7/slakingconkeldurr
+8471566 -rw--w--w-  2 s467213 studs 20  6 окт.  15:24 conkeldurr6
+8471566 -rw--w--w-  2 s467213 studs 20  6 окт.  15:24 crawdaunt7/slakingconkeldurr
+\end{minted}
+
+\subsubsection*{Создать символическую ссылку c именем Copy\_5 на директорию zorua3 в каталоге lab0}
+Команда: \mint{bash}|ln -s zorua3/ Copy_5|
+
+Результат
+\begin{minted}{shell}
+[s467213@helios ~/opd/lab0/lab0]$ ls -l Copy_5
+lrwxr-xr-x  1 s467213 studs 7  7 окт.  14:16 Copy_5 -> zorua3/
+[s467213@helios ~/opd/lab0/lab0]$ file Copy_5
+Copy_5: symbolic link to zorua3/
+[s467213@helios ~/opd/lab0/lab0]$
+\end{minted}
+
+\subsubsection*{Объеденить содержимое файлов lab0/zorua3/golduck, lab0/parasect2/accelgor, в новый файл lab0/camerupt4\_76}
+
+Смена прав: 
+\begin{minted}{bash}
+chmod u+r parasect2/accelgor
+\end{minted}
+
+Команда: \mint{bash}|cat zorua3/golduck parasect2/accelgor > camerupt4_76|
+
+Результат
+\begin{minted}{shell}
+[s467213@helios ~/opd/lab0/lab0]$ cat zorua3/golduck parasect2/accelgor camerupt4_76
+Типо покемона WATER NONE
+Способности Swarm Hydration Sticky Hold
+Типо покемона WATER NONE
+Способности Swarm Hydration Sticky Hold
+\end{minted}
+
+Возвращаем права:
+\begin{minted}{bash}
+chmod u-r parasect2/accelgor
+\end{minted}
+
+
+\subsubsection*{Скопировать содержимое файла conkeldurr6 в новый файл lab0/parasect2/accelgorconkeldurr}
+Команда: \mint{bash}|cat conkeldurr6 > parasect2/accelgorconkeldurr|
+
+Результат
+\begin{minted}{shell}
+[s467213@helios ~/opd/lab0/lab0]$ cat conkeldurr6 parasect2/accelgorconkeldurr
+Живет Mountain
+Живет Mountain
+\end{minted}
+
+\subsubsection*{Создать символическую ссылку для файла camerupt4 с именем lab0/crawdaunt7/slakingcamerupt}
+Команда: \mint{bash}|ln -s $PWD/camerupt4 crawdaunt7/slakingcamerupt|
+
+Результат
+\begin{minted}{shell}
+[s467213@helios ~/opd/lab0/lab0]$ ls -l crawdaunt7/slakingcamerupt
+lrwxr-xr-x  1 s467213 studs 43  7 окт.  14:27 crawdaunt7/slakingcamerupt -> /home/studs/s467213/opd/lab0/lab0/camerupt4
+[s467213@helios ~/opd/lab0/lab0]$ file crawdaunt7/slakingcamerupt
+crawdaunt7/slakingcamerupt: symbolic link to /home/studs/s467213/opd/lab0/lab0/camerupt4
+\end{minted}
