@@ -1,0 +1,64 @@
+<schedule>
+    <weekday>
+        <name>Среда</name>
+        <lesson>
+            <name>Информатика</name>
+            <type>Лекция</type>
+            <location>Ауд. Актовый зал (1216/0 (усл)), ул.Ломоносова, д.9, лит. М</location>
+            <teacher>Балакшин Павел Валерьевич</teacher>
+            <start_at>8:20</start_at>
+            <end_at>9:50</end_at>
+        </lesson>
+        <lesson>
+            <name>Основы профессиональной деятельности</name>
+            <type>Лекция</type>
+            <location>Ауд. Актовый зал (1216/0 (усл)), ул.Ломоносова, д.9, лит. М</location>
+            <teacher>Клименков Сергей Викторович</teacher>
+            <start_at>10:00</start_at>
+            <end_at>11:30</end_at>
+        </lesson>
+        <lesson>
+            <name>Основы дискретной математики</name>
+            <type>Лекция</type>
+            <location>Ауд. 1428, Кронверкский пр., д.49, лит.А</location>
+            <teacher>Поляков Владимир Иванович</teacher>
+            <start_at>13:30</start_at>
+            <end_at>15:00</end_at>
+        </lesson>
+        <lesson>
+            <name>Основы дискретной математики</name>
+            <type>Практика</type>
+            <location>Ауд. 1428, Кронверкский пр., д.49, лит.А</location>
+            <teacher>Поляков Владимир Иванович</teacher>
+            <start_at>15:20</start_at>
+            <end_at>16:50</end_at>
+        </lesson>
+    </weekday>
+    <weekday>
+        <name>Суббота</name>
+        <lesson>
+            <name>Математический анализ</name>
+            <type>Лекция</type>
+            <location>zoom</location>
+            <teacher>Блейхер Оксана Владимировна</teacher>
+            <start_at>10:00</start_at>
+            <end_at>11:30</end_at>
+        </lesson>
+        <lesson>
+            <name>Программирование</name>
+            <type>Лабораторная</type>
+            <location>Ауд. 1338, Кронверкский пр., д.49, лит.А</location>
+            <teacher>Кулинич Ярослав Вадимович</teacher>
+            <start_at>13:30</start_at>
+            <end_at>15:00</end_at>
+        </lesson>
+        <lesson>
+            <name>Программирование</name>
+            <type>Лабораторная</type>
+            <location>Ауд. 1338, Кронверкский пр., д.49, лит.А</location>
+            <teacher>Кулинич Ярослав Вадимович</teacher>
+            <start_at>15:20</start_at>
+            <end_at>16:50</end_at>
+        </lesson>
+    </weekday>
+</schedule>
