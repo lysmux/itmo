@@ -1,0 +1,88 @@
+Скрипт
+\begin{minted}[breaklines]{bash}
+#!/usr/bin/bash
+
+cd lab0
+
+# Удалить файл conkeldurr6
+rm -v conkeldurr6
+
+# Удалить файл lab0/crawdaunt7/wormadam
+rm -fv crawdaunt7/wormadam
+
+# Удалить символические ссылки lab0/crawdaunt7/slakingcameru*
+rm -v crawdaunt7/slakingcameru*
+
+# Удалить жесткие ссылки lab0/crawdaunt7/slakingconkeldu*
+rm -v crawdaunt7/slakingconkeldu*
+
+# Удалить директорию zorua3
+chmod -R u+w zorua3/
+rm -rv zorua3/
+
+# Удалить директорию lab0/parasect2/flaaffy
+rmdir parasect2/flaaffy
+\end{minted}
+
+Результат
+\begin{minted}[breaklines]{shell}
+[s467213@helios ~/opd/lab0]$ ./task_5.sh
+conkeldurr6
+crawdaunt7/wormadam
+crawdaunt7/slakingcamerupt
+crawdaunt7/slakingconkeldurr
+zorua3/leafeon
+zorua3/golduck
+zorua3/garbodor
+zorua3/misdreavus
+zorua3/cherrim
+zorua3/
+parasect2/flaaffy
+[s467213@helios ~/opd/lab0]$ ls -lR lab0/
+total 23
+-------r--  1 s467213 studs 109  6 окт.  16:18 camerupt4
+-rw-r--r--  1 s467213 studs  88  6 окт.  16:18 camerupt4_76
+lrwxr-xr-x  1 s467213 studs   7  6 окт.  16:18 Copy_5 -> zorua3/
+drwxrwxr-x  5 s467213 studs   7  6 окт.  16:18 crawdaunt7
+d-wx-wxr-x  3 s467213 studs   8  6 окт.  16:18 parasect2
+-r--------  1 s467213 studs  38  6 окт.  16:18 samurottl
+
+lab0/crawdaunt7:
+total 3
+dr-xr-xr-x  2 s467213 studs  3  6 окт.  16:18 duosion
+d-wx-wxrwx  2 s467213 studs  2  6 окт.  16:18 golem
+drwxr-xr-x  3 s467213 studs  3  6 окт.  16:18 nincada
+----r--rw-  1 s467213 studs 92  6 окт.  16:18 skiploom
+----rw--w-  1 s467213 studs 49  6 окт.  16:18 slaking
+
+lab0/crawdaunt7/duosion:
+total 5
+-r-----r--  1 s467213 studs 109  6 окт.  16:18 camerupt4
+
+lab0/crawdaunt7/golem:
+total 0
+ls: lab0/crawdaunt7/golem: Permission denied
+
+lab0/crawdaunt7/nincada:
+total 9
+drwx--xr-x  4 s467213 studs 8  6 окт.  16:18 parasect2
+
+lab0/crawdaunt7/nincada/parasect2:
+total 3
+-r--r--r--  1 s467213 studs 51  6 окт.  16:18 accelgor
+drwxr-x---  2 s467213 studs  2  6 окт.  16:18 darumaka
+drwxr-x---  2 s467213 studs  2  6 окт.  16:18 flaaffy
+-r--r--r--  1 s467213 studs 52  6 окт.  16:18 pikachu
+-rw-r-----  1 s467213 studs 51  6 окт.  16:18 seel
+-r--r-----  1 s467213 studs 50  6 окт.  16:18 vaporeon
+
+lab0/crawdaunt7/nincada/parasect2/darumaka:
+total 0
+
+lab0/crawdaunt7/nincada/parasect2/flaaffy:
+total 0
+
+lab0/parasect2:
+total 0
+ls: lab0/parasect2: Permission denied
+\end{minted}

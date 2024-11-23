@@ -1,0 +1,33 @@
+\input{preamble/preamble.tex}
+
+\begin{document}
+	\input{title.tex}
+	
+	\tableofcontents
+	\newpage
+	
+	\section*{Задание}
+	\addcontentsline{toc}{section}{Задание}
+	\input{sections/task.tex}
+	
+	\section*{UML - диаграмма}
+	\addcontentsline{toc}{section}{UML - диаграмма}
+	\begin{figure}[h]
+		\centering
+		\hspace*{-2cm}
+		\includegraphics[scale=0.19]{uml}
+	\end{figure}
+	
+	\section*{Исходный код программы}
+	\addcontentsline{toc}{section}{Исходный код программы}
+	\url{https://github.com/lysmux/itmo/tree/proga/proga/1_semestr/labs/lab3}
+	
+	\section*{Результат работы программы}
+	\addcontentsline{toc}{section}{Результат работы программы}
+	\url{https://github.com/lysmux/itmo/blob/proga/proga/1_semestr/labs/lab2/docs/output.log}
+	
+	\section*{Вывод}
+	\addcontentsline{toc}{section}{Вывод}
+	\input{sections/conclusion.tex}
+	
+\end{document}
