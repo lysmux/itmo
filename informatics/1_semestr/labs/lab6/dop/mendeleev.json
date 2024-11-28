@@ -1,0 +1,650 @@
+[
+    {
+        "elementChar": "H",
+        "elementNumb": "1",
+        "elementNameRus": "Водород",
+        "elementName": "Hydrogenium",
+        "elementMassa": 1.00794,
+        "color": "red"
+    },
+    {
+        "elementChar": "He",
+        "elementNumb": "2",
+        "elementNameRus": "Гелий",
+        "elementName": "Helium",
+        "elementMassa": 4.0026,
+        "color": "red"
+    },
+    {
+        "elementChar": "Li",
+        "elementNumb": "3",
+        "elementNameRus": "Литий",
+        "elementName": "Lithium",
+        "elementMassa": 6.941,
+        "color": "red"
+    },
+    {
+        "elementChar": "Be",
+        "elementNumb": "4",
+        "elementNameRus": "Бериллий",
+        "elementName": "Beryllium",
+        "elementMassa": 9.0122,
+        "color": "red"
+    },
+    {
+        "elementChar": "B",
+        "elementNumb": "5",
+        "elementNameRus": "Бор",
+        "elementName": "Borum",
+        "elementMassa": 10.811,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "C",
+        "elementNumb": "6",
+        "elementNameRus": "Углерод",
+        "elementName": "Carboneum",
+        "elementMassa": 12.011,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "N",
+        "elementNumb": "7",
+        "elementNameRus": "Азот",
+        "elementName": "Nitrogenium",
+        "elementMassa": 14.007,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "O",
+        "elementNumb": "8",
+        "elementNameRus": "Кислород",
+        "elementName": "Oxigenium",
+        "elementMassa": 15.999,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "F",
+        "elementNumb": "9",
+        "elementNameRus": "Фтор",
+        "elementName": "Fluorum",
+        "elementMassa": 18.998,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Ne",
+        "elementNumb": "10",
+        "elementNameRus": "Неон",
+        "elementName": "Neon",
+        "elementMassa": 20.179,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Na",
+        "elementNumb": "11",
+        "elementNameRus": "Натрий",
+        "elementName": "Natrium",
+        "elementMassa": 22.99,
+        "color": "red"
+    },
+    {
+        "elementChar": "Mg",
+        "elementNumb": "12",
+        "elementNameRus": "Магний",
+        "elementName": "Magnesium",
+        "elementMassa": 24.305,
+        "color": "red"
+    },
+    {
+        "elementChar": "Al",
+        "elementNumb": "13",
+        "elementNameRus": "Алюминий",
+        "elementName": "Aluminium",
+        "elementMassa": 26.9815,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Si",
+        "elementNumb": "14",
+        "elementNameRus": "Кремний",
+        "elementName": "Sicilium",
+        "elementMassa": 28.086,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "P",
+        "elementNumb": "15",
+        "elementNameRus": "Фосфор",
+        "elementName": "Phosphorus",
+        "elementMassa": 30.974,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "S",
+        "elementNumb": "16",
+        "elementNameRus": "Сера",
+        "elementName": "Sulfur",
+        "elementMassa": 32.066,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Cl",
+        "elementNumb": "17",
+        "elementNameRus": "Хлор",
+        "elementName": "Chlorium",
+        "elementMassa": 35.453,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Ar",
+        "elementNumb": "18",
+        "elementNameRus": "Аргон",
+        "elementName": "Argon",
+        "elementMassa": 39.948,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "K",
+        "elementNumb": "19",
+        "elementNameRus": "Калий",
+        "elementName": "Kalium",
+        "elementMassa": 39.098,
+        "color": "red"
+    },
+    {
+        "elementChar": "Ca",
+        "elementNumb": "20",
+        "elementNameRus": "Кальций",
+        "elementName": "Calcium",
+        "elementMassa": 40.08,
+        "color": "red"
+    },
+    {
+        "elementChar": "Sc",
+        "elementNumb": "21",
+        "elementNameRus": "Скандий",
+        "elementName": "Scandium",
+        "elementMassa": 44.956,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Ti",
+        "elementNumb": "22",
+        "elementNameRus": "Титан",
+        "elementName": "Titanium",
+        "elementMassa": 47.9,
+        "color": "blue"
+    },
+    {
+        "elementChar": "V",
+        "elementNumb": "23",
+        "elementNameRus": "Ванадий",
+        "elementName": "Vanadium",
+        "elementMassa": 50.941,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Cr",
+        "elementNumb": "24",
+        "elementNameRus": "Хром",
+        "elementName": "Chromium",
+        "elementMassa": 51.996,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Mn",
+        "elementNumb": "25",
+        "elementNameRus": "Марганец",
+        "elementName": "Manganum",
+        "elementMassa": 54.938,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Fe",
+        "elementNumb": "26",
+        "elementNameRus": "Железо",
+        "elementName": "Ferrum",
+        "elementMassa": 55.847,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Co",
+        "elementNumb": "27",
+        "elementNameRus": "Кобальт",
+        "elementName": "Cobaltum",
+        "elementMassa": 58.933,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Ni",
+        "elementNumb": "28",
+        "elementNameRus": "Никель",
+        "elementName": "Niccolum",
+        "elementMassa": 58.7,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Cu",
+        "elementNumb": "29",
+        "elementNameRus": "Медь",
+        "elementName": "Cuprum",
+        "elementMassa": 63.546,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Zn",
+        "elementNumb": "30",
+        "elementNameRus": "Цинк",
+        "elementName": "Zincum",
+        "elementMassa": 65.39,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Ga",
+        "elementNumb": "31",
+        "elementNameRus": "Галлий",
+        "elementName": "Gallium",
+        "elementMassa": 69.72,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Ge",
+        "elementNumb": "32",
+        "elementNameRus": "Германий",
+        "elementName": "Germanium",
+        "elementMassa": 72.59,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "As",
+        "elementNumb": "33",
+        "elementNameRus": "Мышьяк",
+        "elementName": "Arsenicum",
+        "elementMassa": 74.992,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Se",
+        "elementNumb": "34",
+        "elementNameRus": "Селен",
+        "elementName": "Selenium",
+        "elementMassa": 78.96,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Br",
+        "elementNumb": "35",
+        "elementNameRus": "Бром",
+        "elementName": "Bromum",
+        "elementMassa": 79.904,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Kr",
+        "elementNumb": "36",
+        "elementNameRus": "Криптон",
+        "elementName": "Krypton",
+        "elementMassa": 83.8,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Rb",
+        "elementNumb": "37",
+        "elementNameRus": "Рубидий",
+        "elementName": "Rubidium",
+        "elementMassa": 85.468,
+        "color": "red"
+    },
+    {
+        "elementChar": "Sr",
+        "elementNumb": "38",
+        "elementNameRus": "Стронций",
+        "elementName": "Strontium",
+        "elementMassa": 87.62,
+        "color": "red"
+    },
+    {
+        "elementChar": "Y",
+        "elementNumb": "39",
+        "elementNameRus": "Иттрий",
+        "elementName": "Yttrium",
+        "elementMassa": 88.906,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Zr",
+        "elementNumb": "40",
+        "elementNameRus": "Цирконий",
+        "elementName": "Zirconium",
+        "elementMassa": 91.22,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Nb",
+        "elementNumb": "41",
+        "elementNameRus": "Ниобий",
+        "elementName": "Niobium",
+        "elementMassa": 92.906,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Mo",
+        "elementNumb": "42",
+        "elementNameRus": "Молибден",
+        "elementName": "Molybdaenum",
+        "elementMassa": 95.94,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Tc",
+        "elementNumb": "43",
+        "elementNameRus": "Технеций",
+        "elementName": "Techetium",
+        "elementMassa": 97.91,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Ru",
+        "elementNumb": "44",
+        "elementNameRus": "Рутений",
+        "elementName": "Ruthhenium",
+        "elementMassa": 101.07,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Rh",
+        "elementNumb": "45",
+        "elementNameRus": "Родий",
+        "elementName": "Rhodium",
+        "elementMassa": 102.96,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Pd",
+        "elementNumb": "46",
+        "elementNameRus": "Палладий",
+        "elementName": "Palladium",
+        "elementMassa": 106.4,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Ag",
+        "elementNumb": "47",
+        "elementNameRus": "Серебро",
+        "elementName": "Argentum",
+        "elementMassa": 107.868,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Cd",
+        "elementNumb": "48",
+        "elementNameRus": "Кадмий",
+        "elementName": "Cadmium",
+        "elementMassa": 112.41,
+        "color": "blue"
+    },
+    {
+        "elementChar": "In",
+        "elementNumb": "49",
+        "elementNameRus": "Индий",
+        "elementName": "Indium",
+        "elementMassa": 114.82,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Sn",
+        "elementNumb": "50",
+        "elementNameRus": "Олово",
+        "elementName": "Stannum",
+        "elementMassa": 118.71,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Sb",
+        "elementNumb": "51",
+        "elementNameRus": "Сурьма",
+        "elementName": "Stibium",
+        "elementMassa": 121.75,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Te",
+        "elementNumb": "52",
+        "elementNameRus": "Теллур",
+        "elementName": "Tellurium",
+        "elementMassa": 127.6,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "I",
+        "elementNumb": "53",
+        "elementNameRus": "Иод",
+        "elementName": "Iodum",
+        "elementMassa": 126.9045,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Xe",
+        "elementNumb": "54",
+        "elementNameRus": "Ксенон",
+        "elementName": "Xenon",
+        "elementMassa": 131.29,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Cs",
+        "elementNumb": "55",
+        "elementNameRus": "Цезий",
+        "elementName": "Cesium",
+        "elementMassa": 132.905,
+        "color": "red"
+    },
+    {
+        "elementChar": "Ba",
+        "elementNumb": "56",
+        "elementNameRus": "Барий",
+        "elementName": "Barium",
+        "elementMassa": 137.33,
+        "color": "red"
+    },
+    {
+        "elementChar": "La",
+        "elementNumb": "57",
+        "elementNameRus": "Лантан",
+        "elementName": "Lanthanum",
+        "elementMassa": 138.9055,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Hf",
+        "elementNumb": "72",
+        "elementNameRus": "Гафний",
+        "elementName": "Hafnium",
+        "elementMassa": 178.49,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Ta",
+        "elementNumb": "73",
+        "elementNameRus": "Тантал",
+        "elementName": "Tantalum",
+        "elementMassa": 180.9479,
+        "color": "blue"
+    },
+    {
+        "elementChar": "W",
+        "elementNumb": "74",
+        "elementNameRus": "Вольфрам",
+        "elementName": "Wolframium",
+        "elementMassa": 183.85,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Re",
+        "elementNumb": "75",
+        "elementNameRus": "Рений",
+        "elementName": "Rthenium",
+        "elementMassa": 186.207,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Os",
+        "elementNumb": "76",
+        "elementNameRus": "Осмий",
+        "elementName": "Osmium",
+        "elementMassa": 190.2,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Ir",
+        "elementNumb": "77",
+        "elementNameRus": "Иридий",
+        "elementName": "Iridium",
+        "elementMassa": 192.22,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Pt",
+        "elementNumb": "78",
+        "elementNameRus": "Платина",
+        "elementName": "Platinum",
+        "elementMassa": 195.08,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Au",
+        "elementNumb": "79",
+        "elementNameRus": "Золото",
+        "elementName": "Aurum",
+        "elementMassa": 196.967,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Hg",
+        "elementNumb": "80",
+        "elementNameRus": "Ртуть",
+        "elementName": "Hydrargyrum",
+        "elementMassa": 200.59,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Tl",
+        "elementNumb": "81",
+        "elementNameRus": "Таллий",
+        "elementName": "Thallium",
+        "elementMassa": 204.38,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Pb",
+        "elementNumb": "82",
+        "elementNameRus": "Свинец",
+        "elementName": "Plumbum",
+        "elementMassa": 207.19,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Bi",
+        "elementNumb": "83",
+        "elementNameRus": "Висмут",
+        "elementName": "Bismuthum",
+        "elementMassa": 208.98,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Po",
+        "elementNumb": "84",
+        "elementNameRus": "Полоний",
+        "elementName": "Polonium",
+        "elementMassa": 209.98,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "At",
+        "elementNumb": "85",
+        "elementNameRus": "Астат",
+        "elementName": "Astatium",
+        "elementMassa": 209.99,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Rn",
+        "elementNumb": "86",
+        "elementNameRus": "Радон",
+        "elementName": "Radon",
+        "elementMassa": 222,
+        "color": "yellow"
+    },
+    {
+        "elementChar": "Fr",
+        "elementNumb": "87",
+        "elementNameRus": "Франций",
+        "elementName": "Francium",
+        "elementMassa": 223,
+        "color": "red"
+    },
+    {
+        "elementChar": "Ra",
+        "elementNumb": "88",
+        "elementNameRus": "Радий",
+        "elementName": "Radium",
+        "elementMassa": 226,
+        "color": "red"
+    },
+    {
+        "elementChar": "Ac**",
+        "elementNumb": "89",
+        "elementNameRus": "Актиний",
+        "elementName": "Actinium",
+        "elementMassa": 227,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Rf",
+        "elementNumb": "104",
+        "elementNameRus": "Резерфордий",
+        "elementName": "Rutherforfium",
+        "elementMassa": 261,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Db",
+        "elementNumb": "105",
+        "elementNameRus": "Дубний",
+        "elementName": "Dubnium",
+        "elementMassa": 262,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Sg",
+        "elementNumb": "106",
+        "elementNameRus": "Сиборгий",
+        "elementName": "Seaborgium",
+        "elementMassa": 263,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Bh",
+        "elementNumb": "107",
+        "elementNameRus": "Борий",
+        "elementName": "Bohrium",
+        "elementMassa": 262,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Hs",
+        "elementNumb": "108",
+        "elementNameRus": "Хассий",
+        "elementName": "Hassium",
+        "elementMassa": 265,
+        "color": "blue"
+    },
+    {
+        "elementChar": "Mt",
+        "elementNumb": "109",
+        "elementNameRus": "Мейтнерий",
+        "elementName": "Meltnerium",
+        "elementMassa": 266,
+        "color": "blue"
+    }
+]
