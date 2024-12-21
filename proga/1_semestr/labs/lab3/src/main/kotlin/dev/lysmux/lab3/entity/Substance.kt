@@ -25,20 +25,15 @@ class Substance(private val ability: Ability) : Pluralable, HasCase {
 
     fun meet(place: Place) = "в ${place.caseDeclension(Case.PREPOSITIONAL)} встречаются ${getPluralName()}"
 
-    fun influenced(ray: Ray) = "подвергнутся действию ${ray.caseDeclension(Case.GENITIVE)} ${ray.getKind().getValue()}"
+    fun influenced(ray: Ray) = "подвергнутся действию ${ray.caseDeclension(Case.GENITIVE)} ${ray.kind.value}"
 
     fun acquireAbility() = "приобретают способность ${ability.getDescription()}"
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as Substance
-
+        if (other !is Substance) return false
         return ability == other.ability
     }
 
-    override fun hashCode(): Int {
-        return ability.hashCode()
-    }
+    override fun hashCode() = ability.hashCode()
 }

@@ -4,7 +4,7 @@ import dev.lysmux.lab3.storage.exception.StoryExistsException
 import dev.lysmux.lab3.storage.exception.StoryNotFoundException
 import dev.lysmux.lab3.story.Story
 
-object StoryStorageImpl : IStoryStorage {
+object StoryStorageImpl : StoryStorage {
     private val stories: MutableMap<String, Story> = HashMap()
 
     override fun save(title: String, story: Story) {
@@ -23,5 +23,7 @@ object StoryStorageImpl : IStoryStorage {
     }
 
     override fun getAll(): Map<String, Story> = stories
+
+    override fun clear() = stories.clear()
 
 }
