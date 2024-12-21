@@ -27,14 +27,15 @@ class ShortyGroup(private var state: String = "") : Person("коротышки")
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as ShortyGroup
+        if (other !is ShortyGroup) return false
+        if (!super.equals(other)) return false
 
         return state == other.state
     }
 
     override fun hashCode(): Int {
-        return state.hashCode()
+        var result = super.hashCode()
+        result = 31 * result + state.hashCode()
+        return result
     }
 }

@@ -5,15 +5,11 @@ import dev.lysmux.lab3.common.HasCase
 import dev.lysmux.lab3.common.Pluralable
 
 class Ray(
-    private val kind: RayKind,
-    private val visibility: VisibilityType
+    val kind: RayKind,
+    val visibility: VisibilityType
 ) : Pluralable, HasCase{
 
     constructor(kind: RayKind) : this(kind, VisibilityType.NONE)
-
-    fun getVisibility(): VisibilityType = visibility
-
-    fun getKind(): RayKind = kind
 
     override fun getPluralName() = "лучи"
 
@@ -32,9 +28,7 @@ class Ray(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as Ray
+        if (other !is Ray) return false
 
         if (kind != other.kind) return false
         if (visibility != other.visibility) return false

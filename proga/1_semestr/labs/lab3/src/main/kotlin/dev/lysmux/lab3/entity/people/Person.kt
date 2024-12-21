@@ -16,10 +16,22 @@ open class Person(private val name: String = "он") : CanPut, CanTell {
     }
 
     override fun put(item: Item, place: Place, direction: Direction): String {
-        return "положил на ${place.caseDeclension(Case.ACCUSATIVE)} $direction ${item.caseDeclension(Case.NOMINATIVE)}"
+        return "положил на ${
+            place.caseDeclension(Case.ACCUSATIVE)
+        } $direction ${item.caseDeclension(Case.NOMINATIVE)}"
     }
 
     override fun tell() = "принялся рассказывать о том"
 
     override fun toString() = name
+
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Person) return false
+
+        return name == other.name
+    }
+
+    override fun hashCode() = name.hashCode()
 }

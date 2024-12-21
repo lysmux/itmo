@@ -1,6 +1,6 @@
 package dev.lysmux.lab3.entity.exception
 
-class NameTooShortException(private val minLength: Int) : RuntimeException("Имя слишком кроткое"){
+class NameTooShortException(private val minLength: Int) : RuntimeException("Name too short") {
     override val message: String
-        get() = "Имя должно быть не короче $minLength символов"
+        get() = "The name must be at least $minLength character long."
 }

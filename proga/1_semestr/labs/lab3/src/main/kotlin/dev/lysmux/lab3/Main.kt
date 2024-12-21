@@ -13,18 +13,15 @@ import dev.lysmux.lab3.entity.place.Table
 import dev.lysmux.lab3.entity.ray.Ray
 import dev.lysmux.lab3.entity.ray.RayKind
 import dev.lysmux.lab3.entity.ray.VisibilityType
-import dev.lysmux.lab3.storage.IStoryStorage
 import dev.lysmux.lab3.storage.StoryStorageImpl
 import dev.lysmux.lab3.storage.exception.StoryExistsException
-import dev.lysmux.lab3.story.SentenceFactory
 import dev.lysmux.lab3.story.Story
 import dev.lysmux.lab3.story.exception.EmptyStoryException
 import dev.lysmux.lab3.util.Direction
-import dev.lysmux.lab3.util.Util
+import dev.lysmux.lab3.util.strCapitalize
+
 
 fun main() {
-    val story = Story()
-
     val person = Person()
     val shortyGroup = ShortyGroup("рассевшимися вокруг")
 
@@ -33,53 +30,65 @@ fun main() {
     val glow = Glow()
 
     val glowsSubstance = Substance(GlowsInDark())
-    val raysSubstance = Substance(EmitRays(
-        Ray(RayKind.LIGHT, VisibilityType.VISIBLE),
-        Ray(RayKind.ULTRAVIOLET, VisibilityType.HIDDEN),
-        Ray(RayKind.INFRARED, VisibilityType.HIDDEN),
-        Ray(RayKind.COSMIC, VisibilityType.HIDDEN)
-    ))
-
-    story.addSentences(
-        SentenceFactory.createSentence(
-            Util.strCapitalize(person.toString()),
-            person.put(
-                moonStone,
-                table,
-                Direction(
-                    Direction.Preposition.IN_FRONT_OF,
-                    shortyGroup.getDescription()
-                )
-            )
-        )
-            .and(person.tell())
-            .that(glowsSubstance.meet(Nature()))
-            .which(glowsSubstance.acquireAbility())
-            .after(glowsSubstance.influenced(Ray(RayKind.LIGHT))),
-        SentenceFactory.createSentence(
-            "Такое",
-            glow.toString(),
-            "называется",
-            glow.getAlternativeName()
-        ),
-        SentenceFactory.createSentence(
-            "Некоторые",
-            raysSubstance.caseDeclension(Case.NOMINATIVE),
-            raysSubstance.acquireAbility()
+    val raysSubstance = Substance(
+        EmitRays(
+            Ray(RayKind.LIGHT, VisibilityType.VISIBLE),
+            Ray(RayKind.ULTRAVIOLET, VisibilityType.HIDDEN),
+            Ray(RayKind.INFRARED, VisibilityType.HIDDEN),
+            Ray(RayKind.COSMIC, VisibilityType.HIDDEN)
         )
     )
 
+    val story = Story.build {
+        sentence {
+            content(
+                strCapitalize(person.toString()),
+                person.put(
+                    moonStone,
+                    table,
+                    Direction(
+                        Direction.Preposition.IN_FRONT_OF,
+                        shortyGroup.getDescription()
+                    )
+                )
+            ) and content(
+                person.tell()
+            ) that content(
+                glowsSubstance.meet(Nature())
+            ) which content(
+                glowsSubstance.acquireAbility()
+            ) after content(
+                glowsSubstance.influenced(Ray(RayKind.LIGHT))
+            )
+        }
+        sentence {
+            content(
+                "Такое",
+                glow.toString(),
+                "называется",
+                glow.getAlternativeName()
+            )
+        }
+        sentence {
+            content(
+                "Некоторые",
+                raysSubstance.caseDeclension(Case.NOMINATIVE),
+                raysSubstance.acquireAbility()
+            )
+        }
+    }
+
     try {
-        println(story.makeStory())
+        println(story.asText())
     } catch (e: EmptyStoryException) {
         System.err.println(e.message)
     }
 
     println("Сохраняем рассказ...")
-    val storage: IStoryStorage = StoryStorageImpl
     try {
-        storage.save("Some рассказ", story)
+        StoryStorageImpl.save("Some рассказ", story)
     } catch (e: StoryExistsException) {
         System.err.println(e.message)
     }
+    println("Рассказ сохранён")
 }

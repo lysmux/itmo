@@ -18,11 +18,8 @@ class Nature : Place(){
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-        return true
+        return other is Nature
     }
 
-    override fun hashCode(): Int {
-        return javaClass.hashCode()
-    }
+    override fun hashCode() = javaClass.hashCode()
 }

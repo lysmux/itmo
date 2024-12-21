@@ -4,10 +4,14 @@ plugins {
 }
 
 group = "dev.lysmux"
-version = "1.0"
+version = "1.1"
 
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    testImplementation(kotlin("test"))
 }
 
 application {
@@ -22,6 +26,10 @@ tasks.jar {
         .map(::zipTree)
     from(dependencies)
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 kotlin {
