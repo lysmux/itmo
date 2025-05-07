@@ -1,0 +1,37 @@
+name: collex
+
+services:
+  pg:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: "collex"
+      POSTGRES_USER: "app"
+      POSTGRES_PASSWORD: "app"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+  liquibase:
+    image: liquibase/liquibase:4.31
+    command:
+      - --changeLogFile=migrations/master.xml
+      - --driver=org.postgresql.Driver
+      - --url=jdbc:postgresql://192.168.10.80:5432/studs
+      - --username=s467213
+      - --password=KaPYE57uwYxPT5Tb
+      - update
+    volumes:
+      - ./migrations:/liquibase/migrations
+    depends_on:
+      - pg
+    networks:
+      - internal
+
+volumes:
+  pg-data:
+
+networks:
+  internal:

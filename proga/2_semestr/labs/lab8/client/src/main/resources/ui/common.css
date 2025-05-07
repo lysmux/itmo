@@ -1,0 +1,81 @@
+.container {
+    -fx-min-height: 600px;
+    -fx-min-width: 800px;
+    -fx-padding: 24px;
+    -fx-spacing: 10px;
+    -fx-background-color: -color-background;
+}
+
+.form {
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+    -fx-padding: 12px;
+    -fx-border-width: 1px;
+    -fx-border-color: -color-primary;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 16, 0, 0, 4);
+}
+
+.form-item {
+    -fx-spacing: 10px;
+}
+
+.label, .check-box {
+    -fx-font-size: 14px;
+    -fx-text-fill: -color-text;
+}
+
+.form-item .label {
+    -fx-font-size: 16px;
+}
+
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-font-size: 12pt;
+    -fx-background-color: -color-secondary;
+    -fx-padding: 4px;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-border-color: -color-primary;
+}
+
+.text-field:focused {
+    -fx-background-color: -color-accent;
+    -fx-border-color: -color-highlight;
+}
+
+.button {
+    -fx-cursor: hand;
+}
+
+.action-btn {
+    -fx-background-color: -color-highlight;
+    -fx-text-fill: -color-text;
+    -fx-font-size: 24px;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+.action-btn:hover {
+    -fx-background-color: -color-primary;
+}
+
+.focus-indicator {
+    -fx-border-width: 0;
+}
+
+.errorLabel {
+    -fx-font-size: 12pt;
+    -fx-text-fill: -color-error;
+    -fx-font-weight: bold;
+}
+
+.errorField {
+    -fx-border-color: -color-error;
+    -fx-border-width: 2px;
+}

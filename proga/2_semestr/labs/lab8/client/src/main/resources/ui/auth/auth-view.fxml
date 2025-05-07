@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<VBox fx:id="rootPane" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.lysmux.lab8.client.ui.auth.AuthController">
+    <stylesheets>
+        <URL value="@../common.css" />
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <fx:include source="../components/header.fxml" />
+    <VBox styleClass="container" VBox.vgrow="ALWAYS">
+        <VBox styleClass="form">
+            <VBox>
+                <HBox>
+                    <Label fx:id="loginTabLabel" styleClass="modeLabel" text="%auth.mode.login" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Label fx:id="registerTabLabel" styleClass="modeLabel" text="%auth.mode.register" />
+                </HBox>
+                <Line fx:id="modeUnderline" endX="45.0" strokeWidth="3.0" />
+            </VBox>
+
+            <fx:include source="login-field.fxml" />
+            <fx:include source="password-field.fxml" />
+
+            <Label fx:id="invalidAuthDataLabel" styleClass="errorLabel" />
+            <Button fx:id="authBtn" onAction="#auth" styleClass="action-btn" text="%auth.button.login" />
+        </VBox>
+    </VBox>
+</VBox>

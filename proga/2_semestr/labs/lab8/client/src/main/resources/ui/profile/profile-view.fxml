@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="rootPane" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.lysmux.lab8.client.ui.profile.ProfileController">
+    <stylesheets>
+        <URL value="@../common.css" />
+        <URL value="@style.css" />
+        <URL value="@../auth/style.css" />
+    </stylesheets>
+
+    <fx:include source="../components/header.fxml" />
+   <VBox prefHeight="200.0" prefWidth="100.0" styleClass="container">
+      <children>
+         <Button fx:id="goMainBtn">
+            <graphic>
+               <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../assets/home.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+          <HBox styleClass="panel" VBox.vgrow="ALWAYS">
+              <VBox styleClass="panel" HBox.hgrow="ALWAYS">
+                  <Label styleClass="title" text="%profile.stat.title" />
+                  <GridPane>
+                      <columnConstraints>
+                          <ColumnConstraints hgrow="SOMETIMES" />
+                          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" />
+                      </columnConstraints>
+                      <rowConstraints>
+                          <RowConstraints prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                          <RowConstraints prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                          <RowConstraints prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     <RowConstraints />
+                      </rowConstraints>
+                      <Label styleClass="stat-label" text="%profile.stat.id" />
+                      <Label fx:id="idLabel" styleClass="stat-value" text="12121221" GridPane.columnIndex="1" />
+                      <Label styleClass="stat-label" text="%profile.stat.registerDate" GridPane.rowIndex="1" />
+                      <Label fx:id="registrationDateLabel" styleClass="stat-value" text="12121221" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                      <Label styleClass="stat-label" text="%profile.stat.lastLoginDate" GridPane.rowIndex="2" />
+                      <Label fx:id="loginDateLabel" styleClass="stat-value" text="232323" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                      <Label styleClass="stat-label" text="%profile.stat.itemsCount" GridPane.rowIndex="3" />
+                      <Label fx:id="itemsCountLabel" styleClass="stat-value" text="****" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  </GridPane>
+              </VBox>
+      
+              <Separator orientation="VERTICAL" />
+      
+              <VBox styleClass="panel">
+                  <Label styleClass="title" text="%profile.changePwd.title" />
+                  <fx:include source="../auth/password-field.fxml" />
+                  <Button fx:id="changePwdBtn" alignment="TOP_LEFT" onAction="#changePassword" styleClass="action-btn" text="%profile.changePwd.changeBtn" />
+              </VBox>
+          </HBox>
+      </children>
+   </VBox>
+</VBox>

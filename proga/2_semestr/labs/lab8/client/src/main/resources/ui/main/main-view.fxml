@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="rootPane" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.lysmux.lab8.client.ui.main.MainController">
+    <stylesheets>
+        <URL value="@../common.css" />
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <fx:include source="../components/header.fxml" />
+    <VBox styleClass="container" VBox.vgrow="ALWAYS">
+        <BorderPane>
+            <left>
+                <CheckBox fx:id="displayOnlyMy" text="%main.displayOnlyMy" />
+            </left>
+            <center>
+                <MenuButton text="Выбери команду">
+                    <items>
+<!--                        <MenuItem fx:id="addIfMaxBtn" text="addIfMax" />-->
+                        <MenuItem fx:id="addRandomBtn" text="addRandom" />
+                        <MenuItem fx:id="removeGreaterBtn" text="removeGreater" />
+                        <MenuItem fx:id="removeLowerBtn" text="removeLower" />
+                    </items>
+                </MenuButton>
+            </center>
+            <right>
+                <Button fx:id="clearBtn" styleClass="action-btn">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../../assets/trash.png" />
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </right>
+        </BorderPane>
+        <StackPane VBox.vgrow="ALWAYS">
+            <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+                <tabs>
+                    <Tab text="%main.view.table">
+                        <BorderPane>
+                            <center>
+                                <TableView fx:id="table">
+                                    <columns>
+                                        <TableColumn fx:id="idCol" text="%collection.id" />
+                                        <TableColumn fx:id="ownerIdCol" text="%collection.ownerId" />
+                                        <TableColumn fx:id="nameCol" text="%collection.name" />
+                                        <TableColumn fx:id="minimalPointCol" text="%collection.minimalPoint" />
+                                        <TableColumn fx:id="difficultyCol" text="%collection.difficulty" />
+                                        <TableColumn fx:id="creationDateCol" text="%collection.creationDate" />
+                                        <TableColumn fx:id="coordinatesXCol" text="%collection.coordinates.x" />
+                                        <TableColumn fx:id="coordinatesYCol" text="%collection.coordinates.y" />
+                                        <TableColumn fx:id="authorNameCol" text="%collection.author.name" />
+                                        <TableColumn fx:id="authorBirthdayCol" text="%collection.author.birthday" />
+                                        <TableColumn fx:id="authorWeightCol" text="%collection.author.weight" />
+                                        <TableColumn fx:id="authorLocationXCol" text="%collection.author.location.x" />
+                                        <TableColumn fx:id="authorLocationYCol" text="%collection.author.location.y" />
+                                        <TableColumn fx:id="authorLocationNameCol" text="%collection.author.location.name" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                    <fx:define>
+                                        <ContextMenu fx:id="contextMenu">
+                                            <items>
+                                                <MenuItem fx:id="editItem" text="Редактировать" />
+                                                <MenuItem fx:id="deleteItem" text="Удалить" />
+                                            </items>
+                                        </ContextMenu>
+                                    </fx:define>
+                                </TableView>
+                            </center>
+                        </BorderPane>
+                    </Tab>
+                    <Tab fx:id="visualTab" text="%main.view.graph">
+                        <ScrollPane>
+                            <Pane fx:id="visualPane" />
+                        </ScrollPane>
+                    </Tab>
+                </tabs>
+            </TabPane>
+            <Button fx:id="addItemBtn" styleClass="action-btn" text="+" StackPane.alignment="BOTTOM_RIGHT">
+                <StackPane.margin>
+                    <Insets bottom="20.0" right="20.0" />
+                </StackPane.margin>
+            </Button>
+        </StackPane>
+    </VBox>
+</VBox>

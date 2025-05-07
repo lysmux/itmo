@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox styleClass="container" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.lysmux.lab8.client.ui.main.ItemViewController">
+    <stylesheets>
+        <URL value="@../common.css" />
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <ScrollPane styleClass="form" VBox.vgrow="ALWAYS">
+        <VBox>
+            <VBox>
+                <Label text="%collection.name" />
+                <TextField fx:id="nameField" />
+            </VBox>
+            <VBox>
+                <Label text="%collection.minimalPoint" />
+                <TextField fx:id="minimalPointField" />
+            </VBox>
+            <VBox>
+                <Label text="%collection.difficulty" />
+                <ChoiceBox fx:id="difficultyChoice" prefWidth="150.0" />
+            </VBox>
+            <VBox>
+                <Label text="%collection.coordinates.x" />
+                <TextField fx:id="coordinateXField" />
+            </VBox>
+            <VBox>
+                <Label text="%collection.coordinates.y" />
+                <TextField fx:id="coordinateYField" />
+            </VBox>
+            <VBox>
+                <Label text="%collection.author.name" />
+                <TextField fx:id="authorNameField" />
+            </VBox>
+            <VBox>
+                <Label text="%collection.author.birthday" />
+                <DatePicker fx:id="authorBirthdayField" />
+            </VBox>
+            <VBox>
+                <Label text="%collection.author.weight" />
+                <TextField fx:id="authorWeightField" />
+            </VBox>
+            <VBox>
+                <Label text="%collection.author.location.x" />
+                <TextField fx:id="authorLocationX" />
+            </VBox>
+            <VBox>
+                <Label text="%collection.author.location.y" />
+                <TextField fx:id="authorLocationY" />
+            </VBox>
+            <VBox>
+                <Label text="%collection.author.location.name" />
+                <TextField fx:id="authorLocationName" />
+            </VBox>
+        </VBox>
+    </ScrollPane>
+    <Button fx:id="addBtn" styleClass="action-btn" text="%collection.button.add" />
+</VBox>
