@@ -26,3 +26,10 @@
 .errors__container:hover > .popup{
     display: block;
 }
+
+
+.table__wrapper {
+    height: 100px;
+    overflow: auto;
+    border: 3px solid gray;
+}

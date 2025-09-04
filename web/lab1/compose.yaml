@@ -1,0 +1,21 @@
+services:
+  httpd:
+    build:
+      dockerfile: ./dockerfiles/httpd.Dockerfile
+    network_mode: host
+    volumes:
+      - ./httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
+      - ./httpd/:/httpd-root/
+
+
+#  app:
+#    build:
+#      dockerfile: ./dockerfiles/app.Dockerfile
+#    environment:
+#      SERVER_PORT: 9000
+#    ports:
+#      - "9000:9000"
+#    networks:
+#      - internal
+networks:
+  internal:
