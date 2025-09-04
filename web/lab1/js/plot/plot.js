@@ -55,7 +55,7 @@ class Plot {
         }
     }
     
-    drawShape(shape) {shape.draw(this.radius.get() * this.step, this.ctx)}
+    drawShape(shape) {shape.draw(this.radius.get(), this.step, this.ctx)}
 
     update() {
         this.ctx.clearRect(

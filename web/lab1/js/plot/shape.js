@@ -1,5 +1,5 @@
-function compute(value, radius) {
-    if (typeof value === "string") value = eval(value.replaceAll("R", radius))
+function compute(value, radius, step = 1) {
+    if (typeof value === "string") value = eval(value.replaceAll("R", radius * step))
     return value
 }
 
@@ -9,26 +9,27 @@ class Position {
         this.y = y
     }
 
-    compute(radius) {
-        return [compute(this.x, radius), compute(this.y, radius)]
+    compute(radius, step = 1) {
+        return [compute(this.x, radius, step), compute(this.y, radius, step)]
     }
 }
 
 class Shape {
-    draw(radius, ctx) {}
+    draw(radius, step, ctx) {
+    }
 }
 
 class Point extends Shape {
     constructor(position, radius) {
         super();
-        
+
         this.position = position;
         this.radius = radius;
     }
-    
-    draw(radius, ctx) {
-        const [x, y] = this.position.compute(radius);
-        
+
+    draw(radius, step, ctx) {
+        const [x, y] = this.position.compute(radius, step);
+
         ctx.arc(x, y, this.radius, 0, 2 * Math.PI)
         ctx.fill()
     }
@@ -37,14 +38,14 @@ class Point extends Shape {
 class Line extends Shape {
     constructor(fromPosition, toPosition) {
         super();
-        
+
         this.fromPosition = fromPosition;
         this.toPosition = toPosition;
     }
-    
-    draw(radius, ctx) {
-        const [fromX, fromY] = this.fromPosition.compute(radius);
-        const [toX, toY] = this.toPosition.compute(radius);
+
+    draw(radius, step, ctx) {
+        const [fromX, fromY] = this.fromPosition.compute(radius, step);
+        const [toX, toY] = this.toPosition.compute(radius, step);
 
         ctx.beginPath();
         ctx.moveTo(fromX, fromY)
@@ -62,13 +63,13 @@ class Label extends Shape {
         this.computeText = computeText
     }
 
-    draw(radius, ctx) {
-        const [x, y] = this.position.compute(radius)
+    draw(radius, step, ctx) {
+        const [x, y] = this.position.compute(radius, step)
         const text = this.computeText ? compute(this.text, radius) : this.text
-        
+
         ctx.save()
         ctx.scale(1, -1);
-        
+
         if (x !== 0) ctx.textAlign = "center"
         if (y !== 0) ctx.textBaseline = "middle"
 
@@ -88,9 +89,9 @@ class Arc extends Shape {
     }
 
 
-    draw(radius, ctx) {
-        const [x, y] = this.position.compute(radius)
-        const arcRadius = compute(this.arcRadius, radius)
+    draw(radius, step, ctx) {
+        const [x, y] = this.position.compute(radius, step)
+        const arcRadius = compute(this.arcRadius, radius, step)
 
         ctx.beginPath();
         ctx.moveTo(x, y);
@@ -102,15 +103,15 @@ class Arc extends Shape {
 class Polygon extends Shape {
     constructor(positions) {
         super();
-        
+
         this.positions = positions;
     }
-    
-    draw(radius, ctx) {
+
+    draw(radius, step, ctx) {
         ctx.beginPath();
-        
-        ctx.moveTo(...this.positions[0].compute(radius));
-        this.positions.forEach(position => ctx.lineTo(...position.compute(radius)))
+
+        ctx.moveTo(...this.positions[0].compute(radius, step));
+        this.positions.forEach(position => ctx.lineTo(...position.compute(radius, step)))
         ctx.closePath();
         ctx.fill();
     }
