@@ -40,7 +40,7 @@ class Plot {
         this.ctx.setTransform(1, 0, 0, -1, this.canvas.width / 2, this.canvas.height / 2);
         this.ctx.font = "30px sans-serif"
 
-        this.customShape = []
+        this.customShapes = []
 
         this.update()
         this.radius.onChange(value => this.update())
@@ -59,6 +59,11 @@ class Plot {
     
     drawShape(shape) {shape.draw(this.radius.get(), this.step, this.ctx)}
 
+    addShape(shape) {
+        this.customShapes.push(shape)
+        this.drawShape(shape)
+    }
+
     update() {
         this.ctx.clearRect(
             this.sizes.xMin,
@@ -71,6 +76,7 @@ class Plot {
         this._drawGrid()
         this._drawAxis()
         this._drawLabels()
+        this._drawCustomShaped()
         
         this.drawShape(new Point(new Position(0, 0), 5))
     }
@@ -147,5 +153,9 @@ class Plot {
             this.drawShape(new Label("X", new Position(this.sizes.xMax - 30, 10)),)
             this.drawShape(new Label("Y", new Position(10, this.sizes.yMax - 30)))
         }, this.axisColor)
+    }
+
+    _drawCustomShaped() {
+        this.customShapes.forEach(shape => this.drawShape(shape))
     }
 }
