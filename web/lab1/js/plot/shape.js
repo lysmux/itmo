@@ -1,6 +1,6 @@
 function compute(value, radius, step = 1) {
-    if (typeof value === "string") value = eval(value.replaceAll("R", radius * step))
-    return value
+    if (typeof value === "string") value = eval(value.replaceAll("R", radius))
+    return value * step
 }
 
 class Position {
@@ -24,13 +24,14 @@ class Point extends Shape {
         super();
 
         this.position = position;
-        this.radius = radius;
+        this.pointRadius = radius;
     }
 
     draw(radius, step, ctx) {
         const [x, y] = this.position.compute(radius, step);
 
-        ctx.arc(x, y, this.radius, 0, 2 * Math.PI)
+        ctx.moveTo(x, y)
+        ctx.arc(x, y, this.pointRadius, 0, 2 * Math.PI)
         ctx.fill()
     }
 }

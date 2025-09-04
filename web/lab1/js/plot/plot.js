@@ -40,6 +40,8 @@ class Plot {
         this.ctx.setTransform(1, 0, 0, -1, this.canvas.width / 2, this.canvas.height / 2);
         this.ctx.font = "30px sans-serif"
 
+        this.customShape = []
+
         this.update()
         this.radius.onChange(value => this.update())
     }
@@ -92,24 +94,16 @@ class Plot {
 
     _drawGrid() {
         this.withStyle(() => {
-            for (let x = 0; x < this.canvas.width / 2; x += this.step) {
+            for (let x = this.sizes.xMin; x < this.sizes.xMax / this.step; x++) {
                 this.drawShape(new Line(
                     new Position(x, this.sizes.yMin),
                     new Position(x, this.sizes.yMax),
                 ))
-                this.drawShape(new Line(
-                    new Position(-x, this.sizes.yMin),
-                    new Position(-x, this.sizes.yMax),
-                ))
             }
-            for (let y = 0; y < this.canvas.height / 2; y += this.step) {
+            for (let y = this.sizes.yMin; y < this.sizes.yMax / this.step; y++) {
                 this.drawShape(new Line(
                     new Position(this.sizes.xMin, y),
                     new Position(this.sizes.xMax, y),
-                ))
-                this.drawShape(new Line(
-                    new Position(this.sizes.xMin, -y),
-                    new Position(this.sizes.xMax, -y),
                 ))
             }
         }, this.gridColor)
