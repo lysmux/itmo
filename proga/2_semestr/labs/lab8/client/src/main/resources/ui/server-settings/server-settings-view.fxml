@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.lysmux.lab8.client.ui.serversettings.ServerSettingsController">
+    <stylesheets>
+        <URL value="@../common.css" />
+    </stylesheets>
+
+    <fx:include source="../components/header.fxml" />
+    <VBox styleClass="container" VBox.vgrow="ALWAYS">
+        <VBox styleClass="form">
+            <Label styleClass="title" text="%server-settings.title" />
+
+            <VBox styleClass="form-item">
+                <Label text="%server-settings.label.address" />
+                <TextField fx:id="addressField" />
+            </VBox>
+
+            <VBox styleClass="form-item">
+                <Label text="%server-settings.label.port" />
+                <TextField fx:id="portField" />
+            </VBox>
+
+            <Label fx:id="couldNotConnectLabel" styleClass="errorLabel" text="%server-settings.couldNotConnect" />
+            <Button fx:id="connectBtn" mnemonicParsing="false" onAction="#connect" styleClass="action-btn" text="%server-settings.button.connect" />
+        </VBox>
+    </VBox>
+</VBox>

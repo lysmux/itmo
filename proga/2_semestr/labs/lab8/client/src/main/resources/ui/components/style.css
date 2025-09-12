@@ -1,0 +1,27 @@
+.header {
+    -fx-pref-height: 40px;
+    -fx-alignment: center;
+    -fx-background-color: -color-primary;
+    -fx-border-color: -color-secondary;
+    -fx-border-width: 0 0 2px 0;
+    -fx-padding: 5px 15px 5px 15px;
+}
+
+.context-menu, .menu-item {
+    -fx-background-color: -color-accent;
+    -fx-cursor: hand;
+}
+
+.menu-item:hover {
+    -fx-background-color: -color-primary;
+}
+
+.app-name {
+    -fx-font-weight: bold;
+    -fx-font-size: 24px;
+}
+
+#profileBtn {
+    -fx-background-color: none;
+    -fx-cursor: hand;
+}

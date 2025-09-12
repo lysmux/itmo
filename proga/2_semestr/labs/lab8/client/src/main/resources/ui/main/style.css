@@ -1,0 +1,73 @@
+.table-view {
+    -fx-table-cell-border-color: -color-highlight;
+    -fx-border-color: -color-highlight;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+
+    -fx-font-size: 14px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: -color-primary;
+    -fx-background-radius: 10px 10px 0 0;
+    -fx-border-width: 2px;
+    -fx-border-color: transparent transparent -color-highlight transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: -color-dark;
+}
+
+.table-row-cell:even {
+    -fx-background-color: -color-light;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: -color-highlight;
+}
+
+
+.table-view .column-header .label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.table-view .column-header .button {
+    -fx-font-size: 16px;
+}
+
+.filter-button {
+    -fx-background-color: none;
+    -fx-font-size: 26px;
+    -fx-text-alignment: center;
+    -fx-padding: 0;
+}
+
+.action-btn {
+    -fx-background-radius: 50%;
+    -fx-text-fill: -color-text-inverse;
+}
+
+#addBtn {
+    -fx-background-radius: 15%;
+}
+
+.tab-pane > .tab-header-area > .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab {
+    -fx-background-color: #f4f4f4;
+    -fx-background-insets: 0;
+    -fx-background-radius: 5 5 0 0;
+    -fx-padding: 5 15 5 15;
+}
+
+.tab:selected {
+    -fx-background-color: white;
+}

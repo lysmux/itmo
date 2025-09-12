@@ -1,0 +1,13 @@
+* {
+    -color-background: #1c1c1c;         /* Тёмный фон */
+    -color-primary: #556b2f;            /* Темно-оливковый, адаптация #ccd5ae */
+    -color-secondary: #3a3f2d;          /* Темно-зеленовато-серый, адаптация #e9edc9 */
+    -color-accent: #6c5e2e;             /* Тёмный беж, адаптация #faedcd */
+    -color-highlight: #b07d48;          /* Теплый коричнево-золотистый, адаптация #d4a373 */
+    -color-text: #eeeeee;               /* Светлый текст на тёмном фоне */
+    -color-text-inverse: #000000;
+    -color-error: #ff6b6b;              /* Ярко-красный для ошибок */
+
+    -color-light: #5f7538;
+    -color-dark: #364220;
+}

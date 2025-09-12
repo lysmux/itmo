@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd">
+
+    <changeSet id="20250604-create-user-schema" author="lysmux">
+        <sqlFile path="changelog/20250604-create-user-schema.sql" relativeToChangelogFile="true" />
+    </changeSet>
+    <changeSet id="20250604-create-labwork-schema" author="lysmux">
+        <sqlFile path="changelog/20250604-create-labwork-schema.sql" relativeToChangelogFile="true" />
+    </changeSet>
+</databaseChangeLog>

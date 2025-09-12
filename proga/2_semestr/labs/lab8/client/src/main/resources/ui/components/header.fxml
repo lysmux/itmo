@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import java.net.URL?>
+<HBox styleClass="header"
+      fx:id="rootPane"
+      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="dev.lysmux.lab8.client.ui.components.HeaderController">
+    <stylesheets>
+        <URL value="@../common.css"/>
+        <URL value="@style.css"/>
+    </stylesheets>
+
+    <Label styleClass="app-name" text="%app.name"/>
+
+    <Region HBox.hgrow="ALWAYS"/>
+
+    <MenuButton fx:id="profileBtn">
+        <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <Image url="@../../assets/profile.png"/>
+            </ImageView>
+        </graphic>
+        <items>
+            <MenuItem text="%header.action.changeServer" onAction="#changeServer"/>
+            <Menu text="%header.action.changeLanguage">
+                <MenuItem text="Русский" onAction="#changeLanguage" userData="ru-RU"/>
+                <MenuItem text="English" onAction="#changeLanguage" userData="en-US"/>
+                <MenuItem text="Suomalainen" onAction="#changeLanguage" userData="fi-FI"/>
+                <MenuItem text="Inspección" onAction="#changeLanguage" userData="es-ES"/>
+            </Menu>
+            <Menu text="%header.action.changeTheme">
+                <MenuItem text="%header.action.theme.light" onAction="#changeTheme" userData="LIGHT"/>
+                <MenuItem text="%header.action.theme.dark" onAction="#changeTheme" userData="DARK"/>
+<!--                <MenuItem text="%header.action.theme.system" onAction="#changeTheme" userData="SYSTEM"/>-->
+            </Menu>
+            <MenuItem styleClass="login-visible" text="%header.action.profile" onAction="#switchToProfile"/>
+            <MenuItem styleClass="login-visible" text="%header.action.logout" onAction="#logout"/>
+        </items>
+    </MenuButton>
+</HBox>

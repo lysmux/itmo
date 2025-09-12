@@ -1,0 +1,30 @@
+.modeLabel {
+    -fx-font-size: 14pt;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+#modeUnderline {
+    -fx-stroke: -color-highlight;
+}
+
+#passwordHiddenField, #passwordVisibleField {
+    -fx-padding: 4px 32px 4px 4px;
+}
+
+#toggleVisibleBtn {
+    -fx-pref-width: 32px;
+    -fx-pref-height: 32px;
+    -fx-background-color: none;
+    -fx-background-size: 16px 16px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.visible {
+    -fx-background-image: url("../../assets/eye-off.png");
+}
+
+.hidden {
+    -fx-background-image: url("../../assets/eye.png");
+}

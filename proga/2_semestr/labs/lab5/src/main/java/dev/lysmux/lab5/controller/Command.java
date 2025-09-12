@@ -1,0 +1,36 @@
+package dev.lysmux.lab5.controller;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * Annotation for mark class as command
+ *
+ * @since 1.0
+ */
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface Command {
+    /**
+     * Name of the command by which it will be executed
+     *
+     * @return command name
+     */
+    String name();
+
+    /**
+     * Description of the command which will be displayed by <b>help</b> command
+     *
+     * @return command description
+     */
+    String description();
+
+    /**
+     * Needed to include command in help
+     *
+     * @return {@code true} if needed else {@code false}
+     */
+    boolean includesInHelp() default true;
+}

@@ -1,0 +1,15 @@
+.panel {
+    -fx-spacing: 20px;
+}
+
+.stat-label, .stat-value {
+    -fx-font-size: 16px;
+}
+
+.stat-value {
+    -fx-font-style: italic;
+}
+
+#goMainBtn {
+    -fx-background-color: transparent;
+}

@@ -1,0 +1,5 @@
+execute_script scripts/test_random
+execute_script scripts/test_random
+execute_script scripts/test_random
+execute_script scripts/test_random
+execute_script scripts/test_random

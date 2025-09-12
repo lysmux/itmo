@@ -1,0 +1,45 @@
+package dev.lysmux.lab8.server.command.collection;
+
+
+import dev.lysmux.lab8.server.collection.CollectionManager;
+import dev.lysmux.lab8.common.collection.model.LabWork;
+import dev.lysmux.lab8.common.command.Command;
+import dev.lysmux.lab8.common.dto.Response;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
+/**
+ * Command that returns the number of elements whose minimum point field value
+ * is greater than the specified one
+ *
+ * @since 1.0
+ */
+@Command(
+        name = "count_greater_than_minimal_point",
+        description = "Display the number of elements whose minimum point field value is greater than the specified one",
+        requiresLogin = true
+)
+@RequiredArgsConstructor
+final public class CountGreaterThanMinimalPointCommand {
+    @NonNull
+    private final CollectionManager collectionManager;
+
+    /**
+     * Returns the number of elements whose minimum point field value
+     * is greater than the specified one
+     *
+     * @param minimalPoint value for filtering
+     * @return execution result
+     */
+    public Response execute(long minimalPoint) {
+        long count = collectionManager.getCollection().stream()
+                .map(LabWork::getMinimalPoint)
+                .filter(el -> el > minimalPoint)
+                .count();
+
+        return Response
+                .builder()
+                .text("Minimal point: %d".formatted(count))
+                .build();
+    }
+}
