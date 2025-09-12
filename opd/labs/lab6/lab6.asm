@@ -1,0 +1,95 @@
+ORG 0x0
+V0: WORD $DEFAULT, 0x180
+V1: WORD $INT1, 0x180  ; ВУ-1
+V2: WORD $DEFAULT, 0x180 
+V3: WORD $INT3, 0x180 ; ВУ-3
+V4: WORD $DEFAULT, 0x180
+V5: WORD $DEFAULT, 0x180
+V6: WORD $DEFAULT, 0x180
+V7: WORD $DEFAULT, 0x180
+DEFAULT: IRET
+
+ORG 0x20
+INT1: LD X		; -5x - 4 на ВУ-1
+		HLT ; для проверки
+		
+		ADD X
+		ADD X
+		ADD X
+		ADD X
+		NEG
+		SUB #4
+		OUT 0x2
+		IRET
+
+INT3: 
+	LD X ; для проверки
+	HLT
+	
+	IN 0x6 ; читаем с ВУ-3
+	SXTB
+	ST R_TMP
+	
+	OR X ; XOR
+	ST XOR_TMP
+	
+	LD X
+	AND R_TMP
+	NOT
+	AND XOR_TMP
+
+	CALL CHECK
+
+	HLT ; для проверки
+	
+	ST X
+	IRET
+
+ORG 0x52
+X: WORD ?
+R_TMP: WORD ?
+XOR_TMP: WORD ?
+MIN: WORD 0xFFE6
+MAX: WORD 0x18
+
+START:  DI
+			CLA
+			OUT 0x1
+			OUT 0x5
+			OUT 0xB
+			OUT 0xE
+			OUT 0x12
+			OUT 0x16
+			OUT 0x1A
+			OUT 0x1E
+
+			LD #0x9
+			OUT 0x3
+
+			LD #0xB
+			OUT 0x7
+
+			EI
+			JUMP MAIN
+
+CHECK: 
+CHECK_MIN:
+				CMP MIN
+				BPL CHECK_MAX
+				LD MIN
+				JUMP RETURN
+CHECK_MAX:
+				CMP MAX
+				BEQ RETURN
+				BLT RETURN
+				LD MIN
+				
+RETURN: RET	
+
+MAIN: DI
+		 LD X
+		 INC
+		 CALL CHECK
+		 ST X
+		 EI
+		JUMP MAIN
