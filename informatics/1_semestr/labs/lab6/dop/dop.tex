@@ -1,0 +1,70 @@
+\documentclass[a2paper, 12pt]{article}
+
+\usepackage[english, russian]{babel} 
+\usepackage[top=0.5cm, bottom=0.5cm, left=0.5cm, right=0.6cm]{geometry}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{multirow}
+
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{Times New Roman}
+\usepackage[table,xcdraw]{xcolor}
+
+\newcommand{\element}[6]{
+	
+\begin{tabular}{@{}p{2cm}@{}p{1.1cm}@{\hspace{3pt}}}
+	\rowcolor{#1}
+	
+	\textbf{#3} & #2 \\
+	\small#4 & \textbf{#6} \\
+	\small\textbf{#5} &     
+\end{tabular}
+}
+
+
+\begin{document}
+% Please add the following required!30 packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[h]
+	\begin{tabular}{|c|c|l@{}|l@{}|l@{}|l@{}|l@{}|l@{}|l@{}|l@{}|l@{}|l@{}|}
+		\hline
+		\multirow{2}{*}{\textbf{ПЕРИОДЫ}} & \multirow{2}{*}{\textbf{РЯДЫ}} & \multicolumn{10}{c|}{\textbf{ГРУППЫ ЭЛЕМЕНТОВ}} \\
+		\cline{3-12} 
+		
+		&  & \multicolumn{1}{c|}{\textbf{I}} & \multicolumn{1}{c|}{\textbf{II}} & \multicolumn{1}{c|}{\textbf{III}} & \multicolumn{1}{c|}{\textbf{IV}} & \multicolumn{1}{c|}{\textbf{V}} & \multicolumn{1}{c|}{\textbf{VI}} & \multicolumn{1}{c|}{\textbf{VII}} & \multicolumn{3}{c|}{\textbf{VIII}} \\
+		\hline
+		
+		\textbf{1} & \textbf{1} & \element{red!30}{1}{H}{Hydrogenium}{Водород}{1.00794} & \multicolumn{6}{c|}{\textbf{ПЕРЕОДИЧЕСКАЯ СИСТЕМА ЭЛЕМЕНТОВ Д. И. МЕНДЕЛЕЕВА}} & \element{red!30}{2}{He}{Helium}{Гелий}{4.0026} &  & \\
+		\hline
+		
+		\textbf{2} & \textbf{2} & \element{red!30}{3}{Li}{Lithium}{Литий}{6.941} & \element{red!30}{4}{Be}{Beryllium}{Бериллий}{9.0122} & \element{yellow!30}{5}{B}{Borum}{Бор}{10.811} & \element{yellow!30}{6}{C}{Carboneum}{Углерод}{12.011}
+		& \element{yellow!30}{7}{N}{Nitrogenium}{Азот}{14.007} & \element{yellow!30}{8}{O}{Oxigenium}{Кислород}{15.999} & \element{yellow!30}{9}{F}{Fluorum}{Фтор}{18.998} & \element{yellow!30}{10}{Ne}{Neon}{Неон}{20.179} &  &  \\
+		\hline
+		 
+		\textbf{3} & \textbf{3} & \element{red!30}{11}{Na}{Natrium}{Натрий}{22.99} & \element{red!30}{12}{Mg}{Magnesium}{Магний}{24.305} & \element{yellow!30}{13}{Al}{Aluminium}{Алюминий}{26.9815} & \element{yellow!30}{14}{Si}{Sicilium}{Кремний}{28.086} & \element{yellow!30}{15}{P}{Phosphorus}{Фосфор}{30.974} & \element{yellow!30}{16}{S}{Sulfur}{Сера}{32.066} & \element{yellow!30}{17}{Cl}{Chlorium}{Хлор}{35.453} & \element{yellow!30}{18}{Ar}{Argon}{Аргон}{39.948} &  &  \\
+		\hline
+		
+		\multirow{2}{*}{\textbf{4}} & \textbf{4} & \element{red!30}{19}{K}{Kalium}{Калий}{39.098} & \element{red!30}{20}{Ca}{Calcium}{Кальций}{40.08} & \element{blue!30}{21}{Sc}{Scandium}{Скандий}{44.956} & \element{blue!30}{22}{Ti}{Titanium}{Титан}{47.9} & \element{blue!30}{23}{V}{Vanadium}{Ванадий}{50.941} & \element{blue!30}{24}{Cr}{Chromium}{Хром}{51.996} & \element{blue!30}{25}{Mn}{Manganum}{Марганец}{54.938} & \element{blue!30}{26}{Fe}{Ferrum}{Железо}{55.847} & \element{blue!30}{27}{Co}{Cobaltum}{Кобальт}{58.933} & \element{blue!30}{28}{Ni}{Niccolum}{Никель}{58.7} \\
+		 \hline
+
+		& \textbf{5} & \element{blue!30}{29}{Cu}{Cuprum}{Медь}{63.546} & \element{blue!30}{30}{Zn}{Zincum}{Цинк}{65.39} & \element{yellow!30}{31}{Ga}{Gallium}{Галлий}{69.72} & \element{yellow!30}{32}{Ge}{Germanium}{Германий}{72.59} & \element{yellow!30}{33}{As}{Arsenicum}{Мышьяк}{74.992} & \element{yellow!30}{34}{Se}{Selenium}{Селен}{78.96} & \element{yellow!30}{35}{Br}{Bromum}{Бром}{79.904} & \element{yellow!30}{36}{Kr}{Krypton}{Криптон}{83.8} &  &  \\
+		\hline
+		
+		\multirow{2}{*}{\textbf{5}} & \textbf{6} & \element{red!30}{37}{Rb}{Rubidium}{Рубидий}{85.468} & \element{red!30}{38}{Sr}{Strontium}{Стронций}{87.62} & \element{blue!30}{39}{Y}{Yttrium}{Иттрий}{88.906} & \element{blue!30}{40}{Zr}{Zirconium}{Цирконий}{91.22} & \element{blue!30}{41}{Nb}{Niobium}{Ниобий}{92.906} & \element{blue!30}{42}{Mo}{Molybdaenum}{Молибден}{95.94} & \element{blue!30}{43}{Tc}{Techetium}{Технеций}{97.91} & \element{blue!30}{44}{Ru}{Ruthhenium}{Рутений}{101.07} & \element{blue!30}{45}{Rh}{Rhodium}{Родий}{102.96} & \element{blue!30}{46}{Pd}{Palladium}{Палладий}{106.4} \\
+		\hline
+		
+		& \textbf{7} & \element{blue!30}{47}{Ag}{Argentum}{Серебро}{107.868} & \element{blue!30}{48}{Cd}{Cadmium}{Кадмий}{112.41} & \element{yellow!30}{49}{In}{Indium}{Индий}{114.82} & \element{yellow!30}{50}{Sn}{Stannum}{Олово}{118.71} & \element{yellow!30}{51}{Sb}{Stibium}{Сурьма}{121.75} & \element{yellow!30}{52}{Te}{Tellurium}{Теллур}{127.6} & \element{yellow!30}{53}{I}{Iodum}{Иод}{126.9045} & \element{yellow!30}{54}{Xe}{Xenon}{Ксенон}{131.29} &  &  \\
+		\hline
+		
+		\textbf{6} & \textbf{8} & \element{red!30}{55}{Cs}{Cesium}{Цезий}{132.905} & \element{red!30}{56}{Ba}{Barium}{Барий}{137.33} & \element{blue!30}{57}{La}{Lanthanum}{Лантан}{138.9055} & \element{blue!30}{72}{Hf}{Hafnium}{Гафний}{178.49} & \element{blue!30}{73}{Ta}{Tantalum}{Тантал}{180.9479} & \element{blue!30}{74}{W}{Wolframium}{Вольфрам}{183.85} & \element{blue!30}{75}{Re}{Rthenium}{Рений}{186.207} & \element{blue!30}{76}{Os}{Osmium}{Осмий}{190.2} & \element{blue!30}{77}{Ir}{Iridium}{Иридий}{192.22} & \element{blue!30}{78}{Pt}{Platinum}{Платина}{195.08} \\
+		\hline
+		
+		& \textbf{9} & \element{blue!30}{79}{Au}{Aurum}{Золото}{196.967} & \element{blue!30}{80}{Hg}{Hydrargyrum}{Ртуть}{200.59} & \element{yellow!30}{81}{Tl}{Thallium}{Таллий}{204.38} & \element{yellow!30}{82}{Pb}{Plumbum}{Свинец}{207.19} & \element{yellow!30}{83}{Bi}{Bismuthum}{Висмут}{208.98} & \element{yellow!30}{84}{Po}{Polonium}{Полоний}{209.98} & \element{yellow!30}{85}{At}{Astatium}{Астат}{209.99} & \element{yellow!30}{86}{Rn}{Radon}{Радон}{222} &  &  \\
+		\hline
+		
+		\textbf{7} & \textbf{10} & \element{red!30}{87}{Fr}{Francium}{Франций}{223} & \element{red!30}{88}{Ra}{Radium}{Радий}{226} & \element{blue!30}{89}{Ac**}{Actinium}{Актиний}{227} & \element{blue!30}{104}{Rf}{Rutherforfium}{Резерфордий}{261} & \element{blue!30}{105}{Db}{Dubnium}{Дубний}{262} & \element{blue!30}{106}{Sg}{Seaborgium}{Сиборгий}{263} & \element{blue!30}{107}{Bh}{Bohrium}{Борий}{262} & \element{blue!30}{108}{Hs}{Hassium}{Хассий}{265} & \element{blue!30}{109}{Mt}{Meltnerium}{Мейтнерий}{266}&  \\
+		\hline
+	\end{tabular}
+\end{table}
+\end{document}

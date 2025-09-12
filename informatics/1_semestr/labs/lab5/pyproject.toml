@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "lab5"
+version = "0.1.0"
+description = ""
+authors = ["lysmux <kllraz@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+matplotlib = "^3.9.2"
+pandas = "^2.2.3"
+seaborn = "^0.13.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

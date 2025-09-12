@@ -1,0 +1,39 @@
+\documentclass[a4paper, 12pt]{extarticle}
+
+% Поддержка языков
+\usepackage[english, russian]{babel} 
+
+% Настройка кодировок
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Настройка шрифтов
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{Times New Roman} % Шрифт для основного текста документа
+
+% Настройка отступов от краев страницы
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
+
+\usepackage[justification=raggedright, singlelinecheck=false]{caption}
+\usepackage{graphicx}
+\graphicspath{{./img/}} % Путь до папки с изображениями
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools} % ams пакеты для математики, табуляции
+\usepackage{multirow}
+
+\linespread{1} % Межстрочный интервал
+\setlength{\parindent}{0.5cm} % Табуляция
+\setlength{\columnsep}{0.5cm}
+
+
+\setcounter{page}{27}
+\renewcommand{\thepage}{\hfill\textbf{\arabic{page}}}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+	\input{title}
+	\input{article}
+\end{document}
