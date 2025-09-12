@@ -1,5 +1,5 @@
 \subsubsection*{Рекурсивно подсчитать количество символов содержимого файлов из директории lab0, имя которых начинается на 'c', результат записать в файл в директории /tmp, подавить вывод ошибок доступа}
-\begin{minted}[breaklines]{shell}
+\begin{minted}[breaklines]{text}
 [s467213@helios ~/opd/lab0/lab0]$ cat c* */c* */*/c* 2> /dev/null | wc -m > /tmp/131
 [s467213@helios ~/opd/lab0/lab0]$ cat /tmp/131
 80
@@ -7,23 +7,25 @@
 
 
 \subsubsection*{Вывести четыре первых элемента рекурсивного списка имен и атрибутов файлов в директории lab0, содержащих строку `da`, список отсортировать по убыванию даты модификации файла, подавить вывод ошибок доступа}
-\begin{minted}[breaklines]{shell}
-[s467213@helios ~/opd/lab0/lab0]$ ls -Rl 2> /dev/null | grep "^[-|l]" | grep ":[0-6][0-9] \w*da" | sort -rk6 | head -n4
--rw-r--r--  1 s467213 studs   0 17 окт.  13:51 alakyda
--rw-r--r--  1 s467213 studs   0 17 окт.  13:48 dautdat
+\begin{minted}[breaklines]{text}
+[s467213@helios ~/opd/lab0/lab0]$ ls -RlaL 2> /dev/null | grep "^[-l]" | grep ":[0-6][0-9] .*da" | sort -k7Mr -rnk6 -rk8 | head -n4
+-rw-r--r--  1 s467213 studs   0 18 нояб. 09:39 da
+-rw-r--r--  1 s467213 studs   0 21 окт.  10:35 dddaa
+-rw-r--r--  1 s467213 studs   0 21 окт.  10:35 .fda
+-------rw-  1 s467213 studs  49 21 окт.  08:24 wormadam
 \end{minted}
 
 \subsubsection*{Рекурсивно вывести содержимое файлов из директории lab0, имя которых заканчивается на 'r', строки отсортировать по имени a->z, ошибки доступа перенаправить в файл в директории /tmp}
-\begin{minted}[breaklines]{shell}
-[s467213@helios ~/opd/lab0/lab0]$ cat *r */*r */*/*r 2> /tmp/13_3 | sort
+\begin{minted}[breaklines]{text}
+[s467213@helios ~/opd/lab0/lab0]$ cat {,.}*r {,.}*/*r {,.}*/*/*r  2> /tmp/13_3 | sort
 allow any
 satk=6 sdef=8 spd=8
 satk=6 sdef=8 spd=8
 \end{minted}
 
 \subsubsection*{Вывести содержимое файлов: wormadam, seel, vaporeon, pikachu, accelgor, garbodor, leafeon, исключить строки, заканчивающиеся на 'n', регистр символов игнорировать, добавить вывод ошибок доступа в стандартный поток вывода}
-\begin{minted}[breaklines]{shell}
-[s467213@helios ~/opd/lab0/lab0]$ cat crawdaunt7/wormadam parasect2/seel parasect2/vaporeon parasect2/pikachu parasect2/accelgor zorua3/garbodor zorua3/leafeon 2>&1 | grep -v [nN]$
+\begin{minted}[breaklines]{text}
+[s467213@helios ~/opd/lab0/lab0]$ cat crawdaunt7/wormadam parasect2/seel parasect2/vaporeon parasect2/pikachu parasect2/accelgor zorua3/garbodor zorua3/leafeon 2>&1 | grep -vi "n$"
 cat: crawdaunt7/wormadam: Permission denied
 cat: parasect2/pikachu: Permission denied
 cat: parasect2/accelgor: Permission denied
@@ -32,15 +34,32 @@ satk=6 sdef=8 spd=8
 \end{minted}
 
 \subsubsection*{Подсчитать количество символов содержимого файлов в директории crawdaunt7, результат записать в файл в директории /tmp, добавить вывод ошибок доступа в стандартный поток вывода}
-\begin{minted}[breaklines]{shell}
+\begin{minted}[breaklines]{text}
 [s467213@helios ~/opd/lab0/lab0]$ cat crawdaunt7/* 2>&1 | grep -v "^cat" | wc -m > /tmp/135
 [s467213@helios ~/opd/lab0/lab0]$ cat /tmp/135
 15
 \end{minted}
 
 \subsubsection*{Вывести два первых элемента рекурсивного списка имен и атрибутов файлов в директории lab0, содержащих строку `ldu`, список отсортировать по возрастанию даты изменения записи о файле, ошибки доступа перенаправить в файл в директории /tmp}
-\begin{minted}[breaklines]{shell}
-[s467213@helios ~/opd/lab0/lab0]$ ls -lR 2> /tmp/136_err | grep "^[-|l]" | grep ":[0-6][0-9] \w*ldu" | sort -k6 | head -n2
--rw--w--w-  2 s467213 studs  20  7 окт.  10:12 conkeldurr6
--rw-r-----  1 s467213 studs 37  7 окт.  10:12 golduck
+\begin{minted}[breaklines]{text}
+[s467213@helios ~/opd/lab0/lab0]$ ls -laRL 2> /tmp/136_err | grep "^[-l]" | grep ":[0-6][0-9] .*ldu" | sort -k7M -nk6 | head -n2
+-rw--w--w-  2 s467213 studs  20 21 окт.  08:24 conkeldurr6
+-rw--w--w-  2 s467213 studs  20 21 окт.  08:24 slakingconkeldurr
+\end{minted}
+
+\subsubsection*{Рекурсивно вывести имена и атрибуты файлов домашнего каталога, которые имеют в имени сдвоенные буквы, отсортировать по имени файла}
+\begin{minted}[breaklines]{text}
+[s467213@helios ~/opd/lab0/lab0]$ ls -laRL ~/ | grep "^[-l]" | grep -E ":[0-6][0-9] .*([a-zA-Z])\1" | sort -k 9
+ls: ./crawdaunt7/golem: Permission denied
+ls: ./parasect2: Permission denied
+-rw-r--r--  1 s467213 studs   4  2 нояб. 13:09 .tttr
+-r--r--r--  1 s467213 studs 51 21 окт.  08:24 accelgor
+-rw--w--w-  2 s467213 studs  20 21 окт.  08:24 conkeldurr6
+-rw-r--r--  1 s467213 studs   0 21 окт.  10:35 dddaa
+-rw-r--r--  1 s467213 studs   0 21 окт.  10:35 jjjj
+-rw-r--r--  1 s467213 studs   0 18 нояб. 09:08 lduldurr
+-r--------  1 s467213 studs  38  2 нояб. 13:12 ldurrr
+-r--------  1 s467213 studs  38  2 нояб. 13:12 lllll
+-r--------  1 s467213 studs  38 21 окт.  08:24 samurottl
+-rw-r-----  1 s467213 studs 51 21 окт.  08:24 seel
 \end{minted}
