@@ -3,72 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Первая лаба по вебу</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-    <div class="plot_container">
-        <canvas id="plot" width="1000px" height="800px"></canvas>
-    </div>
-    <form>
-        <div class="form__block">
-            <label for="inputX">Координата X</label>
-            <input type="text" id="inputX">
-            <div class="errors__container">
-                <img src="img/error.svg" alt="" class="errors__mark">
-                <div class="input__errors popup" id="inputX__errors">
-                </div>
-            </div>
-        </div>
-        <div class="form__block">
-            <label for="inputY">Координата Y</label>
-            <input type="text" id="inputY">
-            <div class="errors__container">
-                <img src="img/error.svg" alt="" class="errors__mark">
-                <div class="input__errors popup" id="inputY__errors"></div>
-            </div>
-        </div>
-        <div class="form__block">
-            <label for="inputR">Радиус R</label>
-            <input type="text" id="inputR">
-            <div class="errors__container">
-                <img src="img/error.svg" alt="" class="errors__mark">
-                <div class="input__errors popup" id="inputR__errors"></div>
-            </div>
-        </div>
+    <table>
+        <tbody>
+        <tr>
+            <td colspan=2 class="block header">
+                Разыграев Кирилл Сергеевич
+                ИСУ 467213
+                Группа P3215
+                Вариант 467213
+            </td>
+        </tr>
+        <tr class="main">
+            <td class="block canvas__container">
+                <canvas id="plot" width="500px"></canvas>
+            </td>
+            <td class="block">
+                <form>
+                    <table class="table__form">
+                        <tbody>
+                        <tr class="form__block">
+                            <td><label for="inputX">Координата X</label></td>
+                            <td><input type="text" id="inputX" class="form__input"></td>
+                        </tr>
+                        <tr class="form__block">
+                            <td><label for="inputY">Координата Y</label></td>
+                            <td><input type="text" id="inputY" class="form__input"></td>
+                        </tr>
+                        <tr class="form__block">
+                            <td><label for="inputR">Радиус R</label></td>
+                            <td><input type="text" id="inputR" class="form__input"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Проверить" class="btn" id="checkBtn">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
 
-        <input type="submit" value="Отправить" id="submitBtn">
-    </form>
+                    <!--                    <div class="form__block">-->
+                    <!--                        <label for="inputX">Координата X</label>-->
+                    <!--                        <input type="text" id="inputX">-->
+                    <!--                        <div class="errors__container">-->
+                    <!--                            <img src="img/error.svg" alt="" class="errors__mark">-->
+                    <!--                            <div class="input__errors popup" id="inputX__errors">-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="form__block">-->
+                    <!--                        <label for="inputY">Координата Y</label>-->
+                    <!--                        <input type="text" id="inputY">-->
+                    <!--                        <div class="errors__container">-->
+                    <!--                            <img src="img/error.svg" alt="" class="errors__mark">-->
+                    <!--                            <div class="input__errors popup" id="inputY__errors"></div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="form__block">-->
+                    <!--                        <label for="inputR">Радиус R</label>-->
+                    <!--                        <input type="text" id="inputR">-->
+                    <!--                        <div class="errors__container">-->
+                    <!--                            <img src="img/error.svg" alt="" class="errors__mark">-->
+                    <!--                            <div class="input__errors popup" id="inputR__errors"></div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="block">
+                <span class="heading">Результаты</span>
 
-    <div class="results">
-        Результаты
-
-        <div class="table__wrapper">
-            <table id="resultsTable" class="table">
-                <thead>
-                <tr>
-                    <td>X</td>
-                    <td>Y</td>
-                    <td>R</td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+                <table id="resultsTable" class="table">
+                    <thead>
+                    <tr>
+                        <td>X</td>
+                        <td>Y</td>
+                        <td>R</td>
+                        <td>Попадание</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>X</td>
+                        <td>Y</td>
+                        <td>R</td>
+                        <td>Попадание</td>
+                    </tr>
+                    <tr>
+                        <td>X</td>
+                        <td>Y</td>
+                        <td>R</td>
+                        <td>Попадание</td>
+                    </tr>
+                    <tr>
+                        <td>X</td>
+                        <td>Y</td>
+                        <td>R</td>
+                        <td>Попадание</td>
+                    </tr>
+                    <tr>
+                        <td>X</td>
+                        <td>Y</td>
+                        <td>R</td>
+                        <td>Попадание</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+<script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
 
 <script src="js/observable.js"></script>
 <script src="js/validator.js"></script>
 <script src="js/plot/shape.js"></script>
 <script src="js/plot/plot.js"></script>
-
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -36,12 +36,20 @@ class Plot {
         this.radius = new Observable(4)
         this.canvas = canvas
 
+        // this.resize()
+        // $(window).on('resize', () => {
+        //     this.resize()
+        //     this.ctx.setTransform(1, 0, 0, -1, this.canvas.width / 2, this.canvas.height / 2);
+        //     this.ctx.font = "30px sans-serif"
+        //     this.update()
+        // })
+        
         this.ctx = canvas.getContext("2d")
         this.ctx.setTransform(1, 0, 0, -1, this.canvas.width / 2, this.canvas.height / 2);
         this.ctx.font = "30px sans-serif"
 
         this.customShapes = []
-
+        
         this.update()
         this.radius.onChange(value => this.update())
     }
@@ -55,6 +63,22 @@ class Plot {
             xSize: this.canvas.width,
             ySize: this.canvas.height,
         }
+    }
+    
+    resize() {
+        const parent = this.canvas.parentElement;
+        const style = getComputedStyle(parent);
+
+        const paddingLeft = parseFloat(style.paddingLeft) || 0;
+        const paddingRight = parseFloat(style.paddingRight) || 0;
+        const paddingTop = parseFloat(style.paddingTop) || 0;
+        const paddingBottom = parseFloat(style.paddingBottom) || 0;
+
+        const availableWidth = parent.clientWidth - paddingLeft - paddingRight;
+        const availableHeight = parent.clientHeight - paddingTop - paddingBottom;
+
+        this.canvas.width = availableWidth;
+        this.canvas.height = availableHeight;
     }
     
     drawShape(shape) {shape.draw(this.radius.get(), this.step, this.ctx)}

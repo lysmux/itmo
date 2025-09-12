@@ -1,14 +1,12 @@
 package dev.lysmux;
 
 import com.fastcgi.FCGIInterface;
-import dev.lysmux.fcgi.*;
+import dev.lysmux.fcgi.AppRouter;
 import dev.lysmux.fcgi.dto.Request;
 import dev.lysmux.fcgi.dto.Response;
-import dev.lysmux.fcgi.enums.HTTPMethod;
 import dev.lysmux.server.CoordinatesRouter;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) throws IOException {

@@ -6,7 +6,7 @@ const inputXErrors = document.getElementById("inputX__errors")
 const inputYErrors = document.getElementById("inputY__errors")
 const inputRErrors = document.getElementById("inputR__errors")
 
-const submitBtn = document.getElementById("submitBtn")
+const submitBtn = document.getElementById("checkBtn")
 const resultsTable = document.getElementById("resultsTable").getElementsByTagName("tbody")[0]
 
 const formData = makeObservableObject({
@@ -50,7 +50,6 @@ validationManager
 
 submitBtn.addEventListener("click", function (event) {
     event.preventDefault()
-    console.log(formData)
 
     plot.addShape(new Point(new Position(formData.x.get(), formData.y.get()), 5))
 
@@ -58,6 +57,20 @@ submitBtn.addEventListener("click", function (event) {
     newRow.insertCell().textContent = formData.x.get()
     newRow.insertCell().textContent = formData.y.get()
     newRow.insertCell().textContent = formData.r.get()
-
-    newRow.insertCell().textContent = ""
+    
+    $.ajax(
+        "http://localhost:8000/fcgi-bin/app.jar/check",
+        {
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                x: formData.x.get(),
+                y: formData.y.get(),
+                r: formData.r.get(),
+            }),
+            success: function (response) {
+                newRow.insertCell().textContent = response.contains
+            }
+        }
+    )
 })
