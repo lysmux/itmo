@@ -1,4 +1,4 @@
-class Observable {
+class Observable2 {
     constructor (initialValue) {
         this._value = initialValue
         this._isUpdating = false

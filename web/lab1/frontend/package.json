@@ -1,0 +1,29 @@
+{
+  "name": "lab1-frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "build:dev": "webpack --env mode=development",
+    "build:prod": "webpack --env mode=production",
+    "dev": "webpack serve --env mode=development"
+  },
+  "author": "lysmux",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^24.3.3",
+    "@types/webpack": "^5.28.5",
+    "@types/webpack-dev-server": "^4.7.1",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.4",
+    "mini-css-extract-plugin": "^2.9.4",
+    "sass": "^1.92.1",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  }
+}
