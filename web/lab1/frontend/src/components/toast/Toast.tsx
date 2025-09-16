@@ -64,13 +64,13 @@ export default function Toast({title, message, style}: ToastProps) {
                 <table className={styles.content}>
                     <tbody>
                     <tr>
-                        <td style="width: 30px">
+                        <td  className={styles.iconBlock}>
                             <Svg icon={style.svgIcon} className={styles.icon}/>
                         </td>
-                        <td style="width: 100%;vertical-align: middle">
+                        <td className={styles.titleBlock}>
                             <h1 className={styles.title}>{title}</h1>
                         </td>
-                        <td style="width: 30px">
+                        <td  className={styles.btnBlock}>
                             <button
                                 className={styles.closeBtn}
                                 onclick={

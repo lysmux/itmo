@@ -41,14 +41,12 @@ $progressDelay: 800s;
 
   .icon {
     color: var(--color);
-    width: 30px;
-    height: 30px;
   }
 
   .progress {
     background-color: var(--color);
     display: block;
-    height: 2px;
+    height: 3px;
     width: 100%;
 
     animation: progress $progressDelay linear;
@@ -72,8 +70,18 @@ $progressDelay: 800s;
   border-spacing: 2px;
   word-wrap: break-word;
 
+  .icon-block, .btn-block {
+    width: 30px;
+  }
+
+  .title-block {
+    width: 100%;
+  }
+
   .title {
     font-size: 1em;
+    font-weight: 700;
+    vertical-align: middle;
   }
 
   .message {
@@ -95,8 +103,6 @@ $progressDelay: 800s;
   color: #737373;
 
   .icon {
-    height: 100%;
-    width: 100%;
     color: currentColor;
   }
 

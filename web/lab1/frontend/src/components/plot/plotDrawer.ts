@@ -75,7 +75,9 @@ export default class PlotDrawer {
 
     update() {
         this.ctx.setTransform(1, 0, 0, -1, this.canvas.width / 2, this.canvas.height / 2);
-        this.ctx.font = "30px sans-serif"
+
+        this.options.step = Math.round(Math.min(this.sizes.xSize, this.sizes.ySize) / 12);
+        this.ctx.font = `${this.options.step / 30}em sans-serif`
 
         this._drawShapes()
         this._drawGrid()
@@ -152,8 +154,11 @@ export default class PlotDrawer {
                 {x: -5, y: this.sizes.yMax - 10}
             ]), {scale: 1})
 
-            this.draw(new Label({x: this.sizes.xMax - 30, y: 10}, "X"), {scale: 1})
-            this.draw(new Label({x: 10, y: this.sizes.yMax - 30}, "Y"), {scale: 1})
+            const labelOffsetPrimary = this.options.step / 2
+            const labelOffsetSecondary = this.options.step / 2.5
+
+            this.draw(new Label({x: this.sizes.xMax - labelOffsetPrimary, y: labelOffsetSecondary}, "X"), {scale: 1})
+            this.draw(new Label({x: labelOffsetSecondary, y: this.sizes.yMax - labelOffsetPrimary}, "Y"), {scale: 1})
 
             this.draw(new Point({x: 0, y:0}, 1), {scale: 4})
         })
