@@ -1,4 +1,5 @@
 import {Observer} from "./observer";
+import {Ref} from "./ref";
 
 declare namespace JSX {
     interface IntrinsicElements {
@@ -18,6 +19,8 @@ interface HTMLAttributes {
     for?: Iterable<any>;
     forKey?: string;
     model?: Observer<any> | string
+    ref?: Ref<any>
+    innerHTML?: string
 }
 
 interface EventContext<T = any> {

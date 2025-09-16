@@ -19,6 +19,7 @@ export default (env: EnvVars) => {
         output: {
             path: path.resolve(__dirname, "dist"),
             filename: "[name].[contenthash:8].js",
+            assetModuleFilename: "assets/[name][ext]",
             clean: true
         },
         plugins: [
@@ -45,8 +46,25 @@ export default (env: EnvVars) => {
                 },
                 {
                     test: /\.tsx?$/,
-                    use: 'ts-loader',
+                    use: "ts-loader",
                     exclude: /node_modules/,
+                },
+                {
+                    oneOf: [
+                        {
+                            test: /\.svg$/i,
+                            resourceQuery: /source/,
+                            type: "asset/source",
+                        },
+                        {
+                            test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                            type: "asset/resource",
+                        }
+                    ]
+                },
+                {
+                    test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                    type: "asset/resource",
                 },
             ],
         },

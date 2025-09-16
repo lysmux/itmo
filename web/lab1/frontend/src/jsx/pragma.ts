@@ -39,6 +39,14 @@ function parseNode(tag: string, properties: Properties, children: Child[]): Node
         }
     }
 
+    if (properties.ref !== undefined) {
+        properties.ref.value = el
+    }
+
+    if (properties.innerHTML !== undefined) {
+        el.innerHTML = properties.innerHTML;
+    }
+
     for (const key in properties) {
         const value = properties[key];
 

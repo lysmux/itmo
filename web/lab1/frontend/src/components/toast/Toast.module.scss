@@ -1,0 +1,127 @@
+$progressDelay: 800s;
+
+@keyframes progress {
+  to {
+    width: 0;
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.container {
+  --color: #000000;
+  --bgColor: #cccccc;
+
+  width: 300px;
+  background-color: var(--bgColor);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+  border-spacing: 0;
+  border-radius: 5px 5px 0 0;
+  animation: appear 0.3s ease-out;
+
+  .icon {
+    color: var(--color);
+    width: 30px;
+    height: 30px;
+  }
+
+  .progress {
+    background-color: var(--color);
+    display: block;
+    height: 2px;
+    width: 100%;
+
+    animation: progress $progressDelay linear;
+    animation-fill-mode: forwards
+  }
+
+  &:hover {
+    .progress {
+      animation-play-state: paused;
+    }
+  }
+}
+
+.disappear-animation {
+  animation: disappear 0.3s ease-out
+}
+
+.content {
+  padding: 5px;
+  font-size: 0.8em;
+  border-spacing: 2px;
+  word-wrap: break-word;
+
+  .title {
+    font-size: 1em;
+  }
+
+  .message {
+    font-size: 0.6em;
+  }
+}
+
+.close-btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  display: block;
+
+  width: 25px;
+  height: 25px;
+
+  color: #737373;
+
+  .icon {
+    height: 100%;
+    width: 100%;
+    color: currentColor;
+  }
+
+  &:hover {
+    color: #3a3a3a;
+    background-color: rgba(150, 150, 150, 0.6);
+  }
+}
+
+.error {
+  --color: #d96d73;
+  --bgColor: #fde8e5;
+}
+
+.success {
+  --color: #3fad62;
+  --bgColor: #cbfce2;
+}
+
+.info {
+  --color: #494fa9;
+  --bgColor: #d1d4e3;
+}
+
+.warning {
+  --color: #fa935b;
+  --bgColor: #fef9db;
+}

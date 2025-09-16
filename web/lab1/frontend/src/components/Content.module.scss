@@ -1,0 +1,30 @@
+.content {
+  position: relative;
+  margin-inline: auto;
+  width: 95%;
+
+  margin-top: 20px;
+}
+
+.toast-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.plot-block {
+  height: 50vh;
+}
+
+.form-block {
+
+}
+
+.table-block {
+  height: 300px;
+  color: white;
+}

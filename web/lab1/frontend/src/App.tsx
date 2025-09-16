@@ -1,17 +1,16 @@
 import jsx from "./jsx/pragma"
-import {ArrayObserver, Observer} from "./jsx/observer";
-
-import Toast from "./components/Toast";
-
-const errors = new ArrayObserver(["err1", "err2", "err3"]);
+import Header from "./components/header/Header";
+import Content from "./components/Content";
+import styles from "./App.module.scss"
 
 const App = () => {
     return (
-        <div>
-            <Toast title="Error" message="abc"/>
-            <Toast title="Error" message="abc"/>
-            <Toast title="Error" message="abc"/>
-        </div>
+        <table className={styles.container}>
+            <tbody>
+            <tr><td><Header/></td></tr>
+            <tr className={styles.content}><td><Content /></td></tr>
+            </tbody>
+        </table>
     )
 }
 

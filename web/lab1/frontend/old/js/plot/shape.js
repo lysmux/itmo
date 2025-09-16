@@ -3,7 +3,7 @@ function compute(value, radius, step = 1) {
     return value * step
 }
 
-class Position {
+class Position2 {
     constructor(x, y) {
         this.x = x
         this.y = y
@@ -14,12 +14,12 @@ class Position {
     }
 }
 
-class Shape {
+class Shape2 {
     draw(radius, step, ctx) {
     }
 }
 
-class Point extends Shape {
+class Point2 extends Shape {
     constructor(position, radius) {
         super();
 
@@ -55,7 +55,7 @@ class Line extends Shape {
     }
 }
 
-class Label extends Shape {
+class Labels extends Shape {
     constructor(text, position, computeText) {
         super();
 
@@ -101,7 +101,7 @@ class Arc extends Shape {
     }
 }
 
-class Polygon extends Shape {
+class Polygon2 extends Shape {
     constructor(positions) {
         super();
 
