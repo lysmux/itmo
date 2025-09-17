@@ -19,6 +19,8 @@ public class CoordinatesRouter extends Router {
 
     @RouteMapping(methods = HTTPMethod.POST, path = "/check")
     public CheckResponse check(@Param(type = HTTPParamType.JSON) Coordinates coordinates) {
+        long startTime = System.nanoTime();
+
         boolean contains = checkers.stream()
                 .anyMatch(checker -> checker.contains(
                         coordinates.x(),
@@ -26,7 +28,7 @@ public class CoordinatesRouter extends Router {
                         coordinates.r()
                 ));
 
-        return new CheckResponse(contains);
+        return new CheckResponse(contains, (System.nanoTime()) - startTime);
     }
 
     private static boolean checkInSquare(double x, double y, double r) {

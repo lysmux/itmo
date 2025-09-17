@@ -25,8 +25,7 @@ public class Main {
 //                ))
 //        );;
 
-        FCGIInterface fcgiInterface;
-        fcgiInterface = new FCGIInterface();
+        FCGIInterface fcgiInterface = new FCGIInterface();
         while (fcgiInterface.FCGIaccept() >= 0) {
             Request request = Request.fromFCGI();
 

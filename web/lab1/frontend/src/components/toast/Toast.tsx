@@ -6,10 +6,10 @@ import SuccessIcon from "../../assets/icons/success.svg?source"
 import InfoIcon from "../../assets/icons/info.svg?source"
 import WarningIcon from "../../assets/icons/warning.svg?source"
 import ref from "../../jsx/ref";
-import Svg from "../../jsx/Svg";
+import Svg from "../Svg";
 
-type ToastVariant = 'success' | 'error' | 'info' | 'warning';
-type ToastVariantsConfig = Record<ToastVariant, ToastStyle>
+export type ToastVariant = 'success' | 'error' | 'info' | 'warning';
+export type ToastVariantsConfig = Record<ToastVariant, ToastStyle>
 
 export const TOAST_VARIANTS: ToastVariantsConfig = {
     success: {
@@ -30,7 +30,7 @@ export const TOAST_VARIANTS: ToastVariantsConfig = {
     }
 }
 
-interface ToastStyle {
+export interface ToastStyle {
     className?: string;
     svgIcon?: string
 }

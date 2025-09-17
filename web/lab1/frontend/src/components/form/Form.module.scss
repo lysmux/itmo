@@ -1,7 +1,63 @@
 .form {
+  --bgColor: rgba(255, 255, 255, 0.95);
+  --blockBgColor: white;
 
+  font-size: 1.5em;
+
+  color: black;
+  background-color: var(--bgColor);
+
+  table {
+    border-spacing: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .block {
+    background-color: var(--blockBgColor);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    padding: 16px;
+    width: 100%;
+  }
 }
 
-.table {
-  table-layout: fixed;
+.input-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  vertical-align: middle;
+}
+
+h1 {
+  font-size: 1em;
+  font-weight: 700;
+  color: #6c5ce7;
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 0.5em;
+}
+
+.btn {
+  background: linear-gradient(145deg, #6c5ce7, #a29bfe);
+  color: white;
+  cursor: pointer;
+  border-radius: 12px;
+  border: none  ;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 16px 20px;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2%);
+    box-shadow: 0 10px 25px rgba(108, 92, 231, 0.3);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: linear-gradient(145deg, rgba(108, 92, 231, 0.65), rgba(162, 155, 254, 0.65));
+  }
 }

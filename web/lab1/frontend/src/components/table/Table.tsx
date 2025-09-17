@@ -1,5 +1,5 @@
 import jsx from "../../jsx/pragma";
-import {ArrayObserver} from "../../jsx/observer";
+import {ArrayObserver} from "../../observer";
 import ref from "../../jsx/ref";
 import styles from "./Table.module.scss"
 
@@ -17,7 +17,6 @@ export default function Table({valuesObserver}: TableProps) {
         valuesObserver.onChange(
             (rows) => {
                 renderTable(table, rows)
-                fillEmptyRows(table)
             }
         )
     })
@@ -60,8 +59,4 @@ function renderTable(table: HTMLTableElement, rows: TableRow[]) {
             }
         })
     })
-}
-
-function fillEmptyRows(table: HTMLTableElement) {
-    console.log(table.querySelector("tr").clientHeight)
 }

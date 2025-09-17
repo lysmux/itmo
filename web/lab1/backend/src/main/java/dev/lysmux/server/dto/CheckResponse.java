@@ -1,4 +1,4 @@
 package dev.lysmux.server.dto;
 
-public record CheckResponse(boolean contains) {
+public record CheckResponse(boolean contains, long executionTime) {
 }

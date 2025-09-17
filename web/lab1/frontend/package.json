@@ -11,6 +11,7 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^24.3.3",
+    "@types/superagent": "^8.1.9",
     "@types/webpack": "^5.28.5",
     "@types/webpack-dev-server": "^4.7.1",
     "css-loader": "^7.1.2",
@@ -25,5 +26,8 @@
     "webpack": "^5.101.3",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
+  },
+  "dependencies": {
+    "superagent": "^10.2.3"
   }
 }

@@ -2,7 +2,7 @@ import jsx from "../../jsx/pragma";
 import styles from "./Plot.module.scss"
 import ref from "../../jsx/ref";
 import PlotDrawer from "./plotDrawer";
-import {Observer} from "../../jsx/observer";
+import {Observer} from "../../observer";
 
 export default function Plot() {
     const canvasRef = ref<HTMLCanvasElement>();
@@ -16,7 +16,6 @@ export default function Plot() {
 
         const resizeObserver = new ResizeObserver(entries => {
             const { width, height } = container.getBoundingClientRect();
-            console.log(width, height);
 
             canvasRef.value.width = width;
             canvasRef.value.height = height;

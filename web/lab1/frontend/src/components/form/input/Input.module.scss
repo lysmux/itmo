@@ -1,0 +1,14 @@
+.input {
+  padding: 18px 20px;
+  width: 100%;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+  outline: none;
+  border: 2px solid #e9ecef;
+  font-size: 0.5em;
+
+  &:focus {
+    background: white;
+    border-color: #6c5ce7;
+  }
+}

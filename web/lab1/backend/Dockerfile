@@ -9,5 +9,7 @@ FROM openjdk:21
 WORKDIR /app
 
 COPY --from=builder /build/build/libs/lab1-1.0.jar /app/app.jar
+COPY ./entrypoint.sh .
 
-CMD ["java","-DFCGI_PORT=9000","-jar","/app/app.jar"]
+ENV DFCGI_PORT = 9000
+CMD ["./entrypoint.sh"]

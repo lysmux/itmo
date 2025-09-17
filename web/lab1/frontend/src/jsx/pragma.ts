@@ -1,4 +1,4 @@
-import {Observer, ArrayObserver} from "./observer";
+import {Observer, ArrayObserver} from "../observer";
 import {HTMLAttributes} from "./types";
 
 type Child =
@@ -90,8 +90,8 @@ function jsx(element: JSXElement, properties?: Properties, ...children: Child[])
         return element(properties, children);
     }
 
-    if (properties.for !== undefined) {
-        const iter = properties.for;
+    if (properties.forIt !== undefined) {
+        const iter = properties.forIt;
         const key = properties.forKey || "item"
         const fragment = document.createDocumentFragment()
 

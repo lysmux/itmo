@@ -38,10 +38,11 @@ public class ObjectParser {
         try {
             json = JsonParser.parseString(body);
         } catch (Exception e) {
-            throw new ValidationException("Could not parse JSON", e);
+            throw new ValidationException("JSON has wrong syntax", e);
         }
-        Parameter<?> parameter = JsonParameter.elementToParameter(json);
+        if (json.isJsonNull()) throw new ValidationException("No JSON found in request body");
 
+        Parameter<?> parameter = JsonParameter.elementToParameter(json);
         return parseObject(paramName, paramType, parameter);
     }
 
@@ -50,7 +51,6 @@ public class ObjectParser {
             Class<T> paramType,
             String body
     ) {
-
         return null;
     }
 

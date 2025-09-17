@@ -1,21 +1,23 @@
 services:
   httpd:
     build:
-      dockerfile: ./dockerfiles/httpd.Dockerfile
-    network_mode: host
+      dockerfile: ./httpd/Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - internal
     volumes:
       - ./httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
       - ./httpd/:/httpd-root/
+    depends_on:
+      - app
+  app:
+    build:
+      context: ./backend
+    environment:
+      SERVER_PORT: 9000
+    networks:
+      - internal
 
-
-#  app:
-#    build:
-#      dockerfile: ./dockerfiles/app.Dockerfile
-#    environment:
-#      SERVER_PORT: 9000
-#    ports:
-#      - "9000:9000"
-#    networks:
-#      - internal
 networks:
   internal:

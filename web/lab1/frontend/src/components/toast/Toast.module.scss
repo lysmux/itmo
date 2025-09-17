@@ -1,4 +1,4 @@
-$progressDelay: 800s;
+$progressDelay: 8s;
 
 @keyframes progress {
   to {
@@ -31,6 +31,7 @@ $progressDelay: 800s;
 .container {
   --color: #000000;
   --bgColor: #cccccc;
+  --textColor: #000000;
 
   width: 300px;
   background-color: var(--bgColor);
@@ -79,13 +80,15 @@ $progressDelay: 800s;
   }
 
   .title {
+    color: var(--textColor);
     font-size: 1em;
     font-weight: 700;
     vertical-align: middle;
   }
 
   .message {
-    font-size: 0.6em;
+    color: var(--textColor);
+    font-size: 0.8em;
   }
 }
 

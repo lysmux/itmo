@@ -1,5 +1,5 @@
 import {Shape, Line, Point, Label, Polygon, DrawOptions, Arc} from "./shape";
-import {Observer} from "../../jsx/observer";
+import {Observer} from "../../observer";
 
 const DEFAULT_LABELS = [
     new Label({x: 4, y: 0}, "{R}", {isTemplate: true, evaluateFormula: true}),

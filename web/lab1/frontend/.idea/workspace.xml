@@ -4,13 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4afa9311-4dbc-4b7c-9823-bf3d7fde9d92" name="Changes" comment="jsx btw">
-      <change afterPath="$PROJECT_DIR$/src/components/form/Form.module.scss" afterDir="false" />
+    <list default="true" id="4afa9311-4dbc-4b7c-9823-bf3d7fde9d92" name="Changes" comment="эх формочки">
+      <change afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/types.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/observer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/context.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/constrains.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validator/validator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old/js/validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/old/js/validator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/Form.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Form.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/form/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/input/Checkbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/input/Checkbox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/input/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/input/Input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/plot/Plot.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/plot/Plot.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/plot/plotDrawer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/plot/plotDrawer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/Table.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/Table.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/Table.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toast/Toast.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toast/Toast.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jsx/Svg.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Svg.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jsx/observer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jsx/pragma.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/jsx/pragma.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jsx/ref.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/jsx/ref.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jsx/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/jsx/types.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,16 +47,32 @@
       <list>
         <option value="JavaScript File" />
         <option value="CSS File" />
-        <option value="TypeScript File" />
         <option value="HTML File" />
         <option value="TypeScript JSX File" />
         <option value="SCSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;lysmux&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/lysmux/itmo&quot;,
+    &quot;accountId&quot;: &quot;9e4be639-df3f-429c-9562-39edb24b8723&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -54,7 +89,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;web&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/itmo/web/lab1/frontend/src/components/form/input&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/itmo/web/lab1/frontend&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -75,11 +110,11 @@
       <recent name="D:\itmo\web\lab1\frontend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\itmo\web\lab1\frontend\src\components" />
+      <recent name="D:\itmo\web\lab1\frontend\src\" />
+      <recent name="D:\itmo\web\lab1\frontend\src" />
       <recent name="D:\itmo\web\lab1\frontend\src\components\toast" />
       <recent name="D:\itmo\web\lab1\frontend\src\assets" />
-      <recent name="D:\itmo\web\lab1\frontend\public\fonts" />
-      <recent name="D:\itmo\web\lab1\frontend\public\" />
-      <recent name="D:\itmo\web\lab1\frontend\public\\" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -99,6 +134,9 @@
       <workItem from="1757759349037" duration="96932000" />
       <workItem from="1758003001316" duration="31000" />
       <workItem from="1758003034525" duration="28490000" />
+      <workItem from="1758091746057" duration="17478000" />
+      <workItem from="1758135174565" duration="11000" />
+      <workItem from="1758135197127" duration="9479000" />
     </task>
     <task id="LOCAL-00001" summary="webpack">
       <option name="closed" value="true" />
@@ -136,6 +174,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="webpack" />
     <MESSAGE value="jsx btw" />
-    <option name="LAST_COMMIT_MESSAGE" value="jsx btw" />
+    <MESSAGE value="эх формочки" />
+    <option name="LAST_COMMIT_MESSAGE" value="эх формочки" />
   </component>
 </project>

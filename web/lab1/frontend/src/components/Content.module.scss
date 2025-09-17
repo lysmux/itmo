@@ -3,7 +3,13 @@
   margin-inline: auto;
   width: 95%;
 
-  margin-top: 20px;
+  border-spacing: 20px;
+  
+  @media screen and (max-width: 1000px) {
+    td {
+      display: block;
+    }
+  }
 }
 
 .toast-container {

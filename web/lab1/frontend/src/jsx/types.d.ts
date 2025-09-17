@@ -1,4 +1,4 @@
-import {Observer} from "./observer";
+import {Observer} from "../observer";
 import {Ref} from "./ref";
 
 declare namespace JSX {
@@ -16,7 +16,7 @@ interface HTMLAttributes {
     className?: string;
     id?: string;
 
-    for?: Iterable<any>;
+    forIt?: Iterable<any>;
     forKey?: string;
     model?: Observer<any> | string
     ref?: Ref<any>
