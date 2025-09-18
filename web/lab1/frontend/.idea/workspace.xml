@@ -4,10 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4afa9311-4dbc-4b7c-9823-bf3d7fde9d92" name="Changes" comment="эх формочки">
-      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/fcgi/param/parser/ObjectParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/fcgi/param/parser/ObjectParser.java" afterDir="false" />
+    <list default="true" id="4afa9311-4dbc-4b7c-9823-bf3d7fde9d92" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../backend/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/entrypoint.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/fcgi/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/fcgi/Router.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/server/CoordinatesRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/server/CoordinatesRouter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/server/dto/CheckResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/server/dto/CheckResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/Form.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Form.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/plot/shape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/plot/shape.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/observer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/observer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

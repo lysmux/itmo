@@ -172,7 +172,11 @@ public abstract class Router {
 
         if (response instanceof Response) {
             return (Response) response;
-        } else if (response instanceof Record) {
+        } else if (
+                response instanceof Record
+                        || response instanceof Collection
+                        || response.getClass().isArray()
+        ) {
             message = new Gson().toJson(response);
             contentType = "application/json";
         } else {

@@ -9,6 +9,8 @@ import dev.lysmux.fcgi.enums.HTTPParamType;
 import dev.lysmux.server.dto.CheckResponse;
 import dev.lysmux.server.dto.Coordinates;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,8 @@ public class CoordinatesRouter extends Router {
     @RouteMapping(methods = HTTPMethod.POST, path = "/check")
     public CheckResponse check(@Param(type = HTTPParamType.JSON) Coordinates coordinates) {
         long startTime = System.nanoTime();
+        LocalTime time = LocalTime.now().withNano(0);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         List<CheckResponse.ContainsResponse> responses = new ArrayList<>();
 
@@ -37,7 +41,11 @@ public class CoordinatesRouter extends Router {
             }
         }
 
-        return new CheckResponse(responses.toArray(CheckResponse.ContainsResponse[]::new), System.nanoTime() - startTime);
+        return new CheckResponse(
+                responses.toArray(CheckResponse.ContainsResponse[]::new),
+                time.format(formatter),
+                System.nanoTime() - startTime
+        );
     }
 
     private static boolean checkInSquare(double x, double y, double r) {

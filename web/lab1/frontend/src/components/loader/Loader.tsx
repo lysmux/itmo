@@ -15,7 +15,6 @@ export default function Loader({isVisible}: LoaderProps) {
         isVisible.onChange(visible => {
             if (visible) loader.classList.remove(styles.hidden)
             else loader.classList.add(styles.hidden)
-            console.log(visible)
         })
     })
 

@@ -4,22 +4,32 @@ import Plot from "./plot/Plot";
 import styles from "./Content.module.scss"
 import Form from "./form/Form";
 import Table from "./table/Table";
-import {ArrayObserver} from "../observer";
+import useObserver, {ArrayObserver} from "../observer";
 import ref from "../jsx/ref";
-import {setVar} from "../utils/context";
+import {getVar, setVar} from "../utils/context";
 import {CheckResponse} from "./types";
+import PlotDrawer from "./plot/plotDrawer";
 
 export default function Content() {
+    const plotDrawer = useObserver<PlotDrawer>()
+    setVar("plotDrawer", plotDrawer)
+
     const tableValuesObserver = new ArrayObserver<Record<string, any>>([])
-    setVar("addResult", (result: CheckResponse) => {
-        result.contains.forEach((item) => {
-            tableValuesObserver.value.push({
-                "Время": new Date().toLocaleTimeString(),
-                "X": item.x,
-                "Y": item.y,
-                "R": item.r,
-                "Попадание": item.contains ? "Да" : "Нет",
-                "Время выполнения": `${result.executionTime} нс`,
+
+    const resultsObs = getVar<ArrayObserver<CheckResponse>>("resultsObs")
+    resultsObs.onChange(results => {
+        tableValuesObserver.value.length = 0
+
+        results.forEach(result => {
+            result.contains.forEach(item => {
+                tableValuesObserver.value.push({
+                    "Время": result.time,
+                    "X": item.x,
+                    "Y": item.y,
+                    "R": item.r,
+                    "Попадание": item.contains ? "Да" : "Нет",
+                    "Время выполнения": `${result.executionTime} нс`,
+                })
             })
         })
     })
@@ -39,7 +49,7 @@ export default function Content() {
         <tbody>
         <tr>
             <td>
-                <div className={styles.plotBlock}><Plot/></div>
+                <div className={styles.plotBlock}><Plot drawer={plotDrawer}/></div>
             </td>
             <td>
                 <div className={styles.formBlock}><Form/></div>
@@ -47,13 +57,7 @@ export default function Content() {
         </tr>
         <tr>
             <td>
-                <div ref={toastContainerRef} className={styles.toastContainer}>
-                    {/*<Toast title="Success" message="very long toast content ajkfwedjksdjkdjasasasasasasasaasasasaskf"*/}
-                    {/*       style={TOAST_VARIANTS.success}/>*/}
-                    {/*<Toast title="Info" message="abc" style={TOAST_VARIANTS.info}/>*/}
-                    {/*<Toast title="Warning" message="abc" style={TOAST_VARIANTS.warning}/>*/}
-                    {/*<Toast title="Error" message="abc" style={TOAST_VARIANTS.error}/>*/}
-                </div>
+                <div ref={toastContainerRef} className={styles.toastContainer} />
             </td>
         </tr>
         <tr>

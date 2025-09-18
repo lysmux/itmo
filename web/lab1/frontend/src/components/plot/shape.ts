@@ -158,10 +158,14 @@ export class Label extends Shape {
             );
 
             const value = foundKey ? data[foundKey] : undefined;
-            return value !== undefined ? String(value) : match;
+            return value !== undefined ? String(value) : key;
         });
 
-        if (this.labelOptions.evaluateFormula) return eval(rendered);
+        try {
+            if (this.labelOptions.evaluateFormula) return eval(rendered);
+        } catch (error) {
+            // console.log(data, rendered)
+        }
         return rendered;
     }
 }

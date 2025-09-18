@@ -7,6 +7,8 @@ class Observer<T> {
     private _value: T;
     private _listeners: Set<Listener<T>> = new Set<Listener<T>>();
 
+    private isBind: boolean = false;
+
     constructor(initial?: T) {
         this._value = initial;
     }
@@ -31,6 +33,15 @@ class Observer<T> {
     notify(newValue: T) {
         this._listeners.forEach(listener => listener(newValue));
     }
+
+    bind(target: Observer<T>) {
+        if (this.isBind) {
+            throw new Error("Observer already bind");
+        }
+
+        target.onChange(value => this.value = value);
+        this.isBind = true;
+    }
 }
 
 function isProxy(obj: any) {
@@ -52,6 +63,8 @@ class ArrayObserver<T> extends Observer<T[]> {
     }
 
     set value(newValue: T[]) {
+        delete this.proxy;
+
         if (isProxy(newValue)) this.proxy = newValue;
         this.proxy = this.createProxy(newValue);
         this.notify(newValue)
@@ -62,11 +75,8 @@ class ArrayObserver<T> extends Observer<T[]> {
             set: (target, prop, value) => {
                 const numericProp = Number(prop);
                 if (!isNaN(numericProp) || prop === 'length') {
-                    const oldValue = target[prop];
                     target[prop] = value;
-                    if (oldValue !== value) {
-                        this.notify([...target]);
-                    }
+                    this.notify([...target]);
                 } else {
                     target[prop] = value;
                 }
@@ -121,11 +131,11 @@ class ObjectObserver<T extends object> extends Observer<T> {
     }
 }
 
-function useObserver<T>(initial: T): Observer<T>;
-function useObserver<T extends object>(initial: T): ObjectObserver<T>;
-function useObserver<T>(initial: T[]): ArrayObserver<T>;
+function useObserver<T>(initial?: T): Observer<T>;
+function useObserver<T extends object>(initial?: T): ObjectObserver<T>;
+function useObserver<T>(initial?: T[]): ArrayObserver<T>;
 
-function useObserver<T>(initial: any): Observer<any> {
+function useObserver<T>(initial?: any): Observer<any> {
     if (Array.isArray(initial)) {
         return new ArrayObserver(initial);
     } else if (typeof initial === 'object') {

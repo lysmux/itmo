@@ -3,7 +3,7 @@ import Input from "./input/Input";
 import Checkbox from "./input/Checkbox";
 import styles from "./Form.module.scss"
 import {createRange} from "../../utils/range";
-import useObserver, {Observer} from "../../observer";
+import useObserver, {ArrayObserver, Observer} from "../../observer";
 import {MaxConstraint, MinConstraint, RequiredConstraint} from "../../validator/constrains";
 import Validator from "../../validator/validator";
 import {CheckResponse, Coordinates} from "../types";
@@ -12,16 +12,25 @@ import ApiClient from "../../api/api";
 import {getVar} from "../../utils/context";
 import {TOAST_VARIANTS, ToastStyle} from "../toast/Toast";
 import Loader from "../loader/Loader";
+import PlotDrawer from "../plot/plotDrawer";
 
 
 export default function Form() {
     const submitBtnRef = ref<HTMLButtonElement>();
     const loaderVisible = useObserver<boolean>(false)
+    const plotDrawer = getVar<Observer<PlotDrawer>>("plotDrawer");
+    const resultsObs = getVar<ArrayObserver<CheckResponse>>("resultsObs")
 
     const formData = useObserver<Partial<Coordinates>>({
         x: new Set(),
         y: null,
         r: new Set()
+    })
+    formData.onChange(data => {
+        let value: number = null
+        if (data.r.size == 1) value = data.r.values().next().value
+
+        plotDrawer.value.rObserver.value = value
     })
 
     const rules = {
@@ -55,8 +64,7 @@ export default function Form() {
                 r: Array.from(formData.value.r)
             })
             .then((response) => {
-                const addResult = getVar<(result: CheckResponse) => void>("addResult")
-                addResult(response)
+                resultsObs.value.push(response)
             })
             .catch((error) => {
                 const addToast = getVar<(options: {
@@ -66,7 +74,7 @@ export default function Form() {
                 }) => void>("addToast")
                 addToast({
                     title: `API ERROR | ${error.status}`,
-                    message: error.response.text,
+                    message: error.responce ? error.response.text : error.message,
                     style: TOAST_VARIANTS.error
                 })
             })
@@ -130,6 +138,13 @@ export default function Form() {
             <tr>
                 <td colSpan="2">
                     <button ref={submitBtnRef} type="submit" onclick={submit} className={styles.btn}>Проверить</button>
+                </td>
+            </tr>
+            <tr>
+                <td colSpan="2">
+                    <button type="button" onclick={() => {
+                        resultsObs.value.length = 0
+                    }} className={`${styles.btn} ${styles.danger}`}>Очистить результаты</button>
                 </td>
             </tr>
             </tbody>

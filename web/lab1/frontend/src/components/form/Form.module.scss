@@ -7,6 +7,7 @@
   color: black;
   background-color: var(--bgColor);
   position: relative;
+  height: 100%;
 
   table {
     border-spacing: 20px;
@@ -60,5 +61,12 @@ label {
   &:disabled {
     cursor: not-allowed;
     background: linear-gradient(145deg, rgba(108, 92, 231, 0.65), rgba(162, 155, 254, 0.65));
+  }
+}
+
+.danger {
+  background: linear-gradient(145deg, #ff4757, #ff6b81);
+  &:disabled {
+    background: linear-gradient(145deg, rgba(255, 71, 87, 0.5), rgba(255, 107, 129, 0.65));
   }
 }

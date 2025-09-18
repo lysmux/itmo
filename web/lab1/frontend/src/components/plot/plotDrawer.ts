@@ -1,5 +1,5 @@
 import {Shape, Line, Point, Label, Polygon, DrawOptions, Arc} from "./shape";
-import {Observer} from "../../observer";
+import useObserver, {Observer} from "../../observer";
 
 const DEFAULT_LABELS = [
     new Label({x: 4, y: 0}, "{R}", {isTemplate: true, evaluateFormula: true}),
@@ -30,6 +30,7 @@ const DEFAULT_SHAPES = [
 
 interface PlotOptions {
     step: number,
+    defaultR?: number,
     gridColor: string
     axisColor: string,
     labelColor: string
@@ -51,15 +52,19 @@ interface Style {
 
 export default class PlotDrawer {
     private readonly ctx: CanvasRenderingContext2D;
-    private customShapes: Shape[] = [];
+    private readonly customShapes: Shape[] = [];
+    public readonly rObserver: Observer<number>;
+
 
     constructor(
         private canvas: HTMLCanvasElement,
-        private rObserver: Observer<number>,
         private options?: Partial<PlotOptions>,
     ) {
         this.options = {...DEFAULT_PLOT_OPTIONS, ...options};
         this.ctx = canvas.getContext("2d");
+        this.rObserver = useObserver(this.options.defaultR)
+
+        this.rObserver.onChange(() => this.update() )
     }
 
     get sizes() {
@@ -78,6 +83,13 @@ export default class PlotDrawer {
 
         this.options.step = Math.round(Math.min(this.sizes.xSize, this.sizes.ySize) / 12);
         this.ctx.font = `${this.options.step / 30}em sans-serif`
+
+        this.ctx.clearRect(
+            this.sizes.xMin,
+            this.sizes.yMin,
+            this.sizes.xSize,
+            this.sizes.ySize,
+        )
 
         this._drawShapes()
         this._drawGrid()
