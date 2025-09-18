@@ -25,28 +25,6 @@ function parseChildren(children: Child[]) {
 function parseNode(tag: string, properties: Properties, children: Child[]): Node {
     const el = document.createElement(tag);
 
-    if (properties.model !== undefined) {
-        if (typeof properties.model === 'string') {
-            console.log(properties[properties.model])
-            el.innerText = properties[properties.model];
-        } else {
-            const model: Observer<any> = properties.model;
-            model.onChange((value) => {
-                if (el instanceof HTMLInputElement) {
-                    el.value = value;
-                } else el.innerText = value;
-            })
-        }
-    }
-
-    if (properties.ref !== undefined) {
-        properties.ref.value = el
-    }
-
-    if (properties.innerHTML !== undefined) {
-        el.innerHTML = properties.innerHTML;
-    }
-
     for (const key in properties) {
         const value = properties[key];
 
@@ -67,6 +45,28 @@ function parseNode(tag: string, properties: Properties, children: Child[]): Node
         // } else
         el[key] = properties[key];
 
+    }
+
+    if (properties.model !== undefined) {
+        if (typeof properties.model === 'string') {
+            console.log(properties[properties.model])
+            el.innerText = properties[properties.model];
+        } else {
+            const model: Observer<any> = properties.model;
+            model.onChange((value) => {
+                if (el instanceof HTMLInputElement) {
+                    el.value = value;
+                } else el.innerText = value;
+            })
+        }
+    }
+
+    if (properties.ref !== undefined) {
+        properties.ref.value = el
+    }
+
+    if (properties.innerHTML !== undefined) {
+        el.innerHTML = properties.innerHTML;
     }
 
     parseChildren(children).forEach(child => {

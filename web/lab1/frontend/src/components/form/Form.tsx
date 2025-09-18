@@ -3,7 +3,7 @@ import Input from "./input/Input";
 import Checkbox from "./input/Checkbox";
 import styles from "./Form.module.scss"
 import {createRange} from "../../utils/range";
-import useObserver from "../../observer";
+import useObserver, {Observer} from "../../observer";
 import {MaxConstraint, MinConstraint, RequiredConstraint} from "../../validator/constrains";
 import Validator from "../../validator/validator";
 import {CheckResponse, Coordinates} from "../types";
@@ -11,10 +11,12 @@ import ref from "../../jsx/ref";
 import ApiClient from "../../api/api";
 import {getVar} from "../../utils/context";
 import {TOAST_VARIANTS, ToastStyle} from "../toast/Toast";
+import Loader from "../loader/Loader";
 
 
 export default function Form() {
     const submitBtnRef = ref<HTMLButtonElement>();
+    const loaderVisible = useObserver<boolean>(false)
 
     const formData = useObserver<Partial<Coordinates>>({
         x: new Set(),
@@ -44,6 +46,7 @@ export default function Form() {
 
     function submit(event: SubmitEvent) {
         event.preventDefault();
+        loaderVisible.value = true;
 
         new ApiClient("http://localhost:8000/fcgi-bin/app.jar")
             .post<CheckResponse>("/check", {
@@ -67,9 +70,13 @@ export default function Form() {
                     style: TOAST_VARIANTS.error
                 })
             })
+            .finally(() => {
+                loaderVisible.value = false;
+            })
     }
 
     return <form className={styles.form}>
+        <Loader isVisible={loaderVisible}/>
         <table>
             <tbody>
             <tr>
