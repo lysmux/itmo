@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4afa9311-4dbc-4b7c-9823-bf3d7fde9d92" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../backend/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/fcgi/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/fcgi/Router.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/server/CoordinatesRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/server/CoordinatesRouter.java" afterDir="false" />
+    <list default="true" id="4afa9311-4dbc-4b7c-9823-bf3d7fde9d92" name="Changes" comment="saasas">
+      <change afterPath="$PROJECT_DIR$/src/utils/expression.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/Form.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Form.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loader/Loader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader/Loader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/colors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/themes.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/plot/plotDrawer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/plot/plotDrawer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/plot/shape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/plot/shape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/observer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/observer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toast/Toast.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +36,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="lysmux &lt;kllraz@yandex.ru&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -141,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758059260703</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="saasas">
+      <option name="closed" value="true" />
+      <created>1758223977899</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758223977899</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +169,7 @@
     <MESSAGE value="webpack" />
     <MESSAGE value="jsx btw" />
     <MESSAGE value="эх формочки" />
-    <option name="LAST_COMMIT_MESSAGE" value="эх формочки" />
+    <MESSAGE value="saasas" />
+    <option name="LAST_COMMIT_MESSAGE" value="saasas" />
   </component>
 </project>

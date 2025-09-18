@@ -3,14 +3,14 @@ import useObserver, {Observer} from "../../observer";
 
 const DEFAULT_LABELS = [
     new Label({x: 4, y: 0}, "{R}", {isTemplate: true, evaluateFormula: true}),
-    new Label({x: 2, y: 0}, "{R}/2", {isTemplate: true, evaluateFormula: true}),
+    new Label({x: 2, y: 0}, "{R/2}", {isTemplate: true, evaluateFormula: true}),
     new Label({x: -4, y: 0}, "-{R}", {isTemplate: true, evaluateFormula: true}),
-    new Label({x: -2, y: 0}, "-{R}/2", {isTemplate: true, evaluateFormula: true}),
+    new Label({x: -2, y: 0}, "-{R/2}", {isTemplate: true, evaluateFormula: true}),
 
     new Label({x: 0, y: 4}, "{R}", {isTemplate: true, evaluateFormula: true}),
-    new Label({x: 0, y: 2}, "{R}/2", {isTemplate: true, evaluateFormula: true}),
+    new Label({x: 0, y: 2}, "{R/2}", {isTemplate: true, evaluateFormula: true}),
     new Label({x: 0, y: -4}, "-{R}", {isTemplate: true, evaluateFormula: true}),
-    new Label({x: 0, y: -2}, "-{R}/2", {isTemplate: true, evaluateFormula: true}),
+    new Label({x: 0, y: -2}, "-{R/2}", {isTemplate: true, evaluateFormula: true}),
 ]
 
 const DEFAULT_SHAPES = [
@@ -100,7 +100,7 @@ export default class PlotDrawer {
     draw(shape: Shape, options?: Partial<DrawOptions>) {
         shape.draw(this.ctx, {
             scale: this.options.step,
-            r: this.rObserver.value,
+            R: this.rObserver.value,
             ...options
         })
     }

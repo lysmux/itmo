@@ -1,3 +1,5 @@
+import ExpressionParser from "../../utils/expression";
+
 export interface Position {
     x: number;
     y: number;
@@ -5,12 +7,12 @@ export interface Position {
 
 export interface DrawOptions {
     scale: number;
-    r: number;
+    R: number;
 }
 
 const DEFAULT_DRAW_OPTIONS: DrawOptions = {
     scale: 1,
-    r: null
+    R: null
 }
 
 export abstract class Shape {
@@ -147,25 +149,18 @@ export class Label extends Shape {
         ctx.restore()
     }
 
-    renderText(data: Record<string, any>,): string {
+    renderText(data: Record<string, any>): string {
         if (!this.labelOptions.isTemplate) {
             return this.text;
         }
 
-        const rendered = this.text.replace(/\{(\w+)}/g, (match, key) => {
-            const foundKey = Object.keys(data).find(
-                k => k.toLowerCase() === key.toLowerCase()
-            );
-
-            const value = foundKey ? data[foundKey] : undefined;
-            return value !== undefined ? String(value) : key;
+        return this.text.replace(/\{(.+)}/g, (match, key: string) => {
+            if (this.labelOptions.evaluateFormula) {
+                try {
+                    return new ExpressionParser().evaluate(key, data).toString()
+                } catch (e) {}
+            }
+            return key
         });
-
-        try {
-            if (this.labelOptions.evaluateFormula) return eval(rendered);
-        } catch (error) {
-            // console.log(data, rendered)
-        }
-        return rendered;
     }
 }
