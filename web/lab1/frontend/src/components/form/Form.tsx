@@ -47,15 +47,13 @@ export default function Form() {
 
         new ApiClient("http://localhost:8000/fcgi-bin/app.jar")
             .post<CheckResponse>("/check", {
-                x: Array.from(formData.value.x)[0],
+                x: Array.from(formData.value.x),
                 y: formData.value.y,
-                r: Array.from(formData.value.r)[0]
+                r: Array.from(formData.value.r)
             })
             .then((response) => {
-                const addResult = getVar<({x, y, r}: {x: number, y: number, r: number}, result: CheckResponse) => void>("addResult")
-                addResult({x: Array.from(formData.value.x)[0],
-                    y: formData.value.y,
-                    r: Array.from(formData.value.r)[0]}, response)
+                const addResult = getVar<(result: CheckResponse) => void>("addResult")
+                addResult(response)
             })
             .catch((error) => {
                 const addToast = getVar<(options: {

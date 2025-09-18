@@ -5,31 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4afa9311-4dbc-4b7c-9823-bf3d7fde9d92" name="Changes" comment="эх формочки">
-      <change afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/types.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/observer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/context.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/constrains.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validator/validator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/old/js/validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/old/js/validator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/Form.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Form.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/input/Checkbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/input/Checkbox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/input/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/input/Input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/plot/Plot.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/plot/Plot.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/plot/plotDrawer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/plot/plotDrawer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/Table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toast/Toast.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toast/Toast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jsx/Svg.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Svg.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jsx/observer.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jsx/pragma.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/jsx/pragma.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jsx/ref.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/jsx/ref.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jsx/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/jsx/types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/fcgi/param/parser/ObjectParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/fcgi/param/parser/ObjectParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/server/CoordinatesRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/server/CoordinatesRouter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/server/dto/CheckResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/dev/lysmux/server/dto/CheckResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +114,7 @@
       <workItem from="1758003034525" duration="28490000" />
       <workItem from="1758091746057" duration="17478000" />
       <workItem from="1758135174565" duration="11000" />
-      <workItem from="1758135197127" duration="9479000" />
+      <workItem from="1758135197127" duration="10147000" />
     </task>
     <task id="LOCAL-00001" summary="webpack">
       <option name="closed" value="true" />

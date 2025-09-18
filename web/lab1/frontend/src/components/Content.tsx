@@ -11,17 +11,16 @@ import {CheckResponse} from "./types";
 
 export default function Content() {
     const tableValuesObserver = new ArrayObserver<Record<string, any>>([])
-    setVar("addResult", (
-        {x, y, r}: {x: number, y: number, r: number},
-        result: CheckResponse
-    ) => {
-        tableValuesObserver.value.push({
-            "Время": new Date().toLocaleTimeString(),
-            "X": x,
-            "Y": y,
-            "R": r,
-            "Попадание": result.contains ? "Да" : "Нет",
-            "Время выполнения": `${result.executionTime} нс`,
+    setVar("addResult", (result: CheckResponse) => {
+        result.contains.forEach((item) => {
+            tableValuesObserver.value.push({
+                "Время": new Date().toLocaleTimeString(),
+                "X": item.x,
+                "Y": item.y,
+                "R": item.r,
+                "Попадание": item.contains ? "Да" : "Нет",
+                "Время выполнения": `${result.executionTime} нс`,
+            })
         })
     })
 

@@ -3,11 +3,13 @@ package dev.lysmux.server;
 import dev.lysmux.fcgi.Router;
 import dev.lysmux.fcgi.annotations.Param;
 import dev.lysmux.fcgi.annotations.RouteMapping;
+import dev.lysmux.fcgi.dto.Response;
 import dev.lysmux.fcgi.enums.HTTPMethod;
 import dev.lysmux.fcgi.enums.HTTPParamType;
 import dev.lysmux.server.dto.CheckResponse;
 import dev.lysmux.server.dto.Coordinates;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CoordinatesRouter extends Router {
@@ -21,14 +23,21 @@ public class CoordinatesRouter extends Router {
     public CheckResponse check(@Param(type = HTTPParamType.JSON) Coordinates coordinates) {
         long startTime = System.nanoTime();
 
-        boolean contains = checkers.stream()
-                .anyMatch(checker -> checker.contains(
-                        coordinates.x(),
-                        coordinates.y(),
-                        coordinates.r()
-                ));
+        List<CheckResponse.ContainsResponse> responses = new ArrayList<>();
 
-        return new CheckResponse(contains, (System.nanoTime()) - startTime);
+        for (double x : coordinates.x()) {
+            for (double r : coordinates.r()) {
+                boolean contains = checkers.stream()
+                        .anyMatch(checker -> checker.contains(
+                                x,
+                                coordinates.y(),
+                                r
+                        ));
+                responses.add(new CheckResponse.ContainsResponse(x, coordinates.y(), r, contains));
+            }
+        }
+
+        return new CheckResponse(responses.toArray(CheckResponse.ContainsResponse[]::new), System.nanoTime() - startTime);
     }
 
     private static boolean checkInSquare(double x, double y, double r) {

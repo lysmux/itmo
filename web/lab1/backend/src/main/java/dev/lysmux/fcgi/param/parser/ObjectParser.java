@@ -7,7 +7,9 @@ import dev.lysmux.fcgi.param.parser.exception.FieldRequiredException;
 import dev.lysmux.fcgi.param.parser.exception.InvalidValueException;
 import dev.lysmux.fcgi.param.parser.exception.ValidationException;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.RecordComponent;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 
@@ -92,13 +94,13 @@ public class ObjectParser {
                 param = parseRecord(paramType, (MapParameter<?>) parameter);
             }
         } else if (paramType.isArray()) {
-            if (parameter instanceof ArrayParameter) {
-                ArrayParameter<?> arrayParameter = (ArrayParameter<?>) parameter;
+            if (parameter instanceof ArrayParameter<?> arrayParameter) {
+                int arraySize = arrayParameter.get().size();
+                param = (T) Array.newInstance(paramType.getComponentType(), arraySize);
 
-                param = (T) arrayParameter.get().stream()
-                        .map(p -> parseObject(paramName, paramType.getComponentType(), p))
-                        .toArray();
-
+                for (int i = 0; i < arraySize; i++) {
+                    Array.set(param, i, parseObject(paramName, paramType.getComponentType(), arrayParameter.get().get(i)));
+                }
             }
         } else {
             if (parameter instanceof SimpleParameter) {
