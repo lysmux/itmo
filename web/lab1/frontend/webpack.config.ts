@@ -23,7 +23,10 @@ export default (env: EnvVars) => {
             clean: true
         },
         plugins: [
-            new HtmlWebpackPlugin({template: path.resolve(__dirname, "public/index.html")}),
+            new HtmlWebpackPlugin({
+                template: path.resolve(__dirname, "public/index.html"),
+                favicon: path.resolve(__dirname, "src/assets/favicon.ico")
+            }),
             new MiniCssExtractPlugin({filename: "[name].[contenthash:8].css"})
         ],
         module: {
