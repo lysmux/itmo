@@ -25,12 +25,10 @@
   z-index: 100;
 }
 
-.plot-block {
+.block {
   height: 50vh;
-}
-
-.form-block {
-  height: 50vh;
+  border-radius: 16px;
+  padding: 12px;
 
   @include themify {
     background: themed(blockBackround);
@@ -38,6 +36,5 @@
 }
 
 .table-block {
-  height: 300px;
-  color: white;
+  height: 37vh; // костыль))
 }

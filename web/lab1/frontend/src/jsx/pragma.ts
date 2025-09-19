@@ -26,25 +26,7 @@ function parseNode(tag: string, properties: Properties, children: Child[]): Node
     const el = document.createElement(tag);
 
     for (const key in properties) {
-        const value = properties[key];
-
-        // if (typeof value === "function") {
-        //     el[key] = (event: Event) => {
-        //         // Определяем сигнатуру функции и вызываем accordingly
-        //         const functionLength = value.length;
-        //
-        //         if (value.length === 1) {
-        //             return value({
-        //                 event: event,
-        //                 item: properties['data-item'],
-        //             });
-        //         }
-        //
-        //         return value()
-        //     };
-        // } else
         el[key] = properties[key];
-
     }
 
     if (properties.model !== undefined) {

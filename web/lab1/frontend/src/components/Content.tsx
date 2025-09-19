@@ -15,11 +15,9 @@ export default function Content() {
     setVar("plotDrawer", plotDrawer)
 
     const tableValuesObserver = new ArrayObserver<Record<string, any>>([])
-
     const resultsObs = getVar<ArrayObserver<CheckResponse>>("resultsObs")
     resultsObs.onChange(results => {
         tableValuesObserver.value.length = 0
-
         results.forEach(result => {
             result.contains.forEach(item => {
                 tableValuesObserver.value.push({
@@ -49,10 +47,10 @@ export default function Content() {
         <tbody>
         <tr>
             <td>
-                <div className={styles.plotBlock}><Plot drawer={plotDrawer}/></div>
+                <div className={styles.block}><Plot drawer={plotDrawer}/></div>
             </td>
             <td>
-                <div className={styles.formBlock}><Form/></div>
+                <div className={styles.block}><Form/></div>
             </td>
         </tr>
         <tr>
