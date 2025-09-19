@@ -35,18 +35,23 @@
   position: absolute;
   height: 40px;
   width: 100px;
-  background-color: #000;
   border-radius: 20px;
   place-items: center;
-  color: white;
   top: calc(50% - 20px);
   right: 20px;
+
+  @include themify {
+    color: themed(themeIconColor);
+    background: themed(themeSwitcherBackground);
+  }
 
   input[type="radio"] {
     display: none;
 
-    &:checked + label {
-      color: black;
+    @include themify {
+      &:checked + label {
+        color: themed(themeCheckedIconColor);
+      }
     }
   }
 
@@ -55,21 +60,6 @@
   }
 }
 
-.theme-indicator {
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  left: calc(25% + 5px);
-  top: calc(50% - (25px / 2) + 0.75px);
-  background: white;
-  border-radius: 50%;
-  z-index: 50;
-  transition: all 0.5s ease;
-}
-
-.dark {
-  left: calc(50% + (5px - ((25px - 22px)/2)));
-}
 
 .theme-radio {
   z-index: 100;

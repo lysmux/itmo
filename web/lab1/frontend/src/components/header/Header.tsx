@@ -8,20 +8,20 @@ import Moon from "../../assets/icons/moon.svg?source"
 import ref from "../../jsx/ref";
 
 export default function Header() {
-    // const themeIndicatorRef = ref<HTMLDivElement>()
-    //
-    // const themeObs = getVar<Observer<string>>("themeObs")
-    // function setTheme(theme: string) {
-    //     themeObs.value = theme
-    //
-    //     switch (theme) {
-    //         case "dark":
-    //             themeIndicatorRef.value.classList.add(styles.dark)
-    //             break
-    //         case "light":
-    //             themeIndicatorRef.value.classList.remove(styles.dark)
-    //     }
-    // }
+    const lightSelect = ref<HTMLInputElement>()
+    const darkSelect = ref<HTMLInputElement>()
+
+    const themeObs = getVar<Observer<string>>("themeObs")
+    window.addEventListener("load",  () => {
+        const isDark = themeObs.value === "dark"
+
+        lightSelect.value.checked = !isDark
+        darkSelect.value.checked = isDark
+    })
+
+    function setTheme(theme: string) {
+        themeObs.value = theme
+    }
 
     return <header className={styles.header}>
         <table>
@@ -37,21 +37,21 @@ export default function Header() {
             </tr>
             </tbody>
         </table>
-        {/*<div className={styles.themeSwitcher}>*/}
-        {/*    <div ref={themeIndicatorRef} className={styles.themeIndicator}></div>*/}
-        {/*    <div className={styles.themeRadio}>*/}
-        {/*        <input type="radio" id="light-theme" name="theme" checked*/}
-        {/*               onchange={() => setTheme("light")}/>*/}
-        {/*        <label htmlFor="light-theme">*/}
-        {/*            <Svg icon={Sun} className={styles.themeIcon}/>*/}
-        {/*        </label>*/}
-        {/*    </div>*/}
-        {/*    <div className={styles.themeRadio}>*/}
-        {/*        <input type="radio" id="dark-theme" name="theme" onchange={() => setTheme("dark")}/>*/}
-        {/*        <label htmlFor="dark-theme">*/}
-        {/*            <Svg icon={Moon} className={styles.themeIcon}/>*/}
-        {/*        </label>*/}
-        {/*    </div>*/}
-        {/*</div>*/}
+        <div className={styles.themeSwitcher}>
+            <div className={styles.themeRadio}>
+                <input ref={lightSelect} type="radio" id="light-theme" name="theme"
+                       onchange={() => setTheme("light")}/>
+                <label htmlFor="light-theme">
+                    <Svg icon={Sun} className={styles.themeIcon}/>
+                </label>
+            </div>
+            <div className={styles.themeRadio}>
+                <input ref={darkSelect} type="radio" id="dark-theme" name="theme"
+                       onchange={() => setTheme("dark")}/>
+                <label htmlFor="dark-theme">
+                    <Svg icon={Moon} className={styles.themeIcon}/>
+                </label>
+            </div>
+        </div>
     </header>
 }

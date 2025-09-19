@@ -5,6 +5,10 @@ $themes: (
         light: (
                 background: linear-gradient(180deg, #f0f8ff 0%, #e6f2ff 60%),
 
+                themeCheckedIconColor: orange,
+                themeIconColor: white,
+                themeSwitcherBackground: rgba(167, 139, 250, .8),
+
                 headerBackground: linear-gradient(135deg, rgba(167, 139, 250, 1), rgba(103, 232, 249, 1)),
                 headerTitleColor: #000000,
                 headerSubTitleColor: rgba(0, 0, 0, 0.8),
@@ -48,6 +52,10 @@ $themes: (
         ),
         dark: (
                 background: linear-gradient(180deg, #031022 0%, #071226 60%),
+
+                themeCheckedIconColor: orange,
+                themeIconColor: white,
+                themeSwitcherBackground: rgba(124, 58, 237, 0.12),
 
                 headerBackground: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(6, 182, 212, 0.12)),
                 headerTitleColor: #e6eef8,

@@ -75,7 +75,7 @@ export default function Form() {
         event.preventDefault();
         loaderVisible.value = true;
 
-        new ApiClient("http://localhost:8000/fcgi-bin/app.jar")
+        new ApiClient("http://localhost:5288/fcgi-bin/app.jar")
             .post<CheckResponse>("/check", {
                 x: Array.from(formData.value.x),
                 y: formData.value.y,
