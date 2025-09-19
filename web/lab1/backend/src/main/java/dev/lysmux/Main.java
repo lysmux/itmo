@@ -13,18 +13,6 @@ public class Main {
         AppRouter appRouter = new AppRouter();
         appRouter.includeRouter(new CoordinatesRouter());
 
-//        System.out.println(
-//                appRouter.handle(new Request(
-//                        "1.1.1.1:80",
-//                        "server.com",
-//                        HTTPMethod.POST,
-//                        "/check",
-//                        new HashMap<>(),
-//                        "x=1&y=2&r=3",
-//                        "{\"x\": 1, \"y\": 2, \"r\": 1}"
-//                ))
-//        );;
-
         FCGIInterface fcgiInterface = new FCGIInterface();
         while (fcgiInterface.FCGIaccept() >= 0) {
             Request request = Request.fromFCGI();

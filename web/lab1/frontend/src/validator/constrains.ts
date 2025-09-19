@@ -18,7 +18,7 @@ export class MinConstraint extends Constraint {
     }
 
     getError() {
-        return `Value must be > ${this.minValue}`
+        return `Значение должно быть ${this.strict ? ">" : ">="} ${this.minValue}`
     }
 }
 
@@ -36,7 +36,7 @@ export class MaxConstraint extends Constraint {
     }
 
     getError() {
-        return `Value must be < ${this.maxValue}`
+        return `Значение должно быть ${this.strict ? "<" : "<="} ${this.maxValue}`
     }
 }
 
@@ -51,6 +51,6 @@ export class RequiredConstraint extends Constraint {
     }
 
     getError() {
-        return `Field required`
+        return `Поле обязательно`
     }
 }

@@ -60,6 +60,12 @@ label {
   &:disabled {
     cursor: not-allowed;
   }
+
+  &:hover:disabled + .errors-block {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) translateX(-50%);
+  }
 }
 
 .action {
@@ -89,5 +95,35 @@ label {
     &:hover:not(:disabled) {
       box-shadow: 0 10px 25px themed(dangerButtonShadowColor);
     }
+  }
+}
+
+.check-container {
+  position: relative;
+}
+
+.errors-block {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+
+  font-size: 0.6em;
+  text-align: left;
+
+  @include themify {
+    color: themed(formErrorsBlockColor);
+    background: themed(formErrorsBlockBackground);
+  }
+
+  border-radius: 16px;
+  padding: 16px;
+  bottom: 100%;
+  left: 50%;
+
+  transform: translateX(-50%) translateY(10px);
+  transition: all 0.3s ease;
+
+  span {
+    font-weight: 700;
   }
 }

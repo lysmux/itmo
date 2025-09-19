@@ -23,6 +23,8 @@ $themes: (
 
                 formBlockBackground: linear-gradient(180deg, rgba(210, 220, 230, 0.8) 0%, rgba(190, 205, 220, 0.9) 100%),
                 formTitleColor: #6c5ce7,
+                formErrorsBlockBackground: rgba(172, 134, 255, 0.6),
+                formErrorsBlockColor: #ff506a,
 
                 inputBackground: rgba(190, 200, 215, 0.5),
                 inputBorderColor: rgba(255, 255, 255, 0.15),
@@ -65,6 +67,8 @@ $themes: (
 
                 formBlockBackground: linear-gradient(180deg, rgba(25, 40, 65, 0.7) 0%, rgba(20, 35, 60, 0.8) 100%),
                 formTitleColor: #6c5ce7,
+                formErrorsBlockBackground: rgba(39, 56, 93, 0.9),
+                formErrorsBlockColor: #ff506a,
 
                 inputBackground: rgba(40, 55, 80, 0.4),
                 inputBorderColor: rgba(255, 255, 255, 0.15),

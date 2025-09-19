@@ -17,7 +17,9 @@ import PlotDrawer from "../plot/plotDrawer";
 
 export default function Form() {
     const submitBtnRef = ref<HTMLButtonElement>();
+    const errorsBlockRef = ref<HTMLDivElement>();
     const loaderVisible = useObserver<boolean>(false)
+
     const plotDrawer = getVar<Observer<PlotDrawer>>("plotDrawer");
     const resultsObs = getVar<ArrayObserver<CheckResponse>>("resultsObs")
 
@@ -47,6 +49,22 @@ export default function Form() {
         ],
     }
     const validator = new Validator(formData, rules)
+    errorsBlockRef.onChange((block) => {
+        if (block === null) return
+
+        validator.errors.onChange(() => {
+            block.innerHTML = ""
+            const  errors = validator.errors.value
+
+            for (let field in errors) {
+                for (let error of errors[field]) {
+                    block.appendChild(
+                        <p>{<span>{field}</span>}: {error.error}</p>
+                    )
+                }
+            }
+        })
+    })
 
     submitBtnRef.onChange(btn => {
         if (btn === null) return;
@@ -137,7 +155,12 @@ export default function Form() {
             </tr>
             <tr>
                 <td colSpan="2">
-                    <button ref={submitBtnRef} type="submit" onclick={submit} className={`${styles.btn} ${styles.action}`}>Проверить</button>
+                    <div className={styles.checkContainer}>
+                        <button ref={submitBtnRef} type="submit" onClick={submit}
+                                className={`${styles.btn} ${styles.action}`}>Проверить
+                        </button>
+                        <div ref={errorsBlockRef} className={styles.errorsBlock}/>
+                    </div>
                 </td>
             </tr>
             <tr>
