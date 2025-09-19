@@ -91,7 +91,7 @@ export default function Form() {
                     style: ToastStyle;
                 }) => void>("addToast")
                 addToast({
-                    title: `API ERROR | ${error.status}`,
+                    title: error.status ? `API ERROR | ${error.status}` : "API ERROR",
                     message: error.responce ? error.response.text : error.message,
                     style: TOAST_VARIANTS.error
                 })
