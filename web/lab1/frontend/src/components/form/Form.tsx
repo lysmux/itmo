@@ -156,7 +156,7 @@ export default function Form() {
             <tr>
                 <td colSpan="2">
                     <div className={styles.checkContainer}>
-                        <button ref={submitBtnRef} type="submit" onClick={submit}
+                        <button ref={submitBtnRef} type="submit" onclick={submit}
                                 className={`${styles.btn} ${styles.action}`}>Проверить
                         </button>
                         <div ref={errorsBlockRef} className={styles.errorsBlock}/>
