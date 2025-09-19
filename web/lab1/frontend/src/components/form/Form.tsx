@@ -137,7 +137,7 @@ export default function Form() {
             </tr>
             <tr>
                 <td colSpan="2">
-                    <button ref={submitBtnRef} type="submit" onclick={submit} className={styles.btn}>Проверить</button>
+                    <button ref={submitBtnRef} type="submit" onclick={submit} className={`${styles.btn} ${styles.action}`}>Проверить</button>
                 </td>
             </tr>
             <tr>

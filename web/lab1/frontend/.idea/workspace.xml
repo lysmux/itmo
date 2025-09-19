@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4afa9311-4dbc-4b7c-9823-bf3d7fde9d92" name="Changes" comment="saasas">
-      <change afterPath="$PROJECT_DIR$/src/utils/expression.ts" afterDir="false" />
+    <list default="true" id="4afa9311-4dbc-4b7c-9823-bf3d7fde9d92" name="Changes" comment="add favicon">
+      <change afterPath="$PROJECT_DIR$/src/assets/icons/moon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/icons/sun.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/colors.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/themes.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/plot/plotDrawer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/plot/plotDrawer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/plot/shape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/plot/shape.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/toast/Toast.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toast/Toast.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/Form.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Form.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/input/Checkbox.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/input/Checkbox.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/input/Input.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/input/Input.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/Header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table/Table.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/Table.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/themes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/themes.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +58,16 @@
     &quot;assignee&quot;: &quot;lysmux&quot;
   }
 }</component>
+  <component name="GitRewordedCommitMessages">
+    <option name="commitMessagesMapping">
+      <RewordedCommitMessageMapping>
+        <option name="originalMessage" value="abc" />
+        <option name="rewordedMessage" value="some upd :)" />
+      </RewordedCommitMessageMapping>
+    </option>
+    <option name="currentCommit" value="1" />
+    <option name="onto" value="935af33da8da567f6241c1bcc332a3eb29b207e6" />
+  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/lysmux/itmo&quot;,
@@ -67,31 +86,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;web&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/itmo/web/lab1/frontend&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\itmo\\web\\lab1\\frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "web",
+    "last_opened_file_path": "D:/itmo/web/lab1/frontend/src/assets/icons",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "watcher.settings",
+    "ts.external.directory.path": "D:\\itmo\\web\\lab1\\frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\itmo\web\lab1\frontend\src\components\form\input" />
       <recent name="D:\itmo\web\lab1\frontend\src\assets\icons" />
       <recent name="D:\itmo\web\lab1\frontend\src\assets" />
+      <recent name="D:\itmo\web\lab1\frontend\src\components\form\input" />
       <recent name="D:\itmo\web\lab1\frontend\public\fonts" />
       <recent name="D:\itmo\web\lab1\frontend" />
     </key>
@@ -148,7 +167,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758223977899</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="expression parser">
+      <option name="closed" value="true" />
+      <created>1758228249587</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758228249587</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add favicon">
+      <option name="closed" value="true" />
+      <created>1758228737153</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1758228737153</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,7 +194,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="web" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -169,7 +216,11 @@
     <MESSAGE value="webpack" />
     <MESSAGE value="jsx btw" />
     <MESSAGE value="эх формочки" />
-    <MESSAGE value="saasas" />
-    <option name="LAST_COMMIT_MESSAGE" value="saasas" />
+    <MESSAGE value="что-то изменил" />
+    <MESSAGE value="expression parser" />
+    <MESSAGE value="что-то изменил" />
+    <MESSAGE value="some upd :)" />
+    <MESSAGE value="add favicon" />
+    <option name="LAST_COMMIT_MESSAGE" value="add favicon" />
   </component>
 </project>

@@ -1,37 +1,36 @@
-@keyframes select {
-
-}
+@use "../../../themes" as *;
 
 .checkbox {
-  --bgColor: #828282;
-  --color: #495057;
-  --checkedBgColor: #333333;
-  --checkedColor: #fff;
-
   display: block;
   width: 100%;
-  height: 45px;
+  height: 50px;
   position: relative;
 
   input[type="checkbox"] {
     display: none;
 
-    &:checked + label {
-      background-color: var(--checkedBgColor);
-      background: linear-gradient(145deg, #6c5ce7, #a29bfe);
-      color: var(--checkedColor);
-      border-color: #6c5ce7;
+    @include themify {
+      &:checked + label {
+        background:  themed(inputCheckedBackground);
+        border-color: themed(inputCheckedBorderColor);
+      }
     }
   }
 
   label {
-    background-color: var(--bgColor);
-    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
-    color: var(--color);
+    @include themify {
+      border: 2px solid themed(inputBorderColor);
+      background: themed(inputBackground);
+      color: themed(inputColor);
+
+      &:hover {
+        border-color: themed(inputFocusBorderColor);
+      }
+    }
+
     padding: 4px 11px;
     cursor: pointer;
     border-radius: 12px;
-    border: 2px solid #dee2e6;
     height: 100%;
     display: flex;
     align-items: center;
@@ -39,7 +38,6 @@
     transition: all 0.3s ease;
 
     &:hover {
-      border-color: #6c5ce7;
       transform: translateY(-1px);
     }
   }

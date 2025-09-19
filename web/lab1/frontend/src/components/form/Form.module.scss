@@ -1,11 +1,7 @@
+@use "../../themes" as *;
+
 .form {
-  --bgColor: rgba(255, 255, 255, 0.95);
-  --blockBgColor: white;
-
   font-size: 1.5em;
-
-  color: black;
-  background-color: var(--bgColor);
   position: relative;
   height: 100%;
 
@@ -16,11 +12,14 @@
   }
 
   .block {
-    background-color: var(--blockBgColor);
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     padding: 16px;
     width: 100%;
+
+    @include themify {
+      background: themed(formBlockBackground);
+    }
   }
 }
 
@@ -34,8 +33,11 @@
 h1 {
   font-size: 1em;
   font-weight: 700;
-  color: #6c5ce7;
   margin-bottom: 10px;
+
+  @include themify {
+    color: themed(formTitleColor);
+  }
 }
 
 label {
@@ -43,11 +45,9 @@ label {
 }
 
 .btn {
-  background: linear-gradient(145deg, #6c5ce7, #a29bfe);
-  color: white;
   cursor: pointer;
   border-radius: 12px;
-  border: none  ;
+  border: none;
   font-weight: 700;
   font-size: 18px;
   padding: 16px 20px;
@@ -55,18 +55,39 @@ label {
 
   &:hover:not(:disabled) {
     transform: translateY(-2%);
-    box-shadow: 0 10px 25px rgba(108, 92, 231, 0.3);
   }
 
   &:disabled {
     cursor: not-allowed;
-    background: linear-gradient(145deg, rgba(108, 92, 231, 0.65), rgba(162, 155, 254, 0.65));
+  }
+}
+
+.action {
+  @include themify {
+    color: themed(actionButtonColor);
+    background: themed(actionButtonBackground);
+
+    &:disabled {
+      background: themed(actionButtonDisabledBackground);
+    }
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 10px 25px themed(actionButtonShadowColor);
+    }
   }
 }
 
 .danger {
-  background: linear-gradient(145deg, #ff4757, #ff6b81);
-  &:disabled {
-    background: linear-gradient(145deg, rgba(255, 71, 87, 0.5), rgba(255, 107, 129, 0.65));
+  @include themify {
+    color: themed(dangerButtonColor);
+    background: themed(dangerButtonBackground);
+
+    &:disabled {
+      background: themed(dangerButtonDisabledBackground);
+    }
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 10px 25px themed(dangerButtonShadowColor);
+    }
   }
 }

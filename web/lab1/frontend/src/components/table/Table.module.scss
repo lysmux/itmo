@@ -1,18 +1,13 @@
+@use "../../themes" as *;
+
 .container {
-  --headerColor: #ffffff;
-  --headerBgColor: #2c2b2b;
-  --headerUnderlineColor: #a5b9c5;
-
-  --rowColor: #ffffff;
-  --rowBgColor: #16151b;
-  --rowHoverColor: black;
-  --rowHoverBgColor: white;
-  --rowUnderlineColor: #a5b9c5;
-
   height: 100%;
   overflow-y: auto;
   border-radius: 10px;
-  background-color: var(--rowBgColor);
+
+  @include themify {
+    background: themed(tableRowBackground);
+  }
 }
 
 .table {
@@ -26,9 +21,6 @@
   }
 
   thead {
-    background: var(--headerBgColor);
-    color: var(--headerColor);
-
     font-weight: bold;
     font-size: 1.2rem;
 
@@ -36,25 +28,37 @@
     top: 0;
 
     td {
-      border-bottom: 2px solid var(--headerUnderlineColor);
+      height: 70px;
+      border-bottom: 2px solid;
+    }
+
+    @include themify {
+      background: themed(tableHeaderBackground);
+      color: themed(tableHeaderColor);
+
+      td {
+        border-bottom-color: themed(tableHeaderUnderlineColor);
+      }
     }
   }
 
   tbody {
-    tr:not(:last-child) {
-      td {
-        border-bottom: 1px solid var(--rowUnderlineColor);
+    @include themify {
+      tr:not(:last-child) {
+        td {
+          border-bottom: 1px solid themed(tableRowUnderlineColor);
+        }
       }
-    }
 
-    tr {
-      background: var(--rowBgColor);
-      color: var(--rowColor);
-    }
+      tr {
+        background: themed(tableRowBackground);
+        color: themed(tableRowColor);
+      }
 
-    tr:hover {
-      background: var(--rowHoverBgColor);
-      color: var(--rowHoverColor);
+      tr:hover {
+        background: themed(tableRowHoverBackground);
+        color: themed(tableRowHoverColor);
+      }
     }
   }
 }
