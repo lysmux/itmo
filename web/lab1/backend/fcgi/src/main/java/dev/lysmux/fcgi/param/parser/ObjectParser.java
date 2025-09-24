@@ -9,7 +9,6 @@ import dev.lysmux.fcgi.param.parser.exception.ValidationException;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.RecordComponent;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 

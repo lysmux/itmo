@@ -1,4 +1,4 @@
-package dev.lysmux.server.dto;
+package dev.lysmux.server.api.dto;
 
 public record Coordinates(
         double[] x,
