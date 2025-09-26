@@ -3,6 +3,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import webpack from "webpack";
 import type {Configuration as DevServerConfiguration} from "webpack-dev-server";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CopyWebpackPlugin  from "copy-webpack-plugin";
 
 interface EnvVars {
     mode: webpack.Configuration["mode"];
@@ -27,7 +28,15 @@ export default (env: EnvVars) => {
                 template: path.resolve(__dirname, "public/index.html"),
                 favicon: path.resolve(__dirname, "src/assets/favicon.ico")
             }),
-            new MiniCssExtractPlugin({filename: "[name].[contenthash:8].css"})
+            new MiniCssExtractPlugin({filename: "[name].[contenthash:8].css"}),
+            new CopyWebpackPlugin({
+                patterns: [
+                    {
+                        from: path.resolve(__dirname, 'static'),
+                        noErrorOnMissing: true,
+                    },
+                ],
+            }),
         ],
         module: {
             rules: [
@@ -77,7 +86,7 @@ export default (env: EnvVars) => {
         },
         devServer: {
             port: env.port ?? 5000,
-            open: true
+            open: false
         }
     }
 

@@ -12,6 +12,7 @@
   "devDependencies": {
     "@types/node": "^24.3.3",
     "@types/superagent": "^8.1.9",
+    "@types/three": "^0.180.0",
     "@types/webpack": "^5.28.5",
     "@types/webpack-dev-server": "^4.7.1",
     "css-loader": "^7.1.2",
@@ -28,6 +29,9 @@
     "webpack-dev-server": "^5.2.2"
   },
   "dependencies": {
-    "superagent": "^10.2.3"
+    "@tweenjs/tween.js": "^25.0.0",
+    "copy-webpack-plugin": "^13.0.1",
+    "superagent": "^10.2.3",
+    "three": "^0.180.0"
   }
 }

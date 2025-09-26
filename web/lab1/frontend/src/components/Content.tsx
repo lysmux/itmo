@@ -11,8 +11,8 @@ import {CheckResponse} from "./types";
 import PlotDrawer from "./plot/plotDrawer";
 
 export default function Content() {
-    const plotDrawer = useObserver<PlotDrawer>()
-    setVar("plotDrawer", plotDrawer)
+    const radiusObs = useObserver<number>()
+    setVar("radiusObs", radiusObs)
 
     const tableValuesObserver = new ArrayObserver<Record<string, any>>([])
     const resultsObs = getVar<ArrayObserver<CheckResponse>>("resultsObs")
@@ -47,7 +47,7 @@ export default function Content() {
         <tbody>
         <tr>
             <td>
-                <div className={styles.block}><Plot drawer={plotDrawer}/></div>
+                <div className={styles.block}><Plot radiusObs={radiusObs}/></div>
             </td>
             <td>
                 <div className={styles.block}><Form/></div>

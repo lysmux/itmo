@@ -20,7 +20,7 @@ export default function Form() {
     const errorsBlockRef = ref<HTMLDivElement>();
     const loaderVisible = useObserver<boolean>(false)
 
-    const plotDrawer = getVar<Observer<PlotDrawer>>("plotDrawer");
+    const radiusObs = getVar<Observer<number>>("radiusObs");
     const resultsObs = getVar<ArrayObserver<CheckResponse>>("resultsObs")
 
     const formData = useObserver<Partial<Coordinates>>({
@@ -32,7 +32,7 @@ export default function Form() {
         let value: number = null
         if (data.r.size == 1) value = data.r.values().next().value
 
-        plotDrawer.value.rObserver.value = value
+        radiusObs.value = value
     })
 
     const rules = {
