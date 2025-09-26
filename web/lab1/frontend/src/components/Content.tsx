@@ -8,7 +8,6 @@ import useObserver, {ArrayObserver} from "../observer";
 import ref from "../jsx/ref";
 import {getVar, setVar} from "../utils/context";
 import {CheckResponse} from "./types";
-import PlotDrawer from "./plot/plotDrawer";
 
 export default function Content() {
     const radiusObs = useObserver<number>()

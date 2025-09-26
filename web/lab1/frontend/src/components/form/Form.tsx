@@ -12,7 +12,6 @@ import ApiClient from "../../api/api";
 import {getVar} from "../../utils/context";
 import {TOAST_VARIANTS, ToastStyle} from "../toast/Toast";
 import Loader from "../loader/Loader";
-import PlotDrawer from "../plot/plotDrawer";
 
 
 export default function Form() {
@@ -145,9 +144,15 @@ export default function Form() {
                 <td colSpan="2">
                     <div className={styles.block}>
                         <h1>Y</h1>
-                        <Input type="number" placeholder="Введите Y" onInput={
-                            value => {
-                                formData.value.y = value === '' ? null : Number(value);
+                        <Input type="text" maxLength={5} placeholder="Введите Y" onInput={
+                            event => {
+                                const target = event.target as HTMLInputElement;
+                                const number = Number(target.value)
+                                if (isNaN(number)) {
+                                    target.value = target.value.slice(0, target.value.length -1);
+                                }
+
+                                formData.value.y = isNaN(number) ? null : number;
                             }
                         }/>
                     </div>
