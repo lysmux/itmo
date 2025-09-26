@@ -20,7 +20,7 @@ export default function Content() {
         results.forEach(result => {
             result.checks.forEach(item => {
                 tableValuesObserver.value.push({
-                    "Время": result.time,
+                    "Время": new Date(result.time).toLocaleTimeString(),
                     "X": item.x,
                     "Y": item.y,
                     "R": item.r,
