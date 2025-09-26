@@ -7,22 +7,34 @@ import {Sky} from "three/examples/jsm/objects/Sky";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import {Group, Tween, Easing} from '@tweenjs/tween.js'
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
-import { Line2 } from "three/examples/jsm/lines/Line2.js";
-import { LineMaterial } from "three/examples/jsm/lines/LineMaterial.js";
-import { LineGeometry } from "three/examples/jsm/lines/LineGeometry";
+import {Line2} from "three/examples/jsm/lines/Line2.js";
+import {LineMaterial} from "three/examples/jsm/lines/LineMaterial.js";
+import {LineGeometry} from "three/examples/jsm/lines/LineGeometry";
+import {TextGeometry} from "three/examples/jsm/geometries/TextGeometry";
+import {FontLoader} from "three/examples/jsm/loaders/FontLoader";
 
 const SCALE = 2
 const SHOW_HELICOPTER_PATH = false
 
-const LINE_COLOR = "green";
-const PAINT_COLOR ="green";
-const EXTRUDE_COLOR = "blue"
-const EXTRUDE_EDGE_COLOR = "red"
+const LINE_COLOR = "#007e00";
+const PAINT_COLOR = "#007e00";
+const EXTRUDE_COLOR = "#0000ff"
+const EXTRUDE_EDGE_COLOR = "#ff0000"
+const LABEL_COLOR = "#ff6a00"
+
+const LABEL_FONT_URL = "fonts/helvetiker_regular.typeface.json"
+
 const LINE_POINTS_COUNT = 500
 
 const HELICOPTER_OFFSET_X = 0.8
 const HELICOPTER_OFFSET_Z = 0.8
 
+const LABEL_POSITIONS = [
+    new THREE.Vector3(1, 0),
+    new THREE.Vector3(-1, 0),
+    new THREE.Vector3(0, 1),
+    new THREE.Vector3(0, -1)
+]
 
 interface PlotProps {
     radiusObs?: Observer<number>;
@@ -40,12 +52,16 @@ export default function Plot({radiusObs = useObserver(2)}: PlotProps) {
     // materials
     const extrudeMaterial = new THREE.MeshBasicMaterial({color: EXTRUDE_COLOR})
     const paintMaterial = new THREE.MeshBasicMaterial({color: PAINT_COLOR})
-    const lineMaterial = new THREE.MeshBasicMaterial({ color: LINE_COLOR });
-    const helicopterPathMaterial = new THREE.LineBasicMaterial({ color: "red" });
+    const lineMaterial = new THREE.MeshBasicMaterial({color: LINE_COLOR});
+    const helicopterPathMaterial = new THREE.LineBasicMaterial({color: "red"});
     const edgeMaterial = new LineMaterial({
         color: EXTRUDE_EDGE_COLOR,
         linewidth: 3,
         worldUnits: false,
+    });
+    const labelMaterial = new THREE.MeshPhongMaterial({
+        color: LABEL_COLOR,
+        shininess: 100
     });
     // materials
 
@@ -54,7 +70,7 @@ export default function Plot({radiusObs = useObserver(2)}: PlotProps) {
     camera.position.z = 8
     camera.position.x = 3
 
-    scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
+    scene.fog = new THREE.Fog(0xcccccc, 10, 12);
 
     // Light
     const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
@@ -87,6 +103,39 @@ export default function Plot({radiusObs = useObserver(2)}: PlotProps) {
     scene.add(gridHelperX, gridHelperY, gridHelperZ);
     // Coords helper
 
+    // Text
+
+    const labelsGroup = new THREE.Group();
+    const fontLoader = new FontLoader();
+    fontLoader.load(LABEL_FONT_URL, function (font) {
+        radiusObs.onChange(radius => {
+            labelsGroup.clear()
+
+            const text = radius ? radius.toString() : "R";
+            const textGeometry = new TextGeometry(text, {
+                font: font,
+                size: 0.3,
+                depth: 0.2,
+                curveSegments: 12,
+                bevelEnabled: false
+            });
+
+            textGeometry.computeBoundingBox();
+            const textWidth = textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x;
+            textGeometry.translate(-textWidth / 2, 0, 0);
+
+            LABEL_POSITIONS.forEach(pos => {
+                const textMesh = new THREE.Mesh(textGeometry, labelMaterial);
+                textMesh.position.copy(pos.clone().multiplyScalar(SCALE))
+                textMesh.position.x *= 1.1 // смещаем, чтобы не находилось внутри фигуры
+
+                labelsGroup.add(textMesh);
+            })
+        })
+    });
+    scene.add(labelsGroup)
+    // Text
+
     // Shape
     const shape = new THREE.Shape();
     shape.moveTo(0, 0);
@@ -101,6 +150,7 @@ export default function Plot({radiusObs = useObserver(2)}: PlotProps) {
     const linePoints = shape.getSpacedPoints(LINE_POINTS_COUNT)
 
     let tube: THREE.Mesh = null;
+
     function createTube(progress: number) {
         if (tube) scene.remove(tube);
 
@@ -121,7 +171,6 @@ export default function Plot({radiusObs = useObserver(2)}: PlotProps) {
     const edgesGeometry = new THREE.EdgesGeometry(extrudeGeometry, 15);
     const positions = edgesGeometry.attributes.position.array;
 
-    // Создаем геометрию для Line2
     const lineGeometry = new LineGeometry();
     lineGeometry.setPositions(new Float32Array(positions));
 
@@ -169,8 +218,8 @@ export default function Plot({radiusObs = useObserver(2)}: PlotProps) {
     // Helicopter path
 
     // Paint
-    const paintGeometry = new THREE.SphereGeometry( 0.1, 32, 16 );
-    const paint = new THREE.Mesh( paintGeometry, paintMaterial );
+    const paintGeometry = new THREE.SphereGeometry(0.1, 32, 16);
+    const paint = new THREE.Mesh(paintGeometry, paintMaterial);
     const paintPosition = {x: 0, y: SCALE + 1, z: 0};
     const paintAnimation = new Tween(paintPosition)
         .to({y: SCALE}, 500)
@@ -279,6 +328,7 @@ export default function Plot({radiusObs = useObserver(2)}: PlotProps) {
         camera.updateProjectionMatrix();
         rendererObs.value.setSize(width, height);
     }
+
     window.addEventListener("resize", () => resizeCanvas());
     window.addEventListener("load", () => resizeCanvas());
 
@@ -300,7 +350,7 @@ function setupControls(controls: OrbitControls, cameraBounds?: CameraBounds) {
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
 
-    controls.minDistance = SCALE * 3;
+    controls.minDistance = SCALE * 2;
     controls.maxDistance = 10;
 
     controls.enablePan = true;
