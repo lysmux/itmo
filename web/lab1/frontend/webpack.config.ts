@@ -26,7 +26,7 @@ export default (env: EnvVars) => {
         },
         plugins: [
             new webpack.DefinePlugin({
-                "ENV.API_URL": env.apiUrl
+                "ENV.API_URL": JSON.stringify(env.apiUrl)
             }),
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, "public/index.html"),
