@@ -1,13 +1,14 @@
 import path from "path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
 import webpack from "webpack";
 import type {Configuration as DevServerConfiguration} from "webpack-dev-server";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CopyWebpackPlugin  from "copy-webpack-plugin";
 
 interface EnvVars {
     mode: webpack.Configuration["mode"];
     port: number;
+    apiUrl: string;
 }
 
 export default (env: EnvVars) => {
@@ -24,6 +25,9 @@ export default (env: EnvVars) => {
             clean: true
         },
         plugins: [
+            new webpack.DefinePlugin({
+                "ENV.API_URL": env.apiUrl
+            }),
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, "public/index.html"),
                 favicon: path.resolve(__dirname, "src/assets/favicon.ico")

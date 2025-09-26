@@ -8,7 +8,7 @@ import {MaxConstraint, MinConstraint, RequiredConstraint} from "../../validator/
 import Validator from "../../validator/validator";
 import {CheckResponse, Coordinates} from "../types";
 import ref from "../../jsx/ref";
-import ApiClient from "../../api/api";
+import ApiClient from "../../utils/api";
 import {getVar} from "../../utils/context";
 import {TOAST_VARIANTS, ToastStyle} from "../toast/Toast";
 import Loader from "../loader/Loader";
@@ -76,8 +76,8 @@ export default function Form() {
             loaderVisible.value = true;
         }, 200)
 
-        new ApiClient("http://localhost:5288/fcgi-bin/app.jar")
-            .post<CheckResponse>("/check", {
+        new ApiClient()
+            .post<CheckResponse>("check", {
                 x: Array.from(formData.value.x),
                 y: formData.value.y,
                 r: Array.from(formData.value.r)

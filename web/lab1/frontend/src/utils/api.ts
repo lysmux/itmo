@@ -3,14 +3,14 @@ import superagent from "superagent"
 
 export default class ApiClient {
     constructor(
-        private readonly apiUrl: string,
+        private readonly apiUrl: string = ENV.API_URL,
     ) {
     }
 
     get<T>(url: string, query?: Record<string, any>): Promise<T> {
         return new Promise((resolve, reject) => {
             superagent
-                .get(`${this.apiUrl}/${url}`)
+                .get(new URL(url, this.apiUrl))
                 .query(query)
                 .then(response => {
                     resolve(response.body)

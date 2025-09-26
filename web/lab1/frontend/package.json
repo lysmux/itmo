@@ -2,9 +2,9 @@
   "name": "lab1-frontend",
   "version": "1.0.0",
   "scripts": {
-    "build:dev": "webpack --env mode=development",
-    "build:prod": "webpack --env mode=production",
-    "dev": "webpack serve --env mode=development"
+    "build:dev": "webpack --env mode=development --env apiUrl=http://localhost:8000/fcgi-bin/app.jar",
+    "build:prod": "webpack --env mode=production --env apiUrl=/fcgi-bin/app.jar",
+    "dev": "webpack serve --env mode=development --env apiUrl='http://localhost:8000/fcgi-bin/app.jar'"
   },
   "author": "lysmux",
   "license": "ISC",

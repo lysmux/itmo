@@ -16,3 +16,5 @@ declare module "*?source" {
     const content: string;
     export default content;
 }
+
+declare const ENV: {API_URL: string};
