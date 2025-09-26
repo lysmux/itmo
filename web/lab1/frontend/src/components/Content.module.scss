@@ -4,6 +4,7 @@
   position: relative;
   margin-inline: auto;
   width: 95%;
+  height: 100%;
 
   border-spacing: 20px;
   
@@ -26,7 +27,7 @@
 }
 
 .block {
-  height: 75vh;
+  height: 100%;
   border-radius: 16px;
   padding: 12px;
 
@@ -36,5 +37,5 @@
 }
 
 .table-block {
-  height: 37vh; // костыль))
+  height: 400px;
 }

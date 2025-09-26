@@ -53,7 +53,7 @@ export default function Form() {
 
         validator.errors.onChange(() => {
             block.innerHTML = ""
-            const  errors = validator.errors.value
+            const errors = validator.errors.value
 
             for (let field in errors) {
                 for (let error of errors[field]) {
@@ -72,7 +72,9 @@ export default function Form() {
 
     function submit(event: SubmitEvent) {
         event.preventDefault();
-        loaderVisible.value = true;
+        const loaderVisibleTimeout = setTimeout(() => {
+            loaderVisible.value = true;
+        }, 200)
 
         new ApiClient("http://localhost:5288/fcgi-bin/app.jar")
             .post<CheckResponse>("/check", {
@@ -96,6 +98,7 @@ export default function Form() {
                 })
             })
             .finally(() => {
+                window.clearTimeout(loaderVisibleTimeout)
                 loaderVisible.value = false;
             })
     }
@@ -149,7 +152,7 @@ export default function Form() {
                                 const target = event.target as HTMLInputElement;
                                 const number = Number(target.value)
                                 if (isNaN(number)) {
-                                    target.value = target.value.slice(0, target.value.length -1);
+                                    target.value = target.value.slice(0, target.value.length - 1);
                                 }
 
                                 formData.value.y = isNaN(number) ? null : number;
@@ -172,7 +175,8 @@ export default function Form() {
                 <td colSpan="2">
                     <button type="button" onclick={() => {
                         resultsObs.value.length = 0
-                    }} className={`${styles.btn} ${styles.danger}`}>Очистить результаты</button>
+                    }} className={`${styles.btn} ${styles.danger}`}>Очистить результаты
+                    </button>
                 </td>
             </tr>
             </tbody>
