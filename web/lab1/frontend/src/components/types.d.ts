@@ -12,7 +12,7 @@ export interface ContainsResponse {
 }
 
 export interface CheckResponse {
-    contains: ContainsResponse[],
+    checks: ContainsResponse[],
     time: string,
     executionTime: number
 }

@@ -18,7 +18,7 @@ export default function Content() {
     resultsObs.onChange(results => {
         tableValuesObserver.value.length = 0
         results.forEach(result => {
-            result.contains.forEach(item => {
+            result.checks.forEach(item => {
                 tableValuesObserver.value.push({
                     "Время": result.time,
                     "X": item.x,
