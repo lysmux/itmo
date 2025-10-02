@@ -1,0 +1,129 @@
+@use "../../themes" as *;
+
+.form {
+  font-size: 1.5em;
+  position: relative;
+  height: 100%;
+
+  table {
+    border-spacing: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .block {
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    padding: 16px;
+    width: 100%;
+
+    @include themify {
+      background: themed(formBlockBackground);
+    }
+  }
+}
+
+.input-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  vertical-align: middle;
+}
+
+h1 {
+  font-size: 1em;
+  font-weight: 700;
+  margin-bottom: 10px;
+
+  @include themify {
+    color: themed(formTitleColor);
+  }
+}
+
+label {
+  font-size: 0.5em;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 16px 20px;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2%);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:hover:disabled + .errors-block {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) translateX(-50%);
+  }
+}
+
+.action {
+  @include themify {
+    color: themed(actionButtonColor);
+    background: themed(actionButtonBackground);
+
+    &:disabled {
+      background: themed(actionButtonDisabledBackground);
+    }
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 10px 25px themed(actionButtonShadowColor);
+    }
+  }
+}
+
+.danger {
+  @include themify {
+    color: themed(dangerButtonColor);
+    background: themed(dangerButtonBackground);
+
+    &:disabled {
+      background: themed(dangerButtonDisabledBackground);
+    }
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 10px 25px themed(dangerButtonShadowColor);
+    }
+  }
+}
+
+.check-container {
+  position: relative;
+}
+
+.errors-block {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+
+  font-size: 0.6em;
+  text-align: left;
+
+  @include themify {
+    color: themed(formErrorsBlockColor);
+    background: themed(formErrorsBlockBackground);
+  }
+
+  border-radius: 16px;
+  padding: 16px;
+  bottom: 100%;
+  left: 50%;
+
+  transform: translateX(-50%) translateY(10px);
+  transition: all 0.3s ease;
+
+  span {
+    font-weight: 700;
+  }
+}

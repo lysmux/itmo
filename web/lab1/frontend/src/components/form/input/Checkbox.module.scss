@@ -1,0 +1,44 @@
+@use "../../../themes" as *;
+
+.checkbox {
+  display: block;
+  width: 100%;
+  height: 50px;
+  position: relative;
+
+  input[type="checkbox"] {
+    display: none;
+
+    @include themify {
+      &:checked + label {
+        background:  themed(inputCheckedBackground);
+        border-color: themed(inputCheckedBorderColor);
+      }
+    }
+  }
+
+  label {
+    @include themify {
+      border: 2px solid themed(inputBorderColor);
+      background: themed(inputBackground);
+      color: themed(inputColor);
+
+      &:hover {
+        border-color: themed(inputFocusBorderColor);
+      }
+    }
+
+    padding: 4px 11px;
+    cursor: pointer;
+    border-radius: 12px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@use "../themes" as *;
+
+.content {
+  position: relative;
+  margin-inline: auto;
+  width: 95%;
+  height: 100%;
+
+  border-spacing: 20px;
+  
+  @media screen and (max-width: 1000px) {
+    td {
+      display: block;
+    }
+  }
+}
+
+.toast-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+}
+
+.block {
+  height: 100%;
+  border-radius: 16px;
+  padding: 12px;
+
+  @include themify {
+    background: themed(blockBackround);
+  }
+}
+
+.table-block {
+  height: 400px;
+}
