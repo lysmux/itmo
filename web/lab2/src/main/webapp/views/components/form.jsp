@@ -10,7 +10,7 @@
       <h1>X</h1>
       <div class="input-container">
         <c:forEach var="i" begin="0" end="8">
-          <c:set var="x" value="${i - 4}" />
+          <c:set var="x" value="${i - 3}" />
           <div class="checkbox">
             <input name="x" id="checkbox-x-${x}" type="checkbox" value="${x}">
             <label for="checkbox-x-${x}">${x}</label>

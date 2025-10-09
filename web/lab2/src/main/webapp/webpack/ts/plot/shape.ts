@@ -38,13 +38,19 @@ export class Point extends Shape {
     constructor(
         private position: Position,
         private radius: number = 2,
+        private dependR: boolean = false,
     ) {
         super();
     }
 
     _draw(ctx: CanvasRenderingContext2D, options: DrawOptions): void {
-        const {x, y} = this.scaledPosition(this.position, options.scale);
+        let {x, y} = this.scaledPosition(this.position, options.scale);
         const radius = this.scaledValue(this.radius, options.scale)
+
+        if (this.dependR) {
+            x = x / options.R
+            y = y / options.R
+        }
 
         ctx.moveTo(x, y)
         ctx.arc(x, y, radius, 0, 2 * Math.PI)

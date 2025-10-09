@@ -1,0 +1,85 @@
+<taglib
+        xmlns="http://www.oracle.com/technetwork/java/index.html"
+        xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+        version="2.0" xsi:schemaLocation="https://www.oracle.com/webfolder/technetwork/jsc/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.1</jsp-version>
+    <short-name>tableTags</short-name>
+    <uri>https://lysmux.dev/jsp/tags/table</uri>
+    <display-name>Table tags</display-name>
+
+    <tag>
+        <name>dataTable</name>
+        <tag-class>dev.lysmux.tags.table.DataTableTag</tag-class>
+        <body-content>scriptless</body-content>
+
+        <attribute>
+            <name>items</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>var</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>id</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>cssClass</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>paginated</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>pageParam</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>itemsPerPage</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>column</name>
+        <tag-class>dev.lysmux.tags.table.ColumnTag</tag-class>
+        <body-content>scriptless</body-content>
+
+        <attribute>
+            <name>header</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>property</name>
+        </attribute>
+        <attribute>
+            <name>sortable</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>iframeWrap</name>
+        <tag-class>dev.lysmux.tags.table.IframeWrapperTag</tag-class>
+        <body-content>scriptless</body-content>
+
+        <attribute>
+            <name>tableUrl</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>id</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>cssClass</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>

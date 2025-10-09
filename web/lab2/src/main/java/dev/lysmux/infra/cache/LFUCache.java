@@ -1,14 +1,14 @@
 package dev.lysmux.infra.cache;
 
 import lombok.Getter;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@Log
+@Slf4j
 public class LFUCache<K, V> implements Cache<K, V> {
     @Getter
     private final int capacity;
@@ -24,13 +24,13 @@ public class LFUCache<K, V> implements Cache<K, V> {
 
     public Optional<V> get(K key) {
         if (cache.containsKey(key)) {
-            log.info("Cache hit: %s".formatted(key));
+            log.info("Cache hit: {}", key);
 
             freq.put(key, freq.get(key) + 1);
             return Optional.ofNullable(cache.get(key));
         }
 
-        log.info("Cache miss: %s".formatted(key));
+        log.info("Cache miss: {}", key);
 
         return Optional.empty();
     }
@@ -43,14 +43,14 @@ public class LFUCache<K, V> implements Cache<K, V> {
         cache.put(key, value);
         freq.put(key, 1);
 
-        log.info("Put to cache: %s".formatted(key));
+        log.info("Put to cache: {}", key);
     }
 
     public void remove(K key) {
         cache.remove(key);
         freq.remove(key);
 
-        log.info("Removed from cache: %s".formatted(key));
+        log.info("Removed from cache: {}", key);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class LFUCache<K, V> implements Cache<K, V> {
                 .filter(e -> e.getValue() == minFreq)
                 .findFirst().ifPresent(e -> {
                     remove(e.getKey());
-                    log.fine("Cache free: %s. Freq: %s".formatted(e.getKey(), minFreq));
+                    log.info("Cache free: {}. Freq: {}", e.getKey(), minFreq);
                 });
     }
 

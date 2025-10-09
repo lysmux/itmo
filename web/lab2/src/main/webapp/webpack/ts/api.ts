@@ -1,7 +1,8 @@
 import superagent from "superagent";
 import {CheckResponse} from "./types";
-import {TABLE_DATA_OBSERVER} from "./global";
+import {RESULTS_OBSERVER} from "./global";
 import $ from "jquery"
+import {addToast, TOAST_VARIANTS} from "./toast";
 
 const loader = $(".loader")
 
@@ -23,8 +24,8 @@ export function processPoints(x: number[], y: number, r: number[]) {
             r: r,
         })
         .then(res => {
-            const result = res.body as CheckResponse;
-            TABLE_DATA_OBSERVER.value.push(result)
+            const result = res.body as CheckResponse[];
+            RESULTS_OBSERVER.value.push(...result)
 
             // if (result.checks.length == 1) {
             //     let sound: HTMLAudioElement;
@@ -39,7 +40,11 @@ export function processPoints(x: number[], y: number, r: number[]) {
             // }
         })
         .catch(error => {
-            // toast
+            addToast({
+                title: error.status ? `Ошибка API | ${error.status}` : "Ошибка API",
+                message: error.responce ? error.response.text : error.message,
+                style: TOAST_VARIANTS.error
+            })
         })
         .finally(() => {
             window.clearTimeout(loaderVisibleTimeout)
@@ -50,9 +55,27 @@ export function processPoints(x: number[], y: number, r: number[]) {
 export function clearPoints() {
     superagent.post("/clear")
         .then(() => {
-            TABLE_DATA_OBSERVER.value.length = 0
+            RESULTS_OBSERVER.value.length = 0
         })
         .catch(error => {
-
+            addToast({
+                title: error.status ? `Ошибка API | ${error.status}` : "Ошибка API",
+                message: error.responce ? error.response.text : error.message,
+                style: TOAST_VARIANTS.error
+            })
     })
+}
+
+export function loadPointsHistory() {
+    superagent.get("/history")
+        .then(res => {
+            RESULTS_OBSERVER.value = res.body as CheckResponse[]
+        })
+        .catch(error => {
+            addToast({
+                title: error.status ? `Ошибка API | ${error.status}` : "Ошибка API",
+                message: error.responce ? error.response.text : error.message,
+                style: TOAST_VARIANTS.error
+            })
+        })
 }

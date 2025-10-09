@@ -4,6 +4,7 @@
 @use "table";
 @use "plot";
 @use "loader";
+@use "toast";
 @use "themes" as *;
 
 $DEFAULT_FONT_SIZE: 24px;
@@ -31,6 +32,7 @@ main {
   margin-inline: auto;
   margin-top: 20px;
 
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
@@ -53,4 +55,15 @@ main {
 .wide {
   grid-column-start: 1;
   grid-column-end: -1;
+}
+
+.toast-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
 }

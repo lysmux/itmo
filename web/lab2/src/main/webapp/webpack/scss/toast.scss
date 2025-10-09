@@ -28,7 +28,7 @@ $progressDelay: 8s;
   }
 }
 
-.container {
+.toast {
   --color: #000000;
   --bgColor: #cccccc;
   --textColor: #000000;
@@ -40,8 +40,18 @@ $progressDelay: 8s;
   border-radius: 5px 5px 0 0;
   animation: appear 0.3s ease-out;
 
+  .toast-wrapper {
+    display: flex;
+    padding: 10px;
+
+    .icon-block, .btn-block {
+      width: 30px;
+    }
+  }
+
   .icon {
     color: var(--color);
+    width: 100%;
   }
 
   .progress {
@@ -70,10 +80,7 @@ $progressDelay: 8s;
   font-size: 0.8em;
   border-spacing: 20px 10px;
   word-wrap: break-word;
-
-  .icon-block, .btn-block {
-    width: 30px;
-  }
+  width: 100%;
 
   .title-block {
     width: 100%;

@@ -2,29 +2,31 @@ import {Arc, DrawOptions, Label, Line, Point, Polygon, Shape} from "./shape";
 import {Observer} from "../observer";
 import {R_OBSERVER} from "../global";
 
-const DEFAULT_LABELS = [
-    new Label({x: 4, y: 0}, "{R}", {isTemplate: true, evaluateFormula: true}),
-    new Label({x: 2, y: 0}, "{R/2}", {isTemplate: true, evaluateFormula: true}),
-    new Label({x: -4, y: 0}, "-{R}", {isTemplate: true, evaluateFormula: true}),
-    new Label({x: -2, y: 0}, "-{R/2}", {isTemplate: true, evaluateFormula: true}),
+const SCALE = 4
 
-    new Label({x: 0, y: 4}, "{R}", {isTemplate: true, evaluateFormula: true}),
-    new Label({x: 0, y: 2}, "{R/2}", {isTemplate: true, evaluateFormula: true}),
-    new Label({x: 0, y: -4}, "-{R}", {isTemplate: true, evaluateFormula: true}),
-    new Label({x: 0, y: -2}, "-{R/2}", {isTemplate: true, evaluateFormula: true}),
+const DEFAULT_LABELS = [
+    new Label({x: 1, y: 0}, "{R}", {isTemplate: true, evaluateFormula: true}),
+    new Label({x: 0.5, y: 0}, "{R/2}", {isTemplate: true, evaluateFormula: true}),
+    new Label({x: -1, y: 0}, "-{R}", {isTemplate: true, evaluateFormula: true}),
+    new Label({x: -0.5, y: 0}, "-{R/2}", {isTemplate: true, evaluateFormula: true}),
+
+    new Label({x: 0, y: 1}, "{R}", {isTemplate: true, evaluateFormula: true}),
+    new Label({x: 0, y: 0.5}, "{R/2}", {isTemplate: true, evaluateFormula: true}),
+    new Label({x: 0, y: -1}, "-{R}", {isTemplate: true, evaluateFormula: true}),
+    new Label({x: 0, y: -0.5}, "-{R/2}", {isTemplate: true, evaluateFormula: true}),
 ]
 
 const DEFAULT_SHAPES = [
-    new Arc({x: 0, y: 0}, 4, 0, Math.PI / 2),
+    new Arc({x: 0, y: 0}, 0.5, 0, Math.PI / 2),
     new Polygon([
         {x: 0, y: 0},
-        {x: 2, y: 0},
-        {x: 0, y: -2}
+        {x: 1, y: 0},
+        {x: 0, y: -1}
     ]),
     new Polygon([
-        {x: 0, y: 4},
-        {x: -4, y: 4},
-        {x: -4, y: 0},
+        {x: 0, y: -1},
+        {x: -1, y: -1},
+        {x: -1, y: 0},
         {x: 0, y: 0},
     ]),
 ]
@@ -35,7 +37,8 @@ interface PlotOptions {
     gridColor: string
     axisColor: string,
     labelColor: string
-    shapeColor: string
+    shapeColor: string,
+    customShapeColor: string,
 }
 
 const DEFAULT_PLOT_OPTIONS: PlotOptions = {
@@ -43,7 +46,8 @@ const DEFAULT_PLOT_OPTIONS: PlotOptions = {
     gridColor: "grey",
     axisColor: "black",
     labelColor: "darkgreen",
-    shapeColor: "lightblue"
+    shapeColor: "lightblue",
+    customShapeColor: "black"
 }
 
 interface Style {
@@ -53,7 +57,7 @@ interface Style {
 
 export default class PlotDrawer {
     private readonly ctx: CanvasRenderingContext2D;
-    private readonly customShapes: Shape[] = [];
+    private customShapes: Shape[] = [];
     public readonly rObserver: Observer<number>;
 
 
@@ -65,7 +69,7 @@ export default class PlotDrawer {
         this.ctx = canvas.getContext("2d");
         this.rObserver = R_OBSERVER;
 
-        this.rObserver.onChange(() => this.update() )
+        this.rObserver.onChange(() => this.update())
     }
 
     get sizes() {
@@ -96,17 +100,23 @@ export default class PlotDrawer {
         this._drawGrid()
         this._drawAxis()
         this._drawLabels()
+        this._drawCustomShapes()
     }
 
     draw(shape: Shape, options?: Partial<DrawOptions>) {
         shape.draw(this.ctx, {
-            scale: this.options.step,
+            scale: this.options.step * SCALE,
             R: this.rObserver.value,
             ...options
         })
     }
 
-    withStyle({ fill, stroke }: Style, callback: () => void) {
+    setCustomShapes(shapes: Shape[]) {
+        this.customShapes = shapes
+        this.update()
+    }
+
+    withStyle({fill, stroke}: Style, callback: () => void) {
         if (stroke === undefined) stroke = fill
 
         const origFillStyle = this.ctx.fillStyle
@@ -129,17 +139,30 @@ export default class PlotDrawer {
         })
     }
 
+    _drawCustomShapes() {
+        this.withStyle({fill: this.options.customShapeColor}, () => {
+            this.customShapes.forEach(shape => this.draw(shape))
+        })
+    }
+
     _drawGrid() {
+        const xMin = this.sizes.xMin / SCALE
+        const xMax = this.sizes.xMax / SCALE
+
+        const yMin = this.sizes.yMin / SCALE
+        const yMax = this.sizes.yMax / SCALE
+
         this.withStyle({
             fill: this.options.gridColor
         }, () => {
             for (let x = 0; x < this.sizes.xMax / this.options.step; x++) {
-                this.draw(new Line({x: x, y: this.sizes.yMin}, {x: x, y: this.sizes.yMax}))
-                this.draw(new Line({x: -x, y: this.sizes.yMin}, {x: -x, y: this.sizes.yMax}))
+                this.draw(new Line({x: x / SCALE, y: yMin}, {x: x / SCALE, y: yMax}))
+                this.draw(new Line({x: -x / SCALE, y: yMin}, {x: -x / SCALE, y: yMax}))
             }
             for (let y = 0; y < this.sizes.yMax / this.options.step; y++) {
-                this.draw(new Line({x: this.sizes.xMin, y: y}, {x: this.sizes.xMax, y: y}))
-                this.draw(new Line({x: this.sizes.xMin, y: -y}, {x: this.sizes.xMax, y: -y}))
+                this.draw(new Line({x: xMin, y: y / SCALE}, {x: xMax, y: y / SCALE}))
+                this.draw(new Line({x: xMin, y: -y / SCALE}, {x: xMax, y: -y / SCALE
+                }))
             }
         })
     }
@@ -173,7 +196,7 @@ export default class PlotDrawer {
             this.draw(new Label({x: this.sizes.xMax - labelOffsetPrimary, y: labelOffsetSecondary}, "X"), {scale: 1})
             this.draw(new Label({x: labelOffsetSecondary, y: this.sizes.yMax - labelOffsetPrimary}, "Y"), {scale: 1})
 
-            this.draw(new Point({x: 0, y:0}, 1), {scale: 4})
+            this.draw(new Point({x: 0, y: 0}, 1), {scale: 4})
         })
     }
 }

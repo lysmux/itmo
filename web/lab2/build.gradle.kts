@@ -1,5 +1,4 @@
 import de.undercouch.gradle.tasks.download.Download
-import org.gradle.internal.impldep.org.apache.commons.io.output.ByteArrayOutputStream
 
 plugins {
     id("de.undercouch.download") version "5.5.0"
@@ -17,6 +16,7 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":tags"))
     implementation("com.zaxxer:HikariCP:7.0.2")
     implementation("com.h2database:h2:2.3.232")
     implementation("org.liquibase:liquibase-core:4.33.0")
@@ -84,7 +84,6 @@ fun isWildflyInstalled(): Boolean {
             File("$wildflyDir/bin/standalone.bat").exists()
 }
 
-// Задача для распаковки WildFly
 val extractWildfly by tasks.register<Copy>("extractWildfly") {
     group = "WildFly"
     description = "Распаковать архив WildFly"
@@ -93,9 +92,7 @@ val extractWildfly by tasks.register<Copy>("extractWildfly") {
     dependsOn(downloadWildfly)
     from(zipTree(downloadWildfly.dest))
 
-    // Ключевое изменение: распаковываем содержимое папки wildfly-version в build/wildfly
     eachFile {
-        // Убираем префикс с версией из пути
         val segments = this.path.split("/")
         if (segments.isNotEmpty() && segments[0].startsWith("wildfly-")) {
             this.path = segments.drop(1).joinToString("/")
@@ -107,7 +104,6 @@ val extractWildfly by tasks.register<Copy>("extractWildfly") {
 
     doFirst {
         println("Распаковка WildFly...")
-        // Очищаем целевую директорию перед распаковкой
         delete(wildflyDir)
     }
 
@@ -116,7 +112,6 @@ val extractWildfly by tasks.register<Copy>("extractWildfly") {
     }
 }
 
-// Основная задача установки
 val setupWildfly by tasks.register("setupWildfly") {
     group = "WildFly"
     description = "Скачать и установить WildFly в папку build"
@@ -136,7 +131,6 @@ val setupWildfly by tasks.register("setupWildfly") {
     }
 }
 
-// Задача для быстрого запуска WildFly
 val runWildfly by tasks.register<Exec>("runWildfly") {
     group = "WildFly"
     description = "Запустить WildFly сервер"
@@ -151,19 +145,16 @@ val runWildfly by tasks.register<Exec>("runWildfly") {
     }
 }
 
-// Задача для остановки WildFly (отправка сигнала остановки)
 val stopWildfly by tasks.register("stopWildfly") {
     group = "WildFly"
     description = "Остановить WildFly сервер"
 
     doLast {
         println("Остановка WildFly...")
-        // Здесь можно добавить логику остановки через jboss-cli
         println("Для остановки сервера нажмите Ctrl+C в консоли где запущен runWildfly")
     }
 }
 
-// Задача для деплоя WAR файла
 val deployWildfly by tasks.register<Copy>("deployWildfly") {
     group = "WildFly"
     description = "Развернуть WAR файл в WildFly"
@@ -183,7 +174,6 @@ val deployWildfly by tasks.register<Copy>("deployWildfly") {
     }
 }
 
-// Задача для очистки
 val cleanWildfly by tasks.register<Delete>("cleanWildfly") {
     group = "WildFly"
     description = "Удалить установленный WildFly"
@@ -217,11 +207,6 @@ tasks.register<Exec>("deployRemote") {
     errorOutput = System.err
 }
 
-// Интеграция со стандартной задачей clean
 tasks.clean {
     dependsOn(cleanWildfly)
 }
-
-// Расширение для конфигурации из основного build.gradle.kts
-extra["wildflyVersion"] = wildflyVersion
-extra["wildflyDir"] = wildflyDir

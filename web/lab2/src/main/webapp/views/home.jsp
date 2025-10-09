@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="https://lysmux.dev/jsp/tags/table" prefix="table" %>
 
 <html class="theme-dark">
 <head>
@@ -16,6 +17,8 @@
     <%@ include file="components/header.jsp" %>
 
     <main>
+        <div id="toast-container" class="toast-container"></div>
+
         <div class="block">
             <jsp:include page="components/plot.jsp" />
         </div>
@@ -23,7 +26,8 @@
             <jsp:include page="components/form.jsp"/>
         </div>
         <div class="block wide" style="height: 100%">
-            <jsp:include page="components/table.jsp"/>
+            <c:url var="tableUrl" value="/views/table.jsp"/>
+            <table:iframeWrap tableUrl="${tableUrl}" cssClass="table-frame" id="results-iframe"/>
         </div>
     </main>
 </div>

@@ -1,21 +1,27 @@
 import $ from "jquery";
 
 function changeTheme(theme: string) {
-
     const isDark = theme === "dark"
     localStorage.setItem("theme", theme)
 
     $("#light-theme").prop("checked", !isDark)
     $("#dark-theme").prop("checked", isDark)
-    document.documentElement.classList.forEach((class_) => {
 
-        if (class_.startsWith("theme-")) document.documentElement.classList.remove(class_);
-    })
-    document.documentElement.classList.add(`theme-${theme}`);
+    const setThemeToElement = (element: Element) => {
+        element.className = element.className.replace(/\btheme-\w+/g, '') + ` theme-${theme}`;
+    };
+
+    setThemeToElement(document.documentElement);
+    document.querySelectorAll("iframe").forEach(iframe => {
+            iframe.addEventListener('load', () => {
+                setThemeToElement(iframe.contentWindow.document.documentElement);
+            });
+            setThemeToElement(iframe.contentWindow.document.documentElement);
+        }
+    );
 }
 
 function getDefaultTheme(): string {
-
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         return "dark";
     }
@@ -23,10 +29,8 @@ function getDefaultTheme(): string {
 }
 
 $(() => {
-
     const theme = localStorage.getItem("theme") || getDefaultTheme()
     changeTheme(theme)
-
 })
 
 $("input[name=theme]").on("change", (e) => {

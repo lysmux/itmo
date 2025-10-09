@@ -1,30 +1,71 @@
 @use "themes" as *;
 
-.table-container {
-  height: 500px;
-  overflow-y: auto;
-  border-radius: 10px;
-
+.table-wrapper {
   @include themify {
     background: themed(tableRowBackground);
   }
 
-  &::-webkit-scrollbar {
-    width: 8px;
+  padding-bottom: 10px;
+
+  ._table-wrapper {
+    height: 500px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+    }
   }
 
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-  }
+  ._pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
 
-  &::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 4px;
-  }
+    a {
+      display: inline-block;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.8em;
 
-  &::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
+      background-color: #3a3a3a;
+      color: #b0b0b0;
+
+      &:hover {
+        background-color: #5a5a5a;
+      }
+
+      &.disabled {
+        color: #666;
+        background-color: #1a1a1a;
+        pointer-events: none;
+      }
+    }
+
+    ._current-page {
+      background: linear-gradient(145deg, #707070, #505050);
+      color: white;
+      font-weight: 700;
+    }
+
+    ._current-page:hover {
+      background-color: #0056b3;
+    }
   }
 
   table {
@@ -81,4 +122,12 @@
       }
     }
   }
+}
+
+.table-frame {
+  display: block;
+  border: none;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
 }

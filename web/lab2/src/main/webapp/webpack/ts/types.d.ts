@@ -4,15 +4,11 @@ export interface Coordinates {
     r: Set<number>
 }
 
-export interface ContainsResponse {
+export interface CheckResponse {
     x: number,
     y: number,
     r: number,
     contains: boolean,
-}
-
-export interface CheckResponse {
-    checks: ContainsResponse[],
     time: string,
     executionTime: number
 }

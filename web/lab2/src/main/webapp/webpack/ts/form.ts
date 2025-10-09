@@ -7,7 +7,6 @@ import {R_OBSERVER} from "./global";
 import {clearPoints, processPoints} from "./api";
 
 
-const resultsTable = document.getElementById("results") as HTMLTableElement;
 const errorsBlock = $("#errors-block")
 const checkBtn = $("#check-btn");
 const clearBtn = $("#clear-btn");
@@ -24,7 +23,7 @@ const rules = {
     y: [
         new RequiredConstraint(),
         new MinConstraint(-3),
-        new MaxConstraint(5),
+        new MaxConstraint(3),
     ],
     r: [
         new RequiredConstraint(),
