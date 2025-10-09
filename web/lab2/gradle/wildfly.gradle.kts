@@ -1,57 +1,16 @@
+// gradle/wildfly.gradle.kts
+
 import de.undercouch.gradle.tasks.download.Download
-import org.gradle.internal.impldep.org.apache.commons.io.output.ByteArrayOutputStream
+import java.io.File
 
-plugins {
-    id("de.undercouch.download") version "5.5.0"
-    id("io.freefair.lombok") version "9.0.0"
-    id("java")
-    war
-}
-//apply(from = "gradle/wildfly.gradle.kts")
+// Конфигурация WildFly
+val wildflyVersion = "30.0.0.Final"
+val wildflyBaseUrl = "https://github.com/wildfly/wildfly/releases/download"
+val wildflyUrl = "$wildflyBaseUrl/$wildflyVersion/wildfly-$wildflyVersion.zip"
+val wildflyDir = "$buildDir/wildfly-$wildflyVersion"
+val wildflyZip = "$buildDir/wildfly-$wildflyVersion.zip"
 
-group = "dev.lysmux"
-version = "1.0-SNAPSHOT"
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation("com.zaxxer:HikariCP:7.0.2")
-    implementation("com.h2database:h2:2.3.232")
-    implementation("org.liquibase:liquibase-core:4.33.0")
-
-    implementation("jakarta.enterprise:jakarta.enterprise.cdi-api:4.1.0")
-    implementation("org.jboss.weld:weld-core-impl:6.0.3.Final")
-
-    implementation("jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.2")
-    runtimeOnly("org.glassfish.web:jstl-impl:1.2")
-
-    implementation("com.google.code.gson:gson:2.13.2")
-    compileOnly("jakarta.servlet:jakarta.servlet-api:6.1.0")
-    implementation("org.hibernate.validator:hibernate-validator:9.0.1.Final")
-
-    implementation("org.slf4j:slf4j-api:2.0.16")
-    implementation("ch.qos.logback:logback-classic:1.5.16")
-
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
-tasks.war {
-    archiveFileName.set("lab2.war")
-
-    exclude("webpack/")
-}
-
-tasks.withType<JavaCompile> {
-    sourceCompatibility = "17"
-    targetCompatibility = "17"
-}
+// Проверяем, установлен ли уже WildFly
 
 val wildflyVersion = "30.0.0.Final"
 val wildflyBaseUrl = "https://github.com/wildfly/wildfly/releases/download"
@@ -194,27 +153,6 @@ val cleanWildfly by tasks.register<Delete>("cleanWildfly") {
     doLast {
         println("WildFly удален из папки build")
     }
-}
-
-tasks.register<Exec>("deployRemote") {
-    group = "WildFly"
-
-    dependsOn(setupWildfly, tasks.war)
-
-    workingDir = File("$wildflyDir/bin")
-    executable = "powershell"
-    args(
-        "-File",
-        "jboss-cli.ps1",
-        "--connect",
-        "--controller=localhost:5289",
-        "--user=admin",
-        "--password=\"jkh6QAl2kj8u!;l138\"",
-        "--command=\"deploy --force ${tasks.war.get().archiveFile.get().asFile.absolutePath}\""
-    )
-
-    standardOutput = System.out
-    errorOutput = System.err
 }
 
 // Интеграция со стандартной задачей clean

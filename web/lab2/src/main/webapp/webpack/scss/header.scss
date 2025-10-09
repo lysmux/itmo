@@ -1,0 +1,74 @@
+@use "themes" as *;
+
+header {
+  @include themify {
+    background: themed(headerBackground);
+
+    .title {
+      color: themed(headerTitleColor);
+    }
+
+    .subtitle {
+      color: themed(headerSubTitleColor);
+    }
+  }
+
+  text-align: center;
+  padding: 10px;
+  position: relative;
+
+  .title {
+    font-weight: 700;
+    font-size: 1em;
+  }
+
+  .subtitle {
+    font-size: 0.8em;
+    font-weight: 400;
+  }
+}
+
+.theme-switcher {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  position: absolute;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  place-items: center;
+  top: calc(50% - 20px);
+  right: 20px;
+
+  @include themify {
+    color: themed(themeIconColor);
+    background: themed(themeSwitcherBackground);
+  }
+
+  input[type="radio"] {
+    display: none;
+
+    @include themify {
+      &:checked + label {
+        color: themed(themeCheckedIconColor);
+      }
+    }
+  }
+
+  label {
+    cursor: pointer;
+  }
+}
+
+
+.theme-radio {
+  z-index: 100;
+  width: 22px;
+}
+
+.theme-icon {
+  width: 22px;
+  height: 22px;
+  transition: all 0.5s ease;
+}

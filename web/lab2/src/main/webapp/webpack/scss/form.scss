@@ -1,0 +1,162 @@
+@use "themes" as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
+  gap: 20px;
+
+  .block-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    .block {
+      @include themify {
+        background: themed(formBlockBackground);
+      }
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      padding: 16px;
+      width: 100%;
+
+      h1 {
+        @include themify {
+          color: themed(formTitleColor);
+        }
+
+        text-align: center;
+        font-size: 1em;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+.input-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.checkbox {
+  display: block;
+  width: 100%;
+  height: 50px;
+  position: relative;
+
+  input {
+    display: none;
+
+    @include themify {
+      &:checked + label {
+        background:  themed(inputCheckedBackground);
+        border-color: themed(inputCheckedBorderColor);
+      }
+    }
+  }
+
+  label {
+    @include themify {
+      border: 2px solid themed(inputBorderColor);
+      background: themed(inputBackground);
+      color: themed(inputColor);
+
+      &:hover {
+        border-color: themed(inputFocusBorderColor);
+      }
+    }
+
+    border: 2px solid;
+    color: white;
+    padding: 4px 11px;
+    cursor: pointer;
+    border-radius: 12px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 0.8em;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.input {
+  @include themify {
+    border-color: themed(inputBorderColor);
+    background: themed(inputBackground);
+    color: themed(inputColor);
+
+    &::placeholder {
+      color: themed(inputPlaceholderColor);
+    }
+
+    &:focus {
+      background: themed(inputFocusBackground);
+      border-color: themed(inputFocusBorderColor);
+    }
+  }
+
+  padding: 18px 20px;
+  width: 100%;
+  border-radius: 12px;
+  outline: none;
+  font-size: 0.5em;
+  border: 2px solid;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.errors-block {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+
+  font-size: 0.6em;
+  text-align: left;
+
+  border-radius: 16px;
+  padding: 16px;
+  bottom: 100%;
+  left: 50%;
+
+  transform: translateX(-50%) translateY(10px);
+  transition: all 0.3s ease;
+
+  span {
+    font-weight: 700;
+  }
+
+  @include themify {
+    color: themed(formErrorsBlockColor);
+    background: themed(formErrorsBlockBackground);
+  }
+}
+
+#check-btn {
+  &:hover:disabled + .errors-block {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) translateX(-50%);
+  }
+}
+
+.check-container {
+  position: relative;
+}

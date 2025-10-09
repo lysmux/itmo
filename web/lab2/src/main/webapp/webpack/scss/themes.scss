@@ -1,0 +1,121 @@
+@use "sass:map";
+
+
+$themes: (
+        light: (
+                background: linear-gradient(180deg, #f0f8ff 0%, #e6f2ff 60%),
+
+                themeCheckedIconColor: orange,
+                themeIconColor: white,
+                themeSwitcherBackground: rgba(167, 139, 250, .8),
+
+                headerBackground: linear-gradient(135deg, rgba(167, 139, 250, 1), rgba(103, 232, 249, 1)),
+                headerTitleColor: #000000,
+                headerSubTitleColor: rgba(0, 0, 0, 0.8),
+
+                blockBackround:  linear-gradient(180deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.15) 100%),
+
+                actionButtonColor: white,
+                actionButtonShadowColor: rgba(162, 155, 254, 0.4),
+                actionButtonBackground: linear-gradient(145deg, #6c5ce7, #a29bfe),
+                actionButtonDisabledBackground: linear-gradient(145deg, rgba(108, 92, 231, 0.65), rgba(162, 155, 254, 0.65)),
+
+                dangerButtonColor: white,
+                dangerButtonShadowColor: rgba(255, 107, 129, 0.4),
+                dangerButtonBackground: linear-gradient(145deg, #ff4757, #ff6b81),
+                dangerButtonDisabledBackground: linear-gradient(145deg, rgba(255, 71, 87, 0.5), rgba(255, 107, 129, 0.65)),
+
+                formBlockBackground: linear-gradient(180deg, rgba(210, 220, 230, 0.8) 0%, rgba(190, 205, 220, 0.9) 100%),
+                formTitleColor: #6c5ce7,
+                formErrorsBlockBackground: rgba(172, 134, 255, 0.6),
+                formErrorsBlockColor: #ff506a,
+
+                inputBackground: rgba(190, 200, 215, 0.5),
+                inputBorderColor: rgba(255, 255, 255, 0.15),
+                inputColor: white,
+                inputPlaceholderColor: rgba(255, 255, 255, 0.5),
+
+                inputFocusBackground: rgba(45, 60, 85, 0.5),
+                inputFocusBorderColor: rgba(108, 92, 231, 0.6),
+
+                inputCheckedBackground: linear-gradient(145deg, #6c5ce7, #a29bfe),
+                inputCheckedBorderColor: #7c6de5,
+
+                tableHeaderColor: #1e40af,
+                tableHeaderBackground: #dbeafe,
+                tableHeaderUnderlineColor: #93c5fd,
+                tableRowColor: #1f2937,
+                tableRowBackground: #ffffff,
+                tableRowHoverColor: #1e40af,
+                tableRowHoverBackground: #eff6ff,
+                tableRowUnderlineColor: #bfdbfe,
+        ),
+        dark: (
+                background: linear-gradient(180deg, #031022 0%, #071226 60%),
+
+                themeCheckedIconColor: orange,
+                themeIconColor: white,
+                themeSwitcherBackground: rgba(124, 58, 237, 0.12),
+
+                headerBackground: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(6, 182, 212, 0.12)),
+                headerTitleColor: #e6eef8,
+                headerSubTitleColor: rgba(255, 255, 255, 0.8),
+
+                blockBackround: linear-gradient(180deg, rgba(14, 28, 52, 0.8) 0%, rgba(11, 23, 42, 0.9) 100%),
+
+                actionButtonColor: white,
+                actionButtonShadowColor: rgba(108, 92, 231, 0.3),
+                actionButtonBackground: linear-gradient(145deg, #8c7ae6, #6c5ce7),
+                actionButtonDisabledBackground: linear-gradient(145deg, rgba(140, 122, 230, 0.4), rgba(108, 92, 231, 0.4)),
+
+                dangerButtonColor: white,
+                dangerButtonShadowColor: rgba(194, 54, 22, 0.3),
+                dangerButtonBackground: linear-gradient(145deg, #e84118, #c23616),
+                dangerButtonDisabledBackground: linear-gradient(145deg, rgba(232, 65, 24, 0.4), rgba(194, 54, 22, 0.4)),
+
+                formBlockBackground: linear-gradient(180deg, rgba(25, 40, 65, 0.7) 0%, rgba(20, 35, 60, 0.8) 100%),
+                formTitleColor: #6c5ce7,
+                formErrorsBlockBackground: rgba(39, 56, 93, 0.9),
+                formErrorsBlockColor: #ff506a,
+
+                inputBackground: rgba(40, 55, 80, 0.4),
+                inputBorderColor: rgba(255, 255, 255, 0.15),
+                inputColor: white,
+                inputPlaceholderColor: rgba(255, 255, 255, 0.5),
+
+                inputFocusBackground: rgba(45, 60, 85, 0.5),
+                inputFocusBorderColor: #6c5ce7,
+
+                inputCheckedBackground: linear-gradient(145deg, #3a2b9c, #5a4db9),
+                inputCheckedBorderColor: #3a2b9c,
+
+                tableHeaderColor: #ffffff,
+                tableHeaderBackground: #2c2b2b,
+                tableHeaderUnderlineColor: #a5b9c5,
+                tableRowColor: #ffffff,
+                tableRowBackground: #16151b,
+                tableRowHoverColor: #000000,
+                tableRowHoverBackground: #ffffff,
+                tableRowUnderlineColor: #a5b9c5,
+        )
+);
+
+$theme-map: ();
+
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      @each $key, $submap in $map {
+        $value: map.get(map.get($themes, $theme), '#{$key}');
+        $theme-map: map.merge($theme-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $theme-map: () !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map.get($theme-map, $key);
+}
