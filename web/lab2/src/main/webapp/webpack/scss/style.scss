@@ -3,6 +3,7 @@
 @use "form";
 @use "table";
 @use "plot";
+@use "loader";
 @use "themes" as *;
 
 $DEFAULT_FONT_SIZE: 24px;

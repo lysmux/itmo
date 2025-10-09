@@ -2,6 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <form class="form" id="check-form">
+  <div class="loader hidden">
+    <div class="spin"></div>
+  </div>
   <div class="block-container">
     <div class="block">
       <h1>X</h1>
