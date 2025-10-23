@@ -3,6 +3,7 @@ package dev.lysmux.di;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Disposes;
 import jakarta.enterprise.inject.Produces;
 
 import javax.sql.DataSource;
@@ -23,5 +24,11 @@ public class DatabaseModule {
         config.setJdbcUrl("jdbc:h2:mem:dotsdb");
 
         return new HikariDataSource(config);
+    }
+
+    public void cleanup(@Disposes DataSource dataSource) throws SQLException {
+        if (dataSource instanceof HikariDataSource) {
+            ((HikariDataSource) dataSource).close();
+        }
     }
 }
