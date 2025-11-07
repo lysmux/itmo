@@ -1,0 +1,32 @@
+echo "Starting datasource configuration..."
+
+connect
+echo "Connected to WildFly server"
+
+echo "Adding PostgreSQL JDBC driver..."
+
+/subsystem=datasources/jdbc-driver=postgresql:add( \
+    driver-name="postgresql", \
+    driver-module-name="org.postgresql", \
+    driver-class-name=org.postgresql.Driver, \
+    driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource \
+)
+
+echo "PostgreSQL driver added successfully"
+
+echo "Creating datasource PostgresDS..."
+/subsystem=datasources/data-source=PostgresDS:add( \
+    jndi-name="java:/jboss/datasources/PostgresDS", \
+    enabled=true, \
+    connection-url="${env.POSTGRES_URL}", \
+    driver-name="postgresql", \
+    user-name="${env.POSTGRES_USER}", \
+    password="${env.POSTGRES_PASSWORD}" \
+)
+echo "Datasource created successfully"
+
+echo "Reloading server..."
+:reload
+echo "Server reloaded successfully"
+
+echo "Datasource configuration completed!"

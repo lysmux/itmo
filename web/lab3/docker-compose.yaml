@@ -1,0 +1,38 @@
+services:
+  wildfly:
+    build:
+      context: wildfly
+    env_file:
+      - .env
+    environment:
+      POSTGRES_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      WILDFLY_ADMIN_USER: ${WILDFLY_ADMIN_USER:-admin}
+      WILDFLY_ADMIN_PASSWORD: ${WILDFLY_ADMIN_PASSWORD:-admin123}
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    depends_on:
+      - db
+    networks:
+      - internal
+
+  db:
+    restart: unless-stopped
+    image: postgres:17
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+volumes:
+  db-data:
+    driver: local
+
+networks:
+  internal:

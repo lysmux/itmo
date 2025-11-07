@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets">
+
+<h:head>
+    <title><ui:insert name="title">3 лаба</ui:insert></title>
+    <ui:insert name="css" />
+
+    <h:outputStylesheet name="main.css" />
+</h:head>
+
+<h:body>
+    <div class="container">
+        <header>
+            <h1 class="title">Разыграев Кирилл Сергеевич</h1>
+            <h3 class="subtitle">Группа: P3215</h3>
+            <h3 class="subtitle">Вариант: 27099</h3>
+        </header>
+        <main>
+            <div id="toast-container" class="toast-container"></div>
+            <ui:insert name="content" />
+        </main>
+    </div>
+    <h:outputScript name="main.js" />
+    <ui:insert name="js" />
+</h:body>
+</html>

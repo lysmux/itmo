@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:ui="jakarta.faces.facelets"
+             xmlns:h="jakarta.faces.html"
+             xmlns:f="jakarta.faces.core"
+             xmlns:p="primefaces"
+             template="/template.xhtml"
+>
+    <ui:define name="content">
+        <div>
+            Текущее время: <h:outputText id="currentTime" value="#{time.dateTime}"/>
+            <p:poll interval="10" listener="#{time.update}" update="currentTime"/>
+        </div>
+        <h:form>
+            <h:commandButton
+                    value="Главная"
+                    action="main?faces-redirect=true"
+                    styleClass="btn action"
+            />
+        </h:form>
+    </ui:define>
+</ui:composition>
+

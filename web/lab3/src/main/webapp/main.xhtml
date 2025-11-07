@@ -1,0 +1,150 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:p="primefaces"
+                template="/template.xhtml"
+>
+    <ui:define name="content">
+        <div class="block">
+            <div class="plot" id="plot">
+                <canvas></canvas>
+            </div>
+        </div>
+        <div class="block">
+            <h:form styleClass="form">
+                <div class="block-container">
+                    <div class="block">
+                        <h:outputLabel for="xVal" value="X"/>
+                        <h:inputText
+                                id="xDisp"
+                                styleClass="input"
+                                value="#{coordinates.x}"
+                                readonly="true"
+                        />
+                        <h:inputHidden id="xVal" value="#{coordinates.x}" />
+                        <p:slider
+                                for="xVal"
+                                minValue="-5"
+                                maxValue="5"
+                                step="1"
+                        >
+                            <p:ajax event="slideEnd" process="@this xVal" update="xDisp"/>
+                        </p:slider>
+                    </div>
+                    <div class="block">
+                        <h:outputLabel for="rVal" value="R"/>
+                        <h:inputHidden id="rVal" value="#{coordinates.r}"/>
+                        <div class="input-container">
+                            <ui:repeat value="#{[1, 2, 3, 4, 5]}" var="r">
+                                <h:commandButton
+                                        value="#{r}"
+                                        action="#{coordinates.setR(r)}"
+                                        onclick="document.dispatchEvent(new CustomEvent('rUpdated', {detail: {r: this.value}}))"
+                                        styleClass="checkbox #{coordinates.r == r ? 'selected' : ''}"
+                                >
+                                    <f:ajax execute="@this" render="@form"/>
+                                </h:commandButton>
+                            </ui:repeat>
+                        </div>
+                    </div>
+                    <div class="block wide">
+                        <h:outputLabel for="yVal" value="Y"/>
+                        <h:inputText id="yVal"
+                                     styleClass="input"
+                                     value="#{coordinates.y}"
+                                     maxlength="5"
+                        >
+                            <f:ajax event="change" render="@form"/>
+                        </h:inputText>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <div class="check-container">
+                        <h:commandButton
+                                id="check-btn"
+                                value="Проверить"
+                                action="#{coordinates.check}"
+                                styleClass="btn action check"
+                                disabled="#{not coordinates.valid}"
+                        >
+                            <f:ajax
+                                    execute="@form"
+                                    render="@form results"
+                                    onevent="(data) => {
+                                        if (data.status === 'success') {
+                                            document.dispatchEvent(new CustomEvent('resultsUpdated'))
+                                        }
+                                    }"
+                            />
+                        </h:commandButton>
+                        <ui:fragment id="errors">
+                            <div class="errors-block">
+                                <p><h:outputText value="Выберите R" rendered="#{coordinates.r == null}"/></p>
+                                <p><h:outputText value="Введите Y" rendered="#{coordinates.y == null}"/></p>
+                                <p><h:outputText
+                                        value="Y должен быть от -3 до 3"
+                                        rendered="#{coordinates.y lt -3 or coordinates.y gt 3}"
+                                /></p>
+                            </div>
+                        </ui:fragment>
+                    </div>
+                    <h:commandButton
+                            value="Очистить результаты"
+                            action="#{results.clear}"
+                            styleClass="btn danger"
+                    >
+                        <f:ajax
+                                execute="@form"
+                                render="results"
+                                onevent="(data) => {
+                                    if (data.status === 'success') {
+                                        document.dispatchEvent(new CustomEvent('resultsUpdated'))
+                                    }
+                                }"
+                        />
+                    </h:commandButton>
+                </div>
+            </h:form>
+        </div>
+        <div class="block wide" style="height: 100%">
+            <div class="table-wrapper">
+                <h:dataTable
+                        id="results"
+                        styleClass="table"
+                        value="#{results.results}"
+                        var="result"
+                >
+                    <h:column>
+                        <f:facet name="header">Время</f:facet>
+                        <h:outputText value="#{result.time}">
+                            <f:convertDateTime pattern="HH:mm:ss" type="zonedDateTime"/>
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">X</f:facet>
+                        #{result.x}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Y</f:facet>
+                        #{result.y}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">R</f:facet>
+                        #{result.r}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Попадание</f:facet>
+                        #{result.contains ? "Да" : "Нет"}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Время выполнения</f:facet>
+                        #{result.executionTime} нс
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </div>
+
+    </ui:define>
+</ui:composition>

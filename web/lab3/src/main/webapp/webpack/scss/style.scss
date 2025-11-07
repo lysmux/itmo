@@ -1,0 +1,69 @@
+@use "header";
+@use "button";
+@use "form";
+@use "table";
+@use "plot";
+@use "loader";
+@use "toast";
+@use "themes" as *;
+
+$DEFAULT_FONT_SIZE: 24px;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  font-size: $DEFAULT_FONT_SIZE;
+
+  @include themify {
+    background: themed(background);
+  }}
+
+.container {
+  min-height: 100vh;
+}
+
+main {
+  width: 95%;
+  margin-inline: auto;
+  margin-top: 20px;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.block {
+  @include themify {
+    background: themed(blockBackround);
+  }
+
+  width: 100%;
+  border-radius: 16px;
+  padding: 12px;
+}
+
+.wide {
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+.toast-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+}

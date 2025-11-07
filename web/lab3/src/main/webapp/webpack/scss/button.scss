@@ -1,0 +1,45 @@
+@use "themes" as *;
+
+.btn {
+  cursor: pointer;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 16px 20px;
+  transition: all 0.3s ease;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.action {
+  @include themify {
+    color: themed(actionButtonColor);
+    background: themed(actionButtonBackground);
+
+    &:disabled {
+      background: themed(actionButtonDisabledBackground);
+    }
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 10px 25px themed(actionButtonShadowColor);
+    }
+  }
+}
+
+.danger {
+  @include themify {
+    color: themed(dangerButtonColor);
+    background: themed(dangerButtonBackground);
+
+    &:disabled {
+      background: themed(dangerButtonDisabledBackground);
+    }
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 10px 25px themed(dangerButtonShadowColor);
+    }
+  }
+}
