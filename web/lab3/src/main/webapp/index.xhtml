@@ -6,17 +6,20 @@
              template="/template.xhtml"
 >
     <ui:define name="content">
-        <div>
-            Текущее время: <h:outputText id="currentTime" value="#{time.dateTime}"/>
-            <p:poll interval="10" listener="#{time.update}" update="currentTime"/>
+        <div class="block wide time-block">
+            <div>
+                <h1>Текущее время</h1> <h:outputText styleClass="time" id="currentTime" value="#{time.dateTime}"/>
+                <p:poll interval="10" listener="#{time.update}" update="currentTime"/>
+            </div>
+            <h:form>
+                <div class="button-container">
+                    <h:commandButton
+                            value="Главная"
+                            action="main?faces-redirect=true"
+                            styleClass="btn action"
+                    />
+                </div>
+            </h:form>
         </div>
-        <h:form>
-            <h:commandButton
-                    value="Главная"
-                    action="main?faces-redirect=true"
-                    styleClass="btn action"
-            />
-        </h:form>
     </ui:define>
 </ui:composition>
-

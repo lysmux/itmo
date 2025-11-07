@@ -40,22 +40,29 @@ $("#plot > canvas").on("click", function (e) {
     const x = ((canvasX - rect.width / 2) / drawer.options.step / 4) * R_OBSERVER.value;
     const y = (-(canvasY - rect.height / 2) / drawer.options.step / 4) * R_OBSERVER.value;
 
-    $('[name$=":xVal"]').val(Math.round(x * 100) / 100)[0].dispatchEvent(new KeyboardEvent('keyup'))
-    $('[name$=":yVal"]').val(Math.round(y * 100) / 100);
+    $('[name$=":xVal"]').val(Math.round(x * 100) / 100).trigger("change")[0].dispatchEvent(new KeyboardEvent('keyup'))
+    $('[name$=":yVal"]').val(Math.round(y * 100) / 100).trigger("change");
 
-    if (!$('[name$=":check-btn"]').prop('disabled')) {
-        $('[name$=":check-btn"]').trigger('click');
-    } else {
-        addToast({
-            title: "Невозможно обработать клик",
-            message: "Проверьте данные формы",
-            style: TOAST_VARIANTS.warning
-        })
-    }
+    setTimeout(() => {
+        if (!$('[name$=":check-btn"]').prop('disabled')) {
+            $('[name$=":check-btn"]').trigger('click');
+        } else {
+            addToast({
+                title: "Невозможно обработать клик",
+                message: "Проверьте данные формы",
+                style: TOAST_VARIANTS.warning
+            })
+        }
+    }, 200)
 })
 
 RESULTS_OBSERVER.onChange(results => {
     drawer.setCustomShapes(results.map(r => {
-        return new Point({x: r.x, y: r.y}, 0.025, true)
+        return new Point(
+            {x: r.x, y: r.y},
+            0.025,
+            true,
+            r.contains ? "green" : "red"
+        )
     }))
 })

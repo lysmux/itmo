@@ -17,16 +17,16 @@ const DEFAULT_LABELS = [
 ]
 
 const DEFAULT_SHAPES = [
-    new Arc({x: 0, y: 0}, 0.5, 0, Math.PI / 2),
+    new Arc({x: 0, y: 0}, 1, -Math.PI / 2, 0),
     new Polygon([
         {x: 0, y: 0},
-        {x: 1, y: 0},
-        {x: 0, y: -1}
+        {x: 0, y: 0.5},
+        {x: 1, y: 0}
     ]),
     new Polygon([
         {x: 0, y: -1},
-        {x: -1, y: -1},
-        {x: -1, y: 0},
+        {x: -0.5, y: -1},
+        {x: -0.5, y: 0},
         {x: 0, y: 0},
     ]),
 ]
@@ -104,11 +104,21 @@ export default class PlotDrawer {
     }
 
     draw(shape: Shape, options?: Partial<DrawOptions>) {
-        shape.draw(this.ctx, {
-            scale: this.options.step * SCALE,
-            R: this.rObserver.value,
-            ...options
-        })
+        if (shape.color !== undefined) {
+            this.withStyle({fill: shape.color}, () => {
+                shape.draw(this.ctx, {
+                    scale: this.options.step * SCALE,
+                    R: this.rObserver.value,
+                    ...options
+                })
+            })
+        } else {
+            shape.draw(this.ctx, {
+                scale: this.options.step * SCALE,
+                R: this.rObserver.value,
+                ...options
+            })
+        }
     }
 
     setCustomShapes(shapes: Shape[]) {

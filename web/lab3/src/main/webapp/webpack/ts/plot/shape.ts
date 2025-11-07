@@ -16,6 +16,8 @@ const DEFAULT_DRAW_OPTIONS: DrawOptions = {
 }
 
 export abstract class Shape {
+    public color: string = undefined;
+
     draw(ctx: CanvasRenderingContext2D, options?: Partial<DrawOptions>): void {
         this._draw(ctx, {...DEFAULT_DRAW_OPTIONS, ...options});
     }
@@ -39,8 +41,10 @@ export class Point extends Shape {
         private position: Position,
         private radius: number = 2,
         private dependR: boolean = false,
+        color: string = undefined
     ) {
         super();
+        this.color = color
     }
 
     _draw(ctx: CanvasRenderingContext2D, options: DrawOptions): void {
@@ -53,8 +57,10 @@ export class Point extends Shape {
         }
 
         ctx.moveTo(x, y)
+        ctx.beginPath()
         ctx.arc(x, y, radius, 0, 2 * Math.PI)
         ctx.fill()
+        ctx.closePath()
     }
 }
 

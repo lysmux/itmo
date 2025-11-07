@@ -6,19 +6,19 @@ export type ToastVariantsConfig = Record<ToastVariant, ToastStyle>
 export const TOAST_VARIANTS: ToastVariantsConfig = {
     success: {
         className: "success",
-        svgIcon: "/assets/success.svg"
+        svgIcon: "assets/success.svg"
     },
     error: {
         className: "error",
-        svgIcon: "/assets/error.svg"
+        svgIcon: "assets/error.svg"
     },
     info: {
         className: "info",
-        svgIcon: "/assets/info.svg"
+        svgIcon: "assets/info.svg"
     },
     warning: {
         className: "warning",
-        svgIcon: "/assets/warning.svg"
+        svgIcon: "assets/warning.svg"
     }
 }
 
@@ -43,7 +43,7 @@ export function addToast({title, message, style}: ToastProps) {
                     <p class="message">${message}</p>
                 </div>
                 <div class="btn-block">
-                    <button class="close-btn"><img class="icon" src="/assets/close.svg"></button>
+                    <button class="close-btn"><img class="icon" src="assets/close.svg"></button>
                 </div>
             </div>
             <div class="progress"></div>

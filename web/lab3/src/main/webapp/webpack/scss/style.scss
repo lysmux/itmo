@@ -67,3 +67,35 @@ main {
   gap: 10px;
   z-index: 100;
 }
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  text-align: center;
+
+  .time {
+    font-weight: 700;
+  }
+
+  @include themify {
+    color: themed(headerTitleColor);
+  }
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  text-align: center;
+
+  .time {
+    font-weight: 700;
+  }
+
+  @include themify {
+    color: themed(headerTitleColor);
+  }
+}
