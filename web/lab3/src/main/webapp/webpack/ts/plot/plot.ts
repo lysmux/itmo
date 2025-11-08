@@ -40,20 +40,20 @@ $("#plot > canvas").on("click", function (e) {
     const x = ((canvasX - rect.width / 2) / drawer.options.step / 4) * R_OBSERVER.value;
     const y = (-(canvasY - rect.height / 2) / drawer.options.step / 4) * R_OBSERVER.value;
 
-    $('[name$=":xVal"]').val(Math.round(x * 100) / 100).trigger("change")[0].dispatchEvent(new KeyboardEvent('keyup'))
-    $('[name$=":yVal"]').val(Math.round(y * 100) / 100).trigger("change");
+    const xInput = $('[name$=":xVal"]')
+    const yInput = $('[name$=":yVal"]')
+    const checkBtn = $('[name$=":check-btn"]')
 
-    setTimeout(() => {
-        if (!$('[name$=":check-btn"]').prop('disabled')) {
-            $('[name$=":check-btn"]').trigger('click');
-        } else {
-            addToast({
-                title: "Невозможно обработать клик",
-                message: "Проверьте данные формы",
-                style: TOAST_VARIANTS.warning
-            })
-        }
-    }, 200)
+    const xPrev = xInput.val()
+    const yPrev = yInput.val()
+
+    xInput.val(Math.round(x * 100) / 100)
+    yInput.val(Math.round(y * 100) / 100)
+
+    checkBtn.trigger("click")
+
+    xInput.val(xPrev)
+    yInput.val(yPrev).trigger("change") // костыль, чтобы на сервере вернулись значения инпутов хД
 })
 
 RESULTS_OBSERVER.onChange(results => {

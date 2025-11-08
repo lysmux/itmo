@@ -32,6 +32,12 @@ public class CoordinatesBean implements Serializable {
     private Instance<ContainsChecker> checkers;
 
     public void check() {
+        log.atInfo()
+                .addKeyValue("x", x)
+                .addKeyValue("y", y)
+                .addKeyValue("r", r)
+                .log("check");
+
         long startTime = System.nanoTime();
         ZonedDateTime time = ZonedDateTime
                 .now(ZoneId.of("Europe/Moscow"))
@@ -59,5 +65,15 @@ public class CoordinatesBean implements Serializable {
     public void setX(Double x) {
         this.x = x;
         log.info("setX: {}", x);
+    }
+
+    public void setR(Double r) {
+        this.r = r;
+        log.info("setR: {}", r);
+    }
+
+    public void setY(Double y) {
+        this.y = y;
+        log.info("setY: {}", y);
     }
 }

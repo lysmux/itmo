@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="block">
-            <h:form styleClass="form">
+            <h:form id="form" styleClass="form">
                 <div class="block-container">
                     <div class="block">
                         <h:outputLabel for="xVal" value="X"/>
@@ -20,32 +20,33 @@
                                 id="xVal"
                                 styleClass="input"
                                 value="#{coordinates.x}"
-
+                                readonly="#{facesContext.currentPhaseId.ordinal eq 6}"
                         >
-                            <f:ajax event="change" execute="@this" render="@form" />
+                            <f:ajax event="change" execute="@this" render="@form:checkBlock"/>
                         </h:inputText>
                         <p:slider
                                 for="xVal"
                                 minValue="-5"
                                 maxValue="5"
                                 step="1"
+                                rendered="#{facesContext.currentPhaseId.ordinal eq 6}"
                         />
                     </div>
                     <div class="block">
                         <h:outputLabel for="rVal" value="R"/>
                         <h:inputHidden id="rVal" value="#{coordinates.r}"/>
-                        <div class="input-container">
+                        <h:panelGroup id="rBlock" styleClass="input-container" layout="block" >
                             <ui:repeat value="#{[1, 2, 3, 4, 5]}" var="r">
                                 <h:commandButton
                                         value="#{r}"
-                                        action="#{coordinates.setR(r)}"
                                         onclick="document.dispatchEvent(new CustomEvent('rUpdated', {detail: {r: this.value}}))"
                                         styleClass="checkbox #{coordinates.r == r ? 'selected' : ''}"
                                 >
-                                    <f:ajax execute="@this" render="@form"/>
+                                    <f:setPropertyActionListener target="#{coordinates.r}" value="#{r}" />
+                                    <f:ajax execute="@this" render="@form:checkBlock @form:rVal @form:rBlock" />
                                 </h:commandButton>
                             </ui:repeat>
-                        </div>
+                        </h:panelGroup>
                     </div>
                     <div class="block wide">
                         <h:outputLabel for="yVal" value="Y"/>
@@ -54,23 +55,22 @@
                                      value="#{coordinates.y}"
                                      maxlength="5"
                         >
-                            <f:ajax event="change" render="@form"/>
+                            <f:ajax event="change" execute="@this" render="@form:checkBlock"/>
                         </h:inputText>
                     </div>
                 </div>
 
                 <div class="button-container">
-                    <div class="check-container">
+                    <h:panelGroup id="checkBlock" styleClass="check-container" layout="block">
                         <h:commandButton
                                 id="check-btn"
                                 value="Проверить"
                                 action="#{coordinates.check}"
-                                styleClass="btn action check"
-                                disabled="#{not coordinates.valid}"
+                                styleClass="btn action check #{not coordinates.valid ? 'disabled' : ''}"
                         >
                             <f:ajax
                                     execute="@form"
-                                    render="@form results"
+                                    render="results"
                                     onevent="(data) => {
                                         if (data.status === 'success') {
                                             document.dispatchEvent(new CustomEvent('resultsUpdated'))
@@ -78,17 +78,15 @@
                                     }"
                             />
                         </h:commandButton>
-                        <ui:fragment id="errors">
-                            <div class="errors-block">
-                                <p><h:outputText value="Выберите R" rendered="#{coordinates.r == null}"/></p>
-                                <p><h:outputText value="Введите Y" rendered="#{coordinates.y == null}"/></p>
-                                <p><h:outputText
-                                        value="Y должен быть от -3 до 3"
-                                        rendered="#{coordinates.y lt -3 or coordinates.y gt 3}"
-                                /></p>
-                            </div>
-                        </ui:fragment>
-                    </div>
+                        <div class="errors-block">
+                            <p><h:outputText value="Выберите R" rendered="#{coordinates.r == null}"/></p>
+                            <p><h:outputText value="Введите Y" rendered="#{coordinates.y == null}"/></p>
+                            <p><h:outputText
+                                    value="Y должен быть от -3 до 3"
+                                    rendered="#{coordinates.y lt -3 or coordinates.y gt 3}"
+                            /></p>
+                        </div>
+                    </h:panelGroup>
                     <h:commandButton
                             value="Очистить результаты"
                             action="#{results.clear}"

@@ -140,7 +140,7 @@
   }
 }
 
-.btn.check:hover:disabled + .errors-block {
+.btn.check.disabled:hover + .errors-block {
   opacity: 1;
   visibility: visible;
   transform: translateY(0) translateX(-50%);

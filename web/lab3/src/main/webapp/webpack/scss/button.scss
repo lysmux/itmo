@@ -8,24 +8,13 @@
   font-size: 18px;
   padding: 16px 20px;
   transition: all 0.3s ease;
-
-  &:disabled {
-    cursor: not-allowed;
-  }
 }
 
 .action {
   @include themify {
     color: themed(actionButtonColor);
     background: themed(actionButtonBackground);
-
-    &:disabled {
-      background: themed(actionButtonDisabledBackground);
-    }
-
-    &:hover:not(:disabled) {
-      box-shadow: 0 10px 25px themed(actionButtonShadowColor);
-    }
+    box-shadow: 0 10px 25px themed(actionButtonShadowColor);
   }
 }
 
@@ -33,13 +22,18 @@
   @include themify {
     color: themed(dangerButtonColor);
     background: themed(dangerButtonBackground);
+    box-shadow: 0 10px 25px themed(dangerButtonShadowColor);
+  }
+}
 
-    &:disabled {
-      background: themed(dangerButtonDisabledBackground);
-    }
+.disabled {
+  opacity: 0.5;
 
-    &:hover:not(:disabled) {
-      box-shadow: 0 10px 25px themed(dangerButtonShadowColor);
-    }
+  &:hover {
+    cursor: not-allowed;
+  }
+
+  &:active {
+    pointer-events: none;
   }
 }
