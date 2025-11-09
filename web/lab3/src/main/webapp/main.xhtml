@@ -23,7 +23,7 @@
                                 value="#{coordinates.x}"
                                 readonly="#{facesContext.currentPhaseId.ordinal eq 6}"
                         >
-                            <f:ajax event="change" execute="@this" render="@form:checkBlock"/>
+                            <f:ajax event="change" execute="@form" render="@form:checkBlock"/>
                         </h:inputText>
                         <p:slider
                                 for="xVal"
@@ -56,7 +56,7 @@
                                      value="#{coordinates.y}"
                                      maxlength="5"
                         >
-                            <f:ajax event="change" execute="@this" render="@form:checkBlock"/>
+                            <f:ajax event="change" execute="@form" render="@form:checkBlock"/>
                         </h:inputText>
                     </div>
                 </div>
@@ -69,15 +69,7 @@
                                 action="#{coordinates.check}"
                                 styleClass="btn action check #{not coordinates.valid ? 'disabled' : ''}"
                         >
-                            <f:ajax
-                                    execute="@form"
-                                    render="results"
-                                    onevent="(data) => {
-                                        if (data.status === 'success') {
-                                            document.dispatchEvent(new CustomEvent('resultsUpdated'))
-                                        }
-                                    }"
-                            />
+                            <f:ajax execute="@form" render="results" />
                         </h:commandButton>
                         <div class="errors-block">
                             <p><h:outputText value="Выберите R" rendered="#{coordinates.r == null}"/></p>
@@ -96,11 +88,6 @@
                         <f:ajax
                                 execute="@form"
                                 render="results"
-                                onevent="(data) => {
-                                    if (data.status === 'success') {
-                                        document.dispatchEvent(new CustomEvent('resultsUpdated'))
-                                    }
-                                }"
                         />
                     </h:commandButton>
                     <h:commandButton

@@ -54,6 +54,8 @@ $("#plot > canvas").on("click", function (e) {
 
     xInput.val(xPrev)
     yInput.val(yPrev).trigger("change") // костыль, чтобы на сервере вернулись значения инпутов хД
+
+    $('#results .pagination a:nth-child(5)').trigger('click') // еще один костыль, чтобы менялась страница таблицы
 })
 
 RESULTS_OBSERVER.onChange(results => {
