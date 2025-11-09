@@ -15,6 +15,8 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":tags"))
+
     compileOnly("jakarta.servlet:jakarta.servlet-api:6.1.0")
     implementation("jakarta.faces:jakarta.faces-api:4.1.2")
     implementation("jakarta.inject:jakarta.inject-api:2.0.1")

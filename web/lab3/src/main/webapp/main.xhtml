@@ -3,6 +3,7 @@
                 xmlns:h="jakarta.faces.html"
                 xmlns:f="jakarta.faces.core"
                 xmlns:p="primefaces"
+                xmlns:t="https://lysmux.dev/jsp/tags/table"
                 template="/template.xhtml"
 >
     <ui:define name="content">
@@ -112,39 +113,22 @@
         </div>
         <div class="block wide" style="height: 100%">
             <div class="table-wrapper">
-                <h:dataTable
-                        id="results"
-                        styleClass="table"
-                        value="#{results.results}"
-                        var="result"
-                >
-                    <h:column>
-                        <f:facet name="header">Время</f:facet>
+                <t:table id="results" value="#{results.results}" var="result" paginated="true" >
+                    <t:column header="Время" sortable="true">
                         <h:outputText value="#{result.time}">
-                            <f:convertDateTime pattern="HH:mm:ss" type="zonedDateTime"/>
+                            <f:convertDateTime pattern="HH:mm:ss" type="zonedDateTime" />
                         </h:outputText>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">X</f:facet>
-                        #{result.x}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Y</f:facet>
-                        #{result.y}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">R</f:facet>
-                        #{result.r}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Попадание</f:facet>
+                    </t:column>
+                    <t:column header="X" property="#{result.x}" sortable="true" />
+                    <t:column header="Y" property="#{result.y}" sortable="true" />
+                    <t:column header="R" property="#{result.r}" sortable="true" />
+                    <t:column header="Попадание" sortable="true" >
                         #{result.contains ? "Да" : "Нет"}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Время выполнения</f:facet>
+                    </t:column>
+                    <t:column header="Время выполнения" sortable="true" >
                         #{result.executionTime} нс
-                    </h:column>
-                </h:dataTable>
+                    </t:column>
+                </t:table>
             </div>
         </div>
 
