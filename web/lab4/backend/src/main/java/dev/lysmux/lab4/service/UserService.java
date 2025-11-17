@@ -1,8 +1,6 @@
 package dev.lysmux.lab4.service;
 
-import dev.lysmux.lab4.InvalidCredentialsException;
 import dev.lysmux.lab4.UserExistsException;
-import dev.lysmux.lab4.domain.TokensPair;
 import dev.lysmux.lab4.domain.User;
 import dev.lysmux.lab4.repository.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -16,22 +14,14 @@ public class UserService {
     @Inject
     private AuthService authService;
 
-    public TokensPair register(String username, String password) {
+    public User createUser(String username) {
         if (userRepository.isUserExists(username)) {
             throw new UserExistsException(username);
         }
 
-        User user = new User(username, password);
+        User user = new User(username);
         userRepository.addUser(user);
-        return authService.generateTokensPair(user.id());
-    }
-
-    public TokensPair login(String username, String password) {
-        User user = userRepository.getUserByName(username);
-        if (user == null || !user.password().equals(password)) {
-            throw new InvalidCredentialsException("Invalid username or password");
-        }
-        return authService.generateTokensPair(user.id());
+        return user;
     }
 
     public boolean isUserExists(String username) {

@@ -6,6 +6,7 @@
 	import { toasts } from 'svelte-toasts';
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
+	import { passKeyAuth, passKeyRegister } from '$lib/auth/passkey.ts';
 
 	let user = $state<User | null>(null);
 
@@ -39,5 +40,8 @@
 	{#if (user)}
 		<p>ID: {user.id}</p>
 		<p>Username: {user.username}</p>
+		<a href={resolve("/auth/logout")}>Выйти</a>
+
+		<button onclick={(e) => {e.preventDefault(); passKeyRegister()}}>Add passkey</button>
 	{/if}
 </div>

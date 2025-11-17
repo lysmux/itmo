@@ -4,10 +4,9 @@ import com.fasterxml.uuid.Generators;
 
 public record User(
         String id,
-        String username,
-        String password
+        String username
 ) {
-    public User(String username, String password) {
-        this(Generators.timeBasedEpochRandomGenerator().generate().toString(), username, password);
+    public User(String username) {
+        this(Generators.timeBasedEpochRandomGenerator().generate().toString(), username);
     }
 }

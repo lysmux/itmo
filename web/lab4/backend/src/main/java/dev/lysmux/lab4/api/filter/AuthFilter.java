@@ -1,6 +1,7 @@
 package dev.lysmux.lab4.api.filter;
 
 import dev.lysmux.lab4.AppSecurityContext;
+import dev.lysmux.lab4.AuthException;
 import dev.lysmux.lab4.service.AuthService;
 import dev.lysmux.lab4.service.UserPrincipal;
 import io.jsonwebtoken.JwtException;
@@ -31,7 +32,7 @@ public class AuthFilter implements ContainerRequestFilter {
         if (authCookie != null) {
             try {
                 user = validateToken(authCookie.getValue());
-            } catch (JwtException e) {
+            } catch (AuthException e) {
                 log.warn("Invalid JWT token", e);
             }
         }

@@ -28,8 +28,11 @@ dependencies {
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.13.0")
 
     implementation("com.fasterxml.uuid:java-uuid-generator:5.1.1")
-    implementation("tools.jackson.jaxrs:jackson-jaxrs-json-provider:3.0.2")
-    implementation("tools.jackson.core:jackson-databind:3.0.2")
+
+    implementation("com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-json-provider:2.19.0")
+
+    implementation("com.webauthn4j:webauthn4j-core:0.28.0.RELEASE")
+    implementation("com.webauthn4j:webauthn4j-util:0.28.0.RELEASE")
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
