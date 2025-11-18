@@ -2,8 +2,8 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
-	import axios from 'axios';
 	import type { AuthResponse, VKCallbackRequest } from '$lib/api/users.ts';
+	import apiClient, { setAccessTokenExpiresAt } from '$lib/api/api.ts';
 	import { toasts } from 'svelte-toasts';
 
 	onMount(() => {
@@ -22,36 +22,41 @@
 			|| stateVerifier === null
 			|| state !== stateVerifier
 		) {
-			goto(resolve('/auth/login'), { replaceState: true });
+			goto(resolve('/auth/login'));
 		}
 
 		const callbackData: VKCallbackRequest = {
 			code: code as string,
 			deviceId: deviceId as string,
-			challengeVerifier: challengeVerifier as string,
+			challengeVerifier: challengeVerifier as string
 		};
 
-		axios.post<AuthResponse>('/api/auth/callback/vk', callbackData)
-			.then((response) => response.data)
-			.then((response: AuthResponse) => {
-				localStorage.setItem('accessTokenExpireIn', String(response.expiresIn));
-				goto(resolve('/users/me'));
+		apiClient.post<AuthResponse>('/auth/callback/vk', callbackData)
+			.then(response => response.data)
+			.then(data => {
+				setAccessTokenExpiresAt(data.expiresIn);
+				goto(resolve('/'));
 			})
-			.catch((error) => {
-				console.log(error);
+			.catch(() => {
 				toasts.add({
-					title: `API ERROR | ${error.status}`,
-					description: error.response?.data.message || error.message,
-					duration: 6000,
+					title: `Ошибка входа`,
+					description: 'Не удалось войти через ВКонтакте',
 					placement: 'top-right',
-					theme: 'dark',
+					duration: 6000,
 					showProgress: true,
 					type: 'error'
 				});
-
 				goto(resolve('/auth/login'));
 			});
 	});
 </script>
 
-<div>VK</div>
+<div>Вход через ВКонтакте...</div>
+
+<style lang="scss">
+	div {
+		color: white;
+		font-size: 2em;
+		font-weight: 700;
+	}
+</style>

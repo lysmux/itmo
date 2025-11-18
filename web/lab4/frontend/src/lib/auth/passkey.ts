@@ -1,9 +1,10 @@
-import axios from 'axios';
 import { goto } from '$app/navigation';
 import { resolve } from '$app/paths';
+import apiClient, { setAccessTokenExpiresAt } from '$lib/api/api.ts';
+import { toasts } from 'svelte-toasts';
 
-export const passKeyAuth = async () =>{
-	const resp = await axios.get('/api/auth/passkey/login');
+export const passKeyAuth = async () => {
+	const resp = await apiClient.get('/auth/passkey/login');
 	const options = JSON.parse(resp.data.options);
 	const challenge = base64urlToArrayBuffer(options.challenge);
 
@@ -11,31 +12,65 @@ export const passKeyAuth = async () =>{
 		challenge: challenge,
 		rpId: options.rpId,
 		timeout: options.timeout || 60000,
-		userVerification: options.userVerification || 'preferred', // 'required' / 'discouraged'
+		userVerification: options.userVerification
 	};
 
-	const credential = await navigator.credentials.get({
-		publicKey: publicKey
-	}) as PublicKeyCredential;
+	let credential;
+	try {
+		credential = (await navigator.credentials.get({
+			publicKey: publicKey
+		})) as PublicKeyCredential;
+	} catch (err) {
+		toasts.add({
+			title: `Отменено`,
+			description: 'Вход отменен',
+			duration: 6000,
+			placement: 'top-right',
+			theme: 'dark',
+			showProgress: true,
+			type: 'warning'
+		});
+		return;
+	}
 
-	axios.post('/api/auth/passkey/login', {
-		operationId: resp.data.operationId,
-		loginResponseJSON: credential,
-	})
-		.then(resp => resp.data)
-		.then(res => {
-			localStorage.setItem('accessTokenExpireIn', String(res.expiresIn));
+	apiClient
+		.post('/auth/passkey/login', {
+			operationId: resp.data.operationId,
+			loginResponseJSON: credential
+		})
+		.then((resp) => resp.data)
+		.then((res) => {
+			setAccessTokenExpiresAt(res.expireIn);
 			goto(resolve('/users/me'));
 		})
+		.catch((err) => {
+			toasts.add({
+				title: `Не удалось выполнить вход`,
+				description: 'Ключ недействителен',
+				duration: 6000,
+				placement: 'top-right',
+				theme: 'dark',
+				showProgress: true,
+				type: 'error'
+			});
+		});
+};
 
+export const passKeyRegister = async () => {
+	const resp = await apiClient.get('/auth/passkey/register', { requireAuth: true });
 
-}
-
-export const passKeyRegister = async () =>{
-	const resp = await axios.get('/api/auth/passkey/register');
-
-
-	if (resp.status !== 200) throw new Error('Failed to get registration options');
+	if (resp.status !== 200) {
+		toasts.add({
+			title: `Отменено`,
+			description: 'Не удалось создать ключ',
+			duration: 6000,
+			placement: 'top-right',
+			theme: 'dark',
+			showProgress: true,
+			type: 'warning'
+		});
+		return;
+	}
 	const options = resp.data;
 
 	// 2. Преобразуем challenge и user.id из base64url → ArrayBuffer
@@ -56,50 +91,75 @@ export const passKeyRegister = async () =>{
 			alg: p.alg
 		})),
 		timeout: options.timeout,
-		excludeCredentials: options.excludeCredentials.map(p => {
+		excludeCredentials: options.excludeCredentials.map((p) => {
 			return {
 				type: p.type,
-				id: base64urlToArrayBuffer(p.id),
-			}
+				id: base64urlToArrayBuffer(p.id)
+			};
 		}),
 		attestation: options.attestation || 'none',
 		authenticatorSelection: options.authenticatorSelection
 	};
 
 	// 4. Вызываем API
-	const credential = await navigator.credentials.create({
-		publicKey: publicKeyCredentialCreationOptions
-	}) as PublicKeyCredential;
-
-	if (!credential) throw new Error('Registration cancelled');
-
-	// 6. Отправляем на сервер
-	const verifyResp = await axios.post('/api/auth/passkey/register', credential);
-
-	if (verifyResp.status !== 200) {
-		throw new Error(verifyResp.data || 'Registration failed');
+	let credential;
+	try {
+		credential = (await navigator.credentials.create({
+			publicKey: publicKeyCredentialCreationOptions
+		})) as PublicKeyCredential;
+	} catch (err) {
+		toasts.add({
+			title: `Отменено`,
+			description: 'Добавление ключа отменено',
+			duration: 6000,
+			placement: 'top-right',
+			theme: 'dark',
+			showProgress: true,
+			type: 'warning'
+		});
+		return;
 	}
 
-	console.log('✅ Passkey registered!');
-}
+	// 6. Отправляем на сервер
+	apiClient
+		.post('/auth/passkey/register', credential, { requireAuth: true })
+		.then((resp) => resp.data)
+		.then((res) => {
+			toasts.add({
+				title: `Успешно`,
+				description: 'Ключ добавлен',
+				duration: 6000,
+				placement: 'top-right',
+				theme: 'dark',
+				showProgress: true,
+				type: 'success'
+			});
+		})
+		.catch((err) => {
+			toasts.add({
+				title: `Не удалось добавить ключ`,
+				description: 'Не удалось добавить ключ',
+				duration: 6000,
+				placement: 'top-right',
+				theme: 'dark',
+				showProgress: true,
+				type: 'error'
+			});
+		});
+};
 
 export function base64urlToArrayBuffer(base64url: string): ArrayBuffer {
-	// Шаг 1: заменяем base64url → base64
 	let base64 = base64url
-		.replace(/-/g, '+')  // '-' → '+'
+		.replace(/-/g, '+') // '-' → '+'
 		.replace(/_/g, '/'); // '_' → '/'
 
-	// Шаг 2: добавляем padding (=), если нужно
 	const padding = base64.length % 4;
 	if (padding === 2) {
 		base64 += '==';
 	} else if (padding === 3) {
 		base64 += '=';
 	}
-	// padding === 0 → ничего не добавляем
-	// padding === 1 — невалидно (но на практике не встречается)
 
-	// Шаг 3: декодируем base64 → binary string → Uint8Array
 	let binaryString: string;
 	try {
 		binaryString = atob(base64);
@@ -114,21 +174,4 @@ export function base64urlToArrayBuffer(base64url: string): ArrayBuffer {
 	}
 
 	return bytes.buffer;
-}
-
-/**
- * Конвертирует ArrayBuffer → base64url-строку (без padding)
- */
-export function arrayBufferToBase64url(buffer: ArrayBuffer): string {
-	const bytes = new Uint8Array(buffer);
-	let binary = '';
-	for (let i = 0; i < bytes.length; i++) {
-		binary += String.fromCharCode(bytes[i]);
-	}
-
-	const base64 = btoa(binary);
-	return base64
-		.replace(/\+/g, '-')  // '+' → '-'
-		.replace(/\//g, '_')  // '/' → '_'
-		.replace(/=+$/g, ''); // удаляем '=' в конце
 }

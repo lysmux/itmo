@@ -16,10 +16,12 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.5.16")
 
     compileOnly("jakarta.enterprise:jakarta.enterprise.cdi-api:4.1.0")
-    compileOnly("jakarta.persistence:jakarta.persistence-api:3.2.0")
     compileOnly("jakarta.ws.rs:jakarta.ws.rs-api:4.0.0")
     compileOnly("jakarta.servlet:jakarta.servlet-api:6.1.0")
     compileOnly("jakarta.transaction:jakarta.transaction-api:2.0.1")
+
+    implementation("org.hibernate.orm:hibernate-core:7.1.8.Final")
+    compileOnly("jakarta.persistence:jakarta.persistence-api:3.1.0")
 
     implementation("jakarta.validation:jakarta.validation-api:4.0.0-M1")
 

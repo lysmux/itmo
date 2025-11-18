@@ -1,10 +1,8 @@
 package dev.lysmux.lab4.api.resource;
 
 import dev.lysmux.lab4.api.filter.Secured;
-import dev.lysmux.lab4.domain.User;
-import dev.lysmux.lab4.service.UserService;
-import jakarta.annotation.security.DenyAll;
-import jakarta.annotation.security.RolesAllowed;
+import dev.lysmux.lab4.domain.model.User;
+import dev.lysmux.lab4.service.user.UserService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
@@ -27,6 +25,6 @@ public class UserResource {
     @Path("/me")
     @GET
     public User me() {
-        return userService.getUser(securityContext.getUserPrincipal().getName());
+        return userService.getUserById(securityContext.getUserPrincipal().getName());
     }
 }

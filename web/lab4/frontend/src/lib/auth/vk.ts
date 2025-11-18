@@ -1,4 +1,4 @@
-import { generateRedirectUrl } from '$lib/redirect.ts';
+import { generateRedirectUrl } from '$lib/utils/redirect.ts';
 
 export function generatePkcePair() {
 	const array = new Uint8Array(32);

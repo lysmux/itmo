@@ -1,10 +1,9 @@
 package dev.lysmux.lab4.api.filter;
 
-import dev.lysmux.lab4.AppSecurityContext;
-import dev.lysmux.lab4.AuthException;
-import dev.lysmux.lab4.service.AuthService;
-import dev.lysmux.lab4.service.UserPrincipal;
-import io.jsonwebtoken.JwtException;
+import dev.lysmux.lab4.api.AppSecurityContext;
+import dev.lysmux.lab4.auth.exception.AuthException;
+import dev.lysmux.lab4.service.auth.AuthService;
+import dev.lysmux.lab4.auth.model.UserPrincipal;
 import jakarta.annotation.Priority;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Priorities;

@@ -1,21 +1,28 @@
 package dev.lysmux.lab4.auth.providers.vk;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.uuid.Generators;
-import dev.lysmux.lab4.auth.providers.AuthProvider;
-import dev.lysmux.lab4.domain.User;
-import dev.lysmux.lab4.repository.VKAuthRepository;
-import dev.lysmux.lab4.service.UserService;
+import dev.lysmux.lab4.auth.providers.vk.exception.VKAuthException;
+import dev.lysmux.lab4.auth.providers.vk.model.ExchangeRequest;
+import dev.lysmux.lab4.auth.providers.vk.model.ExchangeResponse;
+import dev.lysmux.lab4.auth.providers.vk.model.VKCredentials;
+import dev.lysmux.lab4.auth.providers.vk.model.VKUser;
+import dev.lysmux.lab4.auth.providers.vk.repository.VKAuthRepository;
+import dev.lysmux.lab4.domain.model.User;
+import dev.lysmux.lab4.service.user.UserService;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 import java.io.IOException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.UUID;
 
 @ApplicationScoped
-public class VKAuthProvider implements AuthProvider<VKCredentials> {
+public class VKAuthProvider {
+    private static final String EXCHANGE_URL = "https://id.vk.ru/oauth2/auth";
+
     private static final HttpClient client = HttpClient.newHttpClient();
     private static final ObjectMapper mapper = new ObjectMapper();
 
@@ -25,7 +32,7 @@ public class VKAuthProvider implements AuthProvider<VKCredentials> {
     @Inject
     private UserService userService;
 
-    @Override
+    @Transactional
     public User register(VKCredentials credentials) {
         ExchangeResponse exchanged = exchangeCode(credentials);
         VKUser vkUser = repository.getUser(exchanged.user_id());
@@ -37,22 +44,15 @@ public class VKAuthProvider implements AuthProvider<VKCredentials> {
             return user;
         }
 
-        return userService.getUser(vkUser.userId());
-    }
-
-    @Override
-    public User login(VKCredentials credentials) {
-        return register(credentials);
+        return userService.getUserById(vkUser.userId());
     }
 
     private ExchangeResponse exchangeCode(VKCredentials credentials) {
         ExchangeRequest request = ExchangeRequest.builder()
                 .code(credentials.code())
                 .code_verifier(credentials.challengeVerifier())
-                .client_id("54324524")
                 .device_id(credentials.deviceId())
-                .redirect_uri("https://tunnel.lysmux.dev/auth/callback/vk")
-                .state(Generators.randomBasedGenerator().generate().toString())
+                .state(UUID.randomUUID().toString())
                 .build();
 
         return makeRequest(request);
@@ -61,16 +61,14 @@ public class VKAuthProvider implements AuthProvider<VKCredentials> {
     private ExchangeResponse makeRequest(ExchangeRequest request) {
         try {
             HttpRequest httpRequest = HttpRequest.newBuilder()
-                    .uri(java.net.URI.create("https://id.vk.ru/oauth2/auth"))
+                    .uri(java.net.URI.create(EXCHANGE_URL))
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(mapper.writeValueAsString(request)))
                     .build();
             HttpResponse<String> response = client.send(httpRequest, HttpResponse.BodyHandlers.ofString());
             return mapper.readValue(response.body(), ExchangeResponse.class);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        } catch (IOException | InterruptedException e) {
+            throw new VKAuthException("Could not exchange token", e);
         }
     }
 }

@@ -1,6 +1,6 @@
 package dev.lysmux.lab4.api.filter;
 
-import dev.lysmux.lab4.AuthException;
+import dev.lysmux.lab4.auth.exception.AuthException;
 import jakarta.annotation.Priority;
 import jakarta.ws.rs.Priorities;
 import jakarta.ws.rs.container.ContainerRequestContext;

@@ -1,10 +1,9 @@
 package dev.lysmux.lab4.api.filter;
 
-import jakarta.annotation.Priority;
-import jakarta.ws.rs.Priorities;
-import jakarta.ws.rs.container.*;
+import jakarta.ws.rs.container.ContainerRequestContext;
+import jakarta.ws.rs.container.ContainerResponseContext;
+import jakarta.ws.rs.container.ContainerResponseFilter;
 import jakarta.ws.rs.ext.Provider;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 

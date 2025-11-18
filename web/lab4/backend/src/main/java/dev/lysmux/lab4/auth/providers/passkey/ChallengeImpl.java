@@ -9,7 +9,7 @@ public class ChallengeImpl implements Challenge {
     private final byte[] value;
 
     public ChallengeImpl() {
-        this.value = new byte[32];  // 32 байта = 256 бит
+        this.value = new byte[32];
         new SecureRandom().nextBytes(this.value);
     }
 

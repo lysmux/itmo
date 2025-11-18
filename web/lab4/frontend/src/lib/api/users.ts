@@ -1,6 +1,7 @@
 export interface RegisterRequest {
 	username: string;
 	password: string;
+	confirmPassword: string;
 }
 
 export interface LoginRequest {
@@ -15,7 +16,6 @@ export interface VKCallbackRequest {
 }
 
 export interface AuthResponse {
-	accessToken: string;
 	expiresIn: number;
 }
 
